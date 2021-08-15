@@ -74,7 +74,8 @@
     mb_language('japanese');
     mb_internal_encoding('UTF-8');
     
-    $to = 's-ishida@channelworks.biz';
+//     $to = 's-ishida@channelworks.biz';
+    $to = 'sakurajimaas@gmail.com';
     $from = str_replace(["\r\n", "\r", "\n"], '', $data['email']);
     $yourName = $data['yourName'];
     $phoneNum = $data['phoneNum'];
