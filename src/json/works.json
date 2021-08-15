@@ -1,0 +1,102 @@
+[
+  {
+    "id": 10,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "https://www.rakuya.com/",
+    "category": ["マーケティング戦略", "サイト制作"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約13ヶ月",
+    "img": "/Assets/img/works/test01.jpg" 
+  },
+  {
+    "id": 9,
+    "client": "全国展開する人材サービス企業",
+    "title": "誰にでもわかりやすく受け入れやすい構成を考える",
+    "url": "https://www.rakuya.com/",
+    "category": ["UI/UX設計"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約3ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  },
+  {
+    "id": 8,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "",
+    "category": ["コンテンツ開発", "イメージ制作"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約5ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  },
+  {
+    "id": 7,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "https://www.rakuya.com/",
+    "category": ["システム開発"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約3ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  },
+  {
+    "id": 6,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "https://www.rakuya.com/",
+    "category": ["マーケティング戦略", "サイト制作"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約13ヶ月",
+    "img": "/Assets/img/works/test01.jpg" 
+  },
+  {
+    "id": 5,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "https://www.rakuya.com/",
+    "category": ["UI/UX設計"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約3ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  },
+  {
+    "id": 4,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "https://www.rakuya.com/",
+    "category": ["コンテンツ開発", "イメージ制作"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約5ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  },
+  {
+    "id": 3,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "",
+    "category": ["システム開発"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約3ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  },
+  {
+    "id": 2,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "https://www.rakuya.com/",
+    "category": ["コンテンツ開発", "イメージ制作"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約5ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  },
+  {
+    "id": 1,
+    "client": "全国展開する人材サービス企業",
+    "title": "ユーザー層を掴むUIデザインの提案",
+    "url": "https://www.rakuya.com/",
+    "category": ["システム開発"],
+    "text": "全ページのUIデザイン提案と、サイト構築を行いました。全ページ更新可能なサイトにより長期の利用も可能となりました。",
+    "period": "約3ヶ月",
+    "img": "/Assets/img/works/test01.jpg"
+  }
+]
