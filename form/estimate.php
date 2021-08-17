@@ -102,7 +102,7 @@
   // メール送信
   function sendEmail($data) {
 
-    mb_language('japanese');
+    mb_language('uni');
     mb_internal_encoding('UTF-8');
     
 //     $to = 's-ishida@channelworks.biz';
@@ -120,6 +120,8 @@
     $message = $data['contain'];
     $subject = 'お問い合わせがありました！';
 
+    $headers = "Content-Type: text/plain; charset=UTF-8\r\n";
+
     $body = '見積り依頼がありました。' . "\n\n";
     $body .=  "氏名： " .$yourName . "\n";
     $body .=  "Email： " . $from . "\n"  ;
@@ -131,7 +133,7 @@
     $body .= "ご予算感：" . $budget . "\n" ;
     $body .=  "【詳細】" . "\n" . $message;
 
-    $success = mb_send_mail($to, $subject, $body, 'From'.$from);
+    $success = mb_send_mail($to, $subject, $body, $headers);
 
     if($success) {
       $res['state'] = '000';
