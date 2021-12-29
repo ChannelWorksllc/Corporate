@@ -1,0 +1,276 @@
+@import '../variables';
+
+.header {
+  width: 100%;
+  height: 100px;
+  padding: 0 60px;
+  background-color: $white;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px $border-black solid;
+
+  h1 {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .pcNav {
+    max-width: 660px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    
+    > ul {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      > li {
+        padding: 35px 0 0 0;
+        height: 100%;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        
+        a {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          padding: 0 5px;
+          font-family: 'PT Serif', serif;
+
+          span {
+            margin: 5px 0 0 0;
+            display: block;
+            font-size: .8em;
+            font-weight: 400;
+            font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
+          }
+        }
+        
+        &::before {
+          @include header-nav-active($black, 0, hidden);
+        }
+        &.active::before {
+          @include header-nav-active($black, 1, visible);
+        }
+        &:hover::before {
+          @include header-nav-active($black, 1, visible);
+        }
+
+        &.contact {
+          display: flex;
+          flex-direction: column;
+          color: $red;
+          cursor: pointer;
+          position: relative;
+          font-family: 'PT Serif', serif;
+
+          span {
+            margin: 5px 0 0 0;
+            display: block;
+            font-size: .8em;
+            font-weight: 400;
+            font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
+          }
+          
+          &.active::before {
+            @include header-nav-active($red, 1, visible);
+          }
+          
+          > ul {
+            width: 200px;
+            height: 120px;
+            padding: 25px 0;
+            background-color: $white;
+            box-shadow: 0 5px 16px rgba(36, 36, 36, 0.05);
+            font-size: 14px;
+            color: $black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translate(-50%);
+            
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+
+            > li {
+              padding: 5px 0;
+              transition: .3s;
+
+              a {
+                font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
+              }
+
+              &:hover {
+                color: $red;
+              }
+            }
+          }
+
+          &:hover {
+            ul {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+
+          &:hover::before {
+            @include header-nav-active($red, 1, visible);
+          }
+        }
+      }
+    }
+  }
+
+  .spNav {
+    display: none;
+  }
+
+  .nav {
+    display: none;
+  }
+}
+
+@include media(tab) {
+  .header {
+    padding: 0 30px;
+
+    h1 {
+      width: 70px;
+    }
+
+    .pcNav {
+      max-width: 560px;
+
+      ul {
+        li {
+          font-size: .9em;
+
+          &:nth-of-type(7) {
+            ul {
+              width: 130px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media(sp) {
+  .header {
+    height: 80px;
+    padding: 0 0 0 30px;
+
+    h1 {
+      width: 60px;
+    }
+
+    .pcNav {
+      display: none;
+    }
+    
+    .spNav {
+      width: 90px;
+      height: 100%;
+      margin: 0 0 0 auto;
+      padding: 0 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        width: 30px;
+        height: 2px;
+        background-color: $black;
+        position: relative;
+
+        opacity: 1;
+        transition: .3s;
+
+        &:nth-of-type(2) {
+          margin: 5px 0 0 0;
+        }
+        &:nth-of-type(1) {
+          transform-origin: left;
+        }
+        &:nth-of-type(3) {
+          margin: 5px 0 0 0;
+          transform-origin: left;
+        }
+      }
+
+      &.open {
+        span {
+          transform: rotate(27deg);
+          
+          &:nth-of-type(2) {
+            opacity: 0;
+          }
+          &:nth-of-type(3) {
+            transform: rotate(-27deg);
+          }
+        }
+      }
+    }
+
+    .nav {
+      width: 100%;
+      height: calc(100vh - 75px);
+      background-color: $white;
+      position: absolute;
+      bottom: calc(-100% + 81px);
+      left: 0;
+      transform: translateY(100%);
+      display: block;
+      
+      opacity: 0;
+      visibility: hidden;
+      transition: .5s;
+
+      &.open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      ul {
+        height: 100%;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        li {
+          a {
+            padding: 10px 5px;
+          }
+
+          & + li {
+            margin: 40px 0 0 0;
+          }
+          &:nth-of-type(5), &:nth-of-type(6) {
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+}

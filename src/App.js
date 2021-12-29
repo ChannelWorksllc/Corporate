@@ -19,6 +19,7 @@ import Estimate from './components/Estimate';
 import Contact from './components/Contact';
 import Company from './components/Company';
 import ContactDone from './components/ContactDone';
+import './styles/global.scss'
 
 // ここでは各urlにどのファイルを表示するかを決めています。
 const App = () => (

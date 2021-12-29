@@ -1,5 +1,3 @@
-// 共通の設定を指定しています。
-
 $red: #c2272c;
 $black: #242424;
 $black-light: rgba(36, 36, 36, 0.80);
@@ -8,7 +6,16 @@ $gray: #FBFBFB;
 $border-black: rgba(36, 36, 36, 0.20);
 $border-gray: rgba(36, 36, 36, 0.05);
 $shadow-black: 0 4px 16px rgba(36, 36, 36, 0.08);
+$breakpoints: (
+  'tab': 1024px,
+  'sp': 767px
+);
 
+@mixin media($size) {
+  @media screen and (max-width: #{map-get($breakpoints, $size)}) {
+    @content;
+  }
+}
 
 // ヘッダーでのホバー時や、該当ページにいるとき
 @mixin header-nav-active($color, $opacity, $visibility) {

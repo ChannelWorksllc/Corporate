@@ -1,96 +1,66 @@
 // ヘッダー
-
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+// import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import styles from '../styles/components/header.module.scss'
+
+const spNavLists = [
+  {url: '/', name: 'トップ'},
+  {url: '/strength', name: '強みと特徴'},
+  {url: '/service', name: 'サービス'},
+  {url: '/works', name: '実績'},
+  {url: '/contact_estimate', name: 'お見積り依頼'},
+  {url: '/contact_us', name: 'お問い合わせ'}
+]
 
 const Header = () => {
 
-  // url判定
-  const location = useLocation();
-  const linkTop = () => {
-    if(location.pathname === '/') {
-      return 'active';
-    }
-  }
-  const linkStrength = () => {
-    if(location.pathname === '/strength') {
-      return 'active';
-    }
-  }
-  const linkService = () => {
-    if(location.pathname.match('/service')) {
-      return 'active';
-    }
-  }
-  const linkWorks = () => {
-    if(location.pathname === '/works') {
-      return 'active';
-    }
-  }
-  const linkContact = () => {
-    if(location.pathname.match('/contact')) {
-      return 'active';
-    }
-  }
-  const linkCompany = () => {
-    if(location.pathname.match('/company')) {
-      return 'active';
-    }
-  }
-
-  const spNavLists = [
-    {url: '/', name: 'トップ'},
-    {url: '/strength', name: '強みと特徴'},
-    {url: '/service', name: 'サービス'},
-    {url: '/works', name: '実績'},
-    {url: '/contact_estimate', name: 'お見積り依頼'},
-    {url: '/contact_us', name: 'お問い合わせ'}
-  ]
-
+  // spのメニュー開閉
   const [nav, setNav] = useState(false);
   const navOpen = () => {
-    setNav(!nav);
+    setNav(prev => !prev);
   }
-  const setOpen = () => {
-    if(nav) {
-      return 'open';
-    }
-  }
+
+  // url判定
+  const location = useLocation();
+  const [ style, setStyle ] = useState(location.pathname)
+  useEffect(() => {
+    setStyle(location.pathname)
+  }, [ location.pathname ])
 
   return(
     <>
-      <motion.header
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: 'easeInOut' }}
+      <header className={styles.header}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // transition={{ duration: 1, ease: 'easeInOut' }}
       >
         <h1>
           <Link to='/'>
             <img src="/Assets/img/icon/logo.png" alt="Channel Works" />
           </Link>
         </h1>
-        <nav id='pc-nav'>
+        <nav className={styles.pcNav}>
           <ul>
-            <li className={linkTop()}>
+            <li className={style === '/' ? styles.active : ''}>
               <Link to="/">Top<span>トップ</span></Link>
             </li>
-            <li className={linkStrength()}>
+            <li className={style === '/strength' ? styles.active : ''}>
               <Link to="/strength">Strength<span>強みと特徴</span></Link>
             </li>
-            <li className={linkService()}>
+            <li className={style === '/service' ? styles.active : ''}>
               <Link to="/service">Service<span>サービス</span></Link>
             </li>
-            <li className={linkWorks()}>
+            <li className={style === '/works' ? styles.active : ''}>
               <Link to="/works">Works<span>実績</span></Link>
             </li>
-            <li className={linkCompany()}>
+            <li className={style === '/company' ? styles.active : ''}>
               <Link to="/company">Company<span>会社情報</span></Link>
             </li>
-            <li>
+            {/* <li>
               <a href='https://channelworks.biz/blog/'>Blog<span>ブログ</span></a>
-            </li>
-            <li className={linkContact()}>
+            </li> */}
+            <li className={style === '/contact_estimate' || style === '/contact_us' ? `${styles.active} ${styles.contact}` : styles.contact}>
               Contact<span>お問い合わせ</span>
               <ul>
                 <li>
@@ -103,12 +73,12 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <div id='sp-nav' className={setOpen()} onClick={() => navOpen()}>
+        <div className={nav ? `${styles.open} ${styles.spNav}` : styles.spNav} onClick={() => navOpen()}>
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <nav id='nav' className={setOpen()}>
+        <nav className={nav ? `${styles.nav} ${styles.open}` : styles.nav}>
           <ul>
             {spNavLists.map((list, index) => {
               return(
@@ -119,7 +89,7 @@ const Header = () => {
             })}
           </ul>
         </nav>
-      </motion.header>
+      </header>
     </>
   )
 }

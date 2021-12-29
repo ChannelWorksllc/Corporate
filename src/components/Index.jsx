@@ -88,7 +88,7 @@ const mainVariants = {
   },
   exit: {
     opacity: 0, 
-    transition: { duration: .22, ease: 'easeInOut'}
+    transition: { duration: .10, ease: 'easeInOut'}
   }
 }
 
