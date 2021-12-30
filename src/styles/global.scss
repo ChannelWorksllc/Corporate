@@ -1,10 +1,26 @@
 @import './_destyle.scss';
 @import './_variables.scss';
 
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url(./font/Noto_Sans_Regular.woff)  format('woff');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Noto Sans JP medium";
+  src: url(./font/Noto_Sans_Medium.woff)  format('woff');
+  font-weight: 500;
+}
+
 *, body {
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
+  font-family: "Noto Sans JP", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: .1em;
   color: $black;
+}
+
+main {
+  margin: 100px 0 0 0;
 }

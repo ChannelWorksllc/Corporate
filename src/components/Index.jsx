@@ -1,67 +1,74 @@
 import React, { useState ,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Aos from 'aos';
-import 'aos/dist/aos.css';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Button from './atoms/Button';
-import Blog from './atoms/Blog';
+// import Blog from './atoms/Blog';
 import Contact from './atoms/Contact';
 import Data from '../json/works.json';
 import ScrollToTop from './atoms/scrollToTop';
+import styles from '../styles/components/index.module.scss'
 
 // サービス一覧の画像取得
 const serviceIcons = [
-  './Assets/img/icon-service/service01.png',
-  './Assets/img/icon-service/service02.png',
-  './Assets/img/icon-service/service03.png',
-  './Assets/img/icon-service/service04.png',
-  './Assets/img/icon-service/service05.png',
-  './Assets/img/icon-service/service06.png'
+  './Assets/img/service-content/service03.jpg',
+  './Assets/img/service-content/service04.jpg',
+  './Assets/img/service-content/service02.jpg',
+  './Assets/img/service-content/service05.jpg',
+  './Assets/img/service-content/service06.jpg',
+  './Assets/img/service-content/service07.jpg',
+  './Assets/img/service-content/service08.jpg'
 ]
 
 // サービス一覧のテキスト設定
 const services = [
   {
-    name: `マーケティング\n戦略支援・運用`, 
+    name: `マーケティング戦略支援・運用`, 
     text: '新たな体制を社内に作ることなく、短期間で高度なデジタルマーケティングを実現します。新たな体制を社内に作ることなく実現します。', 
     img: serviceIcons[0], 
     url: '/service/marketing',
     alt: 'マーケティング戦略'
   },
   {
-    name: `UI/UX\n設計・構築`, 
-    text: 'すでにある製品のUI/UXを改善するのか、より新しい表現をするのか的確なご提案をいたします。', 
+    name: `CI/VI/BIなどの\n策定コンサルティング`, 
+    text: '企業・製品・サービスを象徴するコピーやビジュアルを通し、PRやマーケティング戦略において有効な要素となる各種アイデンティティ策定をご支援します。', 
+    img: serviceIcons[0], 
+    url: '/service/marketing',
+    alt: '策定コンサルティング'
+  },
+  {
+    name: `UI/UXの設計・構築`, 
+    text: 'UI/UXはデジタルマーケティングの要。弊社では「誰のために、なにをするのか」を追求し、貴社のデジタルマーケティング施策に最適解をご提供致します。', 
     img: serviceIcons[1], 
     url: '/service/ui_ux',
     alt: 'UI/UX設計'
   },
   {
-    name: `Webサイト\n設計・構築`, 
-    text: 'ビジネスの成長を目的としたWebサイト制作や、Webサービスの企画、制作を行います。', 
+    name: `Webサイトの設計・構築`, 
+    text: '登録・予約・購買などの「CV（成果創出）」に特化し、貴社ビジネスを支援する、EC・マッチング・サービスサイト・アプリなどの企画・制作を行います。', 
     img: serviceIcons[2], 
     url: '/service/web_production',
     alt: 'サイト制作'
   },
   {
     name: 'Webシステム開発', 
-    text: 'さまざまなプラットフォームのWebサービス・システム開発に対応することが可能です。', 
+    text: 'ゼロベースの開発はもとより、ASPやパッケージシステムの利用など「成果」への最短距離を導き出す最適なシステム開発・システム構成をご提供します。', 
     img: serviceIcons[3], 
     url: '/service/system',
     alt: 'システム開発'
   },
   {
     name: 'コンテンツ開発', 
-    text: '課題を正しく理解し、常に「ビジネスオーナーはどう考える」という視点で取り組みます。', 
+    text: 'コンテンツマーケティングを支援するさまざまな分野の記事コンテンツや動画コンテンツの開発を請け負います。または貴社内での制作ご支援を行います。', 
     img: serviceIcons[4], 
     url: '/service/content',
     alt: 'コンテンツ開発'
   },
   {
-    name: `イメージ撮影・\nPR動画制作`, 
-    text: '商品・サービス・既存サイトなどの課題や強みを探し、最適な動画マーケティングプランをご提案いたします。',
+    name: `イメージ撮影・PR動画制作`, 
+    text: 'Webサイトやサービスのブランディングを強化する人物・建物・商品などのイメージ撮影や、SNS訴求などにも強力な打ち手となるPR動画の撮影・制作を行います。',
     img: serviceIcons[5], 
     url: '/service/image',
     alt: 'イメージ制作'
@@ -116,73 +123,66 @@ const Index = () => {
     fade: true
   }
 
-  const [article, setArticle] = useState([]);
-  const [ajaxError, setAjaxError] = useState(false);
+  // const [article, setArticle] = useState([]);
+  // const [ajaxError, setAjaxError] = useState(false);
 
   useEffect(() => {
-    Aos.init({ duration: 1000, easing: 'ease-in-out' }); // スクロールアニメーションの設定
     document.title = 'Channel Works'; // タイトルの設定
 
     // ブログ記事の取得
-    const RssParser = require('rss-parser');
-    const url = 'https://channelworks.biz/blog/feed/';
-    const rssParser = new RssParser();
+    // const RssParser = require('rss-parser');
+    // const url = 'https://channelworks.biz/blog/feed/';
+    // const rssParser = new RssParser();
   
-    rssParser.parseURL(url)
-      .then((feed) => {
-        const data = feed.items;
-        setArticle([...data]);
-      })
-      .catch((error) => {
-        console.log(error);
-        setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-      })
+    // rssParser.parseURL(url)
+    //   .then((feed) => {
+    //     const data = feed.items;
+    //     setArticle([...data]);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+    //   })
 
   }, []);
 
   return(
     <>
-
-      <motion.section id="index-top" 
+      <motion.section className={styles.top}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <motion.h2
-          variants={ mainVariants }
-          initial='initial'
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 ,duration: 1, ease: 'easeInOut' }}
-        >
-          マーケティングで<br/>Web戦略に最大の成果を<br className='only-sp'/>提供します。
-        </motion.h2>
+        <h2>
+          マーケティングで<br/>Web戦略に最大の成果を<br className={styles.spOnly} />提供します。
+        </h2>
         <span>scroll</span>
       </motion.section>
 
-      <motion.section id="index-strength"
+      <motion.section className={styles.strength}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>Web戦略に最大の成果を</h3>
-        <p data-aos='fade-up'>私たちは、<br className='only-sp'/>マーケティングノウハウを基軸に<br className='only-sp'/>集客・購買・認知UPなどの<br className='only-sp'/>具体的な効果を<br className='only-sp'/>確実に上げる専門集団です。</p>
+        <h3>Web戦略に最大の成果を</h3>
+        <p>私たちは、<br className={styles.spOnly} />マーケティングノウハウを基軸に<br className={styles.spOnly} />集客・購買・認知UPなどの<br />具体的な効果を<br className={styles.spOnly} />確実に上げる専門集団です。</p>
         <Button
           url = '/strength'
           name = '強みと特徴をみる'
         />
       </motion.section>
       
-      <motion.section id="index-service"
+      <motion.section className={styles.service}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>Service</h3>
-        <p data-aos='fade-up'>各分野の専門家が、幅広い範囲の<br className='only-sp'/>課題に率直に向き合います。</p>
-        <ul data-aos='fade-up'>
+        <h3>Service</h3>
+        <p>各分野の専門家が、幅広い範囲の<br className={styles.spOnly} />課題に率直に向き合います。</p>
+        <ul>
           {services.map((service, index) => {
             return(
               <li key={ index }>
@@ -203,16 +203,16 @@ const Index = () => {
         />
       </motion.section>
 
-      <motion.section id="index-works"
+      <motion.section className={styles.works}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>Works</h3>
-        <p data-aos='fade-up'>Web戦略を、さまざまな知見や<br className='only-sp'/>スキルでご支援します。</p>
-        <article data-aos='fade-up'>
-          <div id='index-works01'>
+        <h3>Works</h3>
+        <p>Web戦略を、さまざまな知見や<br />スキルでご支援します。</p>
+        <article>
+          <div className={styles.works01}>
             <Slider
               {...settingMain}
               asNavFor={nav2}
@@ -255,7 +255,7 @@ const Index = () => {
 
             </Slider>
           </div>
-          <div id='index-works02'>
+          <div className={styles.works02}>
             <Slider
               {...settingThumbs}
               asNavFor={nav1}
@@ -269,7 +269,7 @@ const Index = () => {
             </Slider>
           </div>
         </article>
-        <div data-aos='fade-up'>
+        <div>
           <article>
             <Link to={{ pathname: '/works', state: smallDisplay1.id }}>
               <div>
@@ -331,15 +331,15 @@ const Index = () => {
         />
       </motion.section>
 
-      <motion.section className="blog plus"
+      {/* <motion.section className="blog plus"
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>Blog</h3>
-        <p data-aos='fade-up'>Web領域の豆知識や新情報<br className='only-sp'/>などを、記載しています。</p>
-        <div data-aos='fade-up'>
+        <h3>Blog</h3>
+        <p>Web領域の豆知識や新情報<br className='only-sp'/>などを、記載しています。</p>
+        <div>
           
           {article.map((article, index) => {
             return(
@@ -360,9 +360,9 @@ const Index = () => {
         <a href='https://channelworks.biz/blog/' data-aos='fade'>
             <span>ブログをみる</span>
         </a>
-      </motion.section>
+      </motion.section> */}
       
-      <motion.section className="contact"
+      <motion.section
         variants={ mainVariants }
         initial='initial'
         animate='animate'

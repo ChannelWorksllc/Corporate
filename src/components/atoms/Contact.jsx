@@ -1,11 +1,11 @@
 // 各ページの下に設置している、お問い合わせページへのリンクを貼ったセクション
-
 import React from 'react';
 import Button from './Button';
+import styles from '../../styles/components/contact.module.scss'
 
 const Contact = () => {
   return(
-    <>
+    <article className={styles.contact}>
     <div>
       <h3>Contact</h3>
       <p>
@@ -22,7 +22,7 @@ const Contact = () => {
         name = '各種お問い合わせ'
       />
     </div>
-    </>
+    </article>
   )
 }
 

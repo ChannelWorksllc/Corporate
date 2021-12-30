@@ -1,5 +1,4 @@
 // 各種お問い合わせページ
-
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
