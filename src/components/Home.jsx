@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Button, Contact, ScrollToTop, /* Blog */ } from './atoms'
 import Data from '../json/works.json';
-import styles from '../styles/components/index.module.scss'
+import styles from '../styles/components/home.module.scss'
 
 // サービス一覧の画像取得
 const serviceImg = [
