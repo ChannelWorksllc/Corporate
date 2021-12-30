@@ -8,8 +8,8 @@ import TopicPathService from './atoms/TopicPathService';
 import LowerPageTop from './atoms/LowerPageTop';
 import LinkRelatedContent from './atoms/LinkRelatedContent';
 import Data from '../json/works.json'
-import ScrollToTop from './atoms/scrollToTop';
-import Index from './atoms/Index';
+import ScrollToTop from './atoms/ScrollToTop';
+import Table from './atoms/Table';
 import Blog from './atoms/Blog';
 import Contact from './atoms/Contact';
 
@@ -267,7 +267,7 @@ const ServiceUi = () => {
         <ScrollToTop />
       </MediaQuery>
       <MediaQuery query='(max-width: 767px)'>
-        <Index 
+        <Table
           contents = {contents}
         />
       </MediaQuery>

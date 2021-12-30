@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import TopicPath from './atoms/TopicPath';
 import LowerPageTop from './atoms/LowerPageTop';
 import LinkRelatedContent from './atoms/LinkRelatedContent';
-import ScrollToTop from './atoms/scrollToTop';
+import ScrollToTop from './atoms/ScrollToTop';
 
 const Estimate = () => {
 

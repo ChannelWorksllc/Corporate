@@ -8,7 +8,7 @@ import 'aos/dist/aos.css';
 import TopicPath from './atoms/TopicPath';
 import LowerPageTop from './atoms/LowerPageTop';
 import LinkRelatedContent from './atoms/LinkRelatedContent';
-import ScrollToTop from './atoms/scrollToTop';
+import ScrollToTop from './atoms/ScrollToTop';
 import Button from './atoms/Button';
 import Blog from './atoms/Blog';
 

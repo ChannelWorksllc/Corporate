@@ -9,8 +9,8 @@ import Button from './atoms/Button';
 import Contact from './atoms/Contact';
 import LowerPageTop from './atoms/LowerPageTop';
 import TopicPath from './atoms/TopicPath';
-import ScrollToTop from './atoms/scrollToTop';
-import Index from './atoms/Index';
+import ScrollToTop from './atoms/ScrollToTop';
+import Table from './atoms/Table';
 
 const Strength = () => {
 
@@ -267,7 +267,7 @@ const Strength = () => {
         <ScrollToTop />
       </MediaQuery>
       <MediaQuery query='(max-width: 767px)'>
-        <Index 
+        <Table
           contents = {contents}
         />
       </MediaQuery>

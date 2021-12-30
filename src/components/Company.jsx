@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import LowerPageTop from './atoms/LowerPageTop';
 import TopicPath from './atoms/TopicPath';
 import Contact from './atoms/Contact';
-import ScrollToTop from './atoms/scrollToTop';
+import ScrollToTop from './atoms/ScrollToTop';
 
 // アニメーション設定
 const mainVariants = {

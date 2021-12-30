@@ -9,8 +9,8 @@ import LowerPageTop from './atoms/LowerPageTop';
 import TopicPath from './atoms/TopicPath';
 import Data from '../json/works.json'
 import Blog from './atoms/Blog';
-import ScrollToTop from './atoms/scrollToTop';
-import Index from './atoms/Index';
+import ScrollToTop from './atoms/ScrollToTop';
+import Table from './atoms/Table';
 
 const Works = () => {
 
@@ -225,7 +225,7 @@ const Works = () => {
         <ScrollToTop />
       </MediaQuery>
       <MediaQuery query='(max-width: 767px)'>
-        <Index 
+        <Table
           contents = {contents}
         />
       </MediaQuery>

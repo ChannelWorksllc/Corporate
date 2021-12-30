@@ -2,23 +2,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import ScrollToTop from './components/ScrollToTop';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Index from './components/Index';
-import Strength from './components/Strength';
-import Service from './components/Service';
-import ServiceWebProduction from './components/ServiceWebProduction';
-import ServiceMarketing from './components/ServiceMarketing';
-import ServiceUi from './components/ServiceUi';
-import ServiceSystem from './components/ServiceSystem';
-import ServiceContent from './components/ServiceContent';
-import ServiceImage from './components/ServiceImage';
-import Works from './components/Works';
-import Estimate from './components/Estimate';
-import Contact from './components/Contact';
-import Company from './components/Company';
-import ContactDone from './components/ContactDone';
+import ScrollToTop from './modules/ScrollToTop';
+import * as Component from './components'
 import './styles/global.scss'
 
 // ここでは各urlにどのファイルを表示するかを決めています。
@@ -26,33 +11,33 @@ const App = () => (
   
   <BrowserRouter>
     <ScrollToTop />
-    <Header />
+    <Component.Header />
     <main>
       <Route render={({location}) => (
         <AnimatePresence exitBeforeEnter initial={false}>
 
           <Switch location={location} key={location.key}>
-            <Route exact path="/" component={ Index } />
-            <Route path="/strength" component={ Strength } />
-            <Route exact path="/service" component={ Service } />
-            <Route path="/service/web_production" component={ ServiceWebProduction } />
-            <Route path="/service/marketing" component={ ServiceMarketing } />
-            <Route path="/service/ui_ux" component={ ServiceUi } />
-            <Route path="/service/system" component={ ServiceSystem } />
-            <Route path="/service/content" component={ ServiceContent } />
-            <Route path="/service/image" component={ ServiceImage } />
-            <Route path="/works" component={ Works } />
-            <Route path="/contact_estimate" component={ Estimate } />
-            <Route path="/contact_us" component={ Contact } />
-            <Route path="/contact/done" component={ ContactDone } />
-            <Route path="/company" component={ Company } />
+            <Route exact path="/" component={ Component.Home } />
+            <Route path="/strength" component={ Component.Strength } />
+            <Route exact path="/service" component={ Component.Service } />
+            <Route path="/service/web_production" component={ Component.ServiceWebProduction } />
+            <Route path="/service/marketing" component={ Component.ServiceMarketing } />
+            <Route path="/service/ui_ux" component={ Component.ServiceUi } />
+            <Route path="/service/system" component={ Component.ServiceSystem } />
+            <Route path="/service/content" component={ Component.ServiceContent } />
+            <Route path="/service/image" component={ Component.ServiceImage } />
+            <Route path="/works" component={ Component.Works } />
+            <Route path="/contact_estimate" component={ Component.Estimate } />
+            <Route path="/contact_us" component={ Component.Contact } />
+            <Route path="/contact/done" component={ Component.ContactDone } />
+            <Route path="/company" component={ Component.Company } />
           </Switch>
 
         </AnimatePresence>
       )} />
 
     </main>
-    <Footer />
+    <Component.Footer />
   </BrowserRouter>
 )
 
