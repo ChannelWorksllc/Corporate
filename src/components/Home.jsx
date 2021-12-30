@@ -8,9 +8,8 @@ import { Button, Contact, ScrollToTop, /* Blog */ } from './atoms'
 import Data from '../json/works.json';
 import styles from '../styles/components/index.module.scss'
 
-
 // サービス一覧の画像取得
-const serviceIcons = [
+const serviceImg = [
   './Assets/img/service-content/service03.jpg',
   './Assets/img/service-content/service04.jpg',
   './Assets/img/service-content/service02.jpg',
@@ -25,51 +24,58 @@ const services = [
   {
     name: `マーケティング戦略支援・運用`, 
     text: '新たな体制を社内に作ることなく、短期間で高度なデジタルマーケティングを実現します。新たな体制を社内に作ることなく実現します。', 
-    img: serviceIcons[0], 
+    img: serviceImg[0], 
     url: '/service/marketing',
-    alt: 'マーケティング戦略'
+    alt: 'マーケティング戦略',
+    class: 'service01'
   },
   {
     name: `CI/VI/BIなどの\n策定コンサルティング`, 
     text: '企業・製品・サービスを象徴するコピーやビジュアルを通し、PRやマーケティング戦略において有効な要素となる各種アイデンティティ策定をご支援します。', 
-    img: serviceIcons[0], 
+    img: serviceImg[0], 
     url: '/service/marketing',
-    alt: '策定コンサルティング'
+    alt: '策定コンサルティング',
+    class: 'service02'
   },
   {
     name: `UI/UXの設計・構築`, 
     text: 'UI/UXはデジタルマーケティングの要。弊社では「誰のために、なにをするのか」を追求し、貴社のデジタルマーケティング施策に最適解をご提供致します。', 
-    img: serviceIcons[1], 
+    img: serviceImg[1], 
     url: '/service/ui_ux',
-    alt: 'UI/UX設計'
+    alt: 'UI/UX設計',
+    class: 'service03'
   },
   {
     name: `Webサイトの設計・構築`, 
     text: '登録・予約・購買などの「CV（成果創出）」に特化し、貴社ビジネスを支援する、EC・マッチング・サービスサイト・アプリなどの企画・制作を行います。', 
-    img: serviceIcons[2], 
+    img: serviceImg[2], 
     url: '/service/web_production',
-    alt: 'サイト制作'
+    alt: 'サイト制作',
+    class: 'service04'
   },
   {
     name: 'Webシステム開発', 
     text: 'ゼロベースの開発はもとより、ASPやパッケージシステムの利用など「成果」への最短距離を導き出す最適なシステム開発・システム構成をご提供します。', 
-    img: serviceIcons[3], 
+    img: serviceImg[3], 
     url: '/service/system',
-    alt: 'システム開発'
+    alt: 'システム開発',
+    class: 'service05'
   },
   {
     name: 'コンテンツ開発', 
-    text: 'コンテンツマーケティングを支援するさまざまな分野の記事コンテンツや動画コンテンツの開発を請け負います。または貴社内での制作ご支援を行います。', 
-    img: serviceIcons[4], 
+    text: 'コンテンツマーケティングを支援する、さまざまな分野の記事コンテンツや動画コンテンツの開発を請け負います。または貴社内での制作ご支援を行います。', 
+    img: serviceImg[4], 
     url: '/service/content',
-    alt: 'コンテンツ開発'
+    alt: 'コンテンツ開発',
+    class: 'service06'
   },
   {
     name: `イメージ撮影・PR動画制作`, 
     text: 'Webサイトやサービスのブランディングを強化する人物・建物・商品などのイメージ撮影や、SNS訴求などにも強力な打ち手となるPR動画の撮影・制作を行います。',
-    img: serviceIcons[5], 
+    img: serviceImg[5], 
     url: '/service/image',
-    alt: 'イメージ制作'
+    alt: 'イメージ制作',
+    class: 'service07'
   }
 ]
 
@@ -183,7 +189,7 @@ const Home = () => {
         <ul>
           {services.map((service, index) => {
             return(
-              <li key={ index }>
+              <li key={ index } className={styles[service.class]}>
                 <Link to={{ pathname: service.url, state: 'active' }}>
                   <div>
                     <img src={ service.img } alt={ service.alt } />

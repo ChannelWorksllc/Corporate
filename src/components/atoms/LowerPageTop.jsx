@@ -1,34 +1,36 @@
 // 下層ページのトップ部分
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-scroll';
+import styles from '../../styles/components/lowerPageTop.module.scss'
 
 const mainVariants = {
   initial: { 
     opacity: 0
   },
   animate: { 
-    opacity: 1, transition: { delay: .28, duration: 1, ease: 'easeInOut' } 
+    opacity: 1, transition: { delay: .15, duration: 1, ease: 'easeInOut' } 
   },
   exit: {
     opacity: 0, 
-    transition: { duration: .2, ease: 'easeInOut'}
+    transition: { duration: .1, ease: 'easeInOut'}
   }
 }
 
 const LowerPageTop = (props) => {
 
+  const [ show, setShow ] = useState(false)
   const location = useLocation();
-  const icon = () => {
+  useEffect(() => {
     if(location.pathname.match('/service/')) {
-      return 'show';
+      setShow(prev => !prev)
     };
-  }
+  }, [location.pathname])
 
   return(
-    <>
+    <section className={styles.lowerpage}>
       <div>
         <motion.h1
           variants={mainVariants}
@@ -36,8 +38,8 @@ const LowerPageTop = (props) => {
           animate='animate'
           exit={{
             opacity: 0,
-            y: 50,
-            transition: { duraition: .2, ease: 'easeInOut' }
+            y: 30,
+            transition: { duraition: .1, ease: 'easeInOut' }
           }}
         >
           {props.titleja}
@@ -48,24 +50,24 @@ const LowerPageTop = (props) => {
           animate='animate'
           exit={{
             opacity: 0,
-            y: 50,
-            transition: { duraition: .2, ease: 'easeInOut' }
+            y: 30,
+            transition: { duraition: .1, ease: 'easeInOut' }
           }}
         >
           {props.titleen}
         </motion.h2>
         <motion.p
           variants={mainVariants}
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0, transition: { delay: .3, duration: 1, ease: 'easeInOut' }}}
+          initial='initial'
+          animate='animate'
           exit={{
             opacity: 0,
-            y: 50,
-            transition: { duraition: .2, ease: 'easeInOut'}
+            y: 30,
+            transition: { duraition: .1, ease: 'easeInOut' }
           }}
         >
           {props.text}
-          <img src={props.icon} alt={props.text} className={icon()} />
+          <img src={props.icon} alt={props.text} className={show ? styles.show : ""} />
         </motion.p>
       </div>
       <motion.div
@@ -81,7 +83,7 @@ const LowerPageTop = (props) => {
               <motion.li key={index}
                 initial={{ opacity: 0, x: 30, visibility: 'hidden' }}
                 animate={{ opacity: 1, x: 0, visibility: 'visible', transition: { delay: .3, duration: 1, ease: 'easeInOut' } }}
-                exit={{ opacity: 0, transition: {duration: .2, ease: 'easeInOut' }}}
+                exit={{ opacity: 0, transition: {duration: .1, ease: 'easeInOut' }}}
               >
                 <Link to={content.to} smooth={true} duration={1000}>
                   {content.text}
@@ -91,7 +93,7 @@ const LowerPageTop = (props) => {
           })}
         </ul>
       </motion.div>
-    </>
+    </section>
   )
 };
 

@@ -211,10 +211,12 @@
         }
 
         h4 {
+          position: relative;
           display: flex;
           align-items: center;
           height: 37px;
           margin: 20px 0 0 0;
+          padding: 0 0 0 35px;
           white-space: pre-wrap;
           font-family: "Noto Sans JP medium";
           text-align: left;
@@ -236,6 +238,25 @@
             &::after {
               opacity: 1;
               visibility: visible
+            }
+          }
+        }
+      }
+
+      $icons: 'service01', 'service02', 'service03', 'service04', 'service05', 'service06', 'service07';
+      @each $icon in $icons {
+        &.#{$icon} {
+          a {
+            h4::before {
+              position: absolute;
+              top: 55%;
+              left: 0;
+              transform: translate(0, -50%);
+              width: 25px;
+              height: 25px;
+              background: no-repeat url(../../img/#{$icon}.png);
+              background-size: 100%;
+              content: '';
             }
           }
         }
