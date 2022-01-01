@@ -1,11 +1,11 @@
 // サービス下層ページの共通部分
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import Button from './Button';
+import { Button } from './index'
+import styles from '../../styles/components/service.module.scss'
 
 const ServiceLowerPage = (props) => {
 
@@ -76,14 +76,14 @@ const ServiceLowerPage = (props) => {
 
   return(
     <>
-      <motion.section id="service-contain02"
+      <motion.section id="service-contain02" className={styles.content02}
         variants={ mainVariants }
         initila='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>{props.name}の事例</h3>
-        <div data-aos='fade-up'>
+        <h3>{props.name}の事例</h3>
+        <div>
           <article>
             <Link to={{ pathname: '/works', state: props.works1.id }}>
               <div>
@@ -144,16 +144,16 @@ const ServiceLowerPage = (props) => {
           name = 'すべての実績をみる'
         />
       </motion.section>
-      <motion.section id="service-contain03"
+      <motion.section id="service-contain03" className={styles.content03}
         variants={ mainVariants }
         initila='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>{props.name}のサービス内容</h3>
+        <h3>{props.name}のサービス内容</h3>
         {props.contains.map((contain, index) => {
           return(
-            <article key={index} data-aos='fade-up'>
+            <article key={index}>
               <h4>{contain.title}</h4>
               <p>{contain.text1}</p>
               <p>{contain.text2}</p>
@@ -162,7 +162,7 @@ const ServiceLowerPage = (props) => {
         })}
         <div onClick={openFlow} style={hidden}>おおまかな流れをみる</div>
         <section style={visibility} data-aos='fade'>
-          <h3>ご相談から納品までの、<br className='only-sp'/>おおまかな流れ</h3>
+          <h3>ご相談から納品までの、おおまかな流れ</h3>
           <p>
             製作・開発の対応におきましては、一般的に以下のような流れでご提供をさせていただいております。 
             ご要望を詳しくお伺いしそれを整理・見える化し、さらに具体的なアウトプットに落とし込んでいく形で、進行をさせていただきます。
@@ -172,12 +172,11 @@ const ServiceLowerPage = (props) => {
               return(
                 <div key={index}>
                   <dt>
-                    <span>{flow.num}</span>
                     {flow.title}
+                    <span>{flow.period}</span>
                   </dt>
                   <dd>
                     {flow.text}
-                    <span>{flow.period}</span>
                   </dd>
                 </div>
               )
@@ -185,22 +184,19 @@ const ServiceLowerPage = (props) => {
           </dl>
         </section>
       </motion.section>
-      <motion.section id="service-contain04"
+      <motion.section id="service-contain04" className={styles.content04}
         variants={ mainVariants }
         initila='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>{props.name}のサービス一覧</h3>
-        <p data-aos='fade-up'>Webサイト制作・構築には以下の内容があります。</p>
-        <ul data-aos='fade-up'>
+        <h3>{props.name}のメニュー</h3>
+        <p>{props.name}には以下の内容があります。</p>
+        <ul>
           {props.menu.map((menu, index) => {
             return(
               <li key={index}>
                 <h4>{menu.title}</h4>
-                <div>
-                  <img src={menu.icon} alt={menu.title} />
-                </div>
                 <p>{menu.text}</p>
               </li>
             )

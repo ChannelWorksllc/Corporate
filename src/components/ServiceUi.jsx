@@ -1,17 +1,11 @@
 // UI/UX設計ページ
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, /* useState */ } from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
-import ServiceLowerPage from './atoms/ServiceLowerPage';
-import TopicPathService from './atoms/TopicPathService';
-import LowerPageTop from './atoms/LowerPageTop';
-import LinkRelatedContent from './atoms/LinkRelatedContent';
 import Data from '../json/works.json'
-import ScrollToTop from './atoms/ScrollToTop';
-import Table from './atoms/Table';
-import Blog from './atoms/Blog';
-import Contact from './atoms/Contact';
+import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
+import styles from '../styles/components/service.module.scss'
 
 const ServiceUi = () => {
 
@@ -21,7 +15,6 @@ const ServiceUi = () => {
     {text: '事例', to: 'service-contain02'},
     {text: 'サービス内容', to: 'service-contain03'},
     {text: 'サービス一覧', to: 'service-contain04'},
-    {text: '関連記事', to: 'blog'}
   ]
 
   // 関連ページ
@@ -55,54 +48,39 @@ const ServiceUi = () => {
   // サービス内容
   const contains = [
     {
-      title: '徹頭徹尾こだわりぬく課題解決型のWeb制作',
-      text1: 'Web制作の基本的な流れとして、まずお客様が感じる課題のヒアリング、その後各種分析調査から潜在的な課題も抽出した上で、課題解決の方針をご提案します。方針が定まれば、要件定義にて構造や必要な機能、予算、スケジュールを定め、設計、デザイン、システム開発などの実制作へ進みます。',
-      text2: '弊社のWeb制作は、ビジネスで成果を上げることを第一として課題抽出と戦略策定を徹底的に行い、それに基づいて細部までこだわりぬいたサイト設計が特徴です。'
+      title: '「ユーザーに考えさせない」ことがUI/UX設計における至上命題。',
+      text1: 'インターネット・Webはすでに社会インフラのひとつなっており、あらゆる事業展開には不可欠なものになっています。だからこそ、ユーザーにとっての使いやすさ・わかりやすさの追求は大きな差別化要因となります。',
+      text2: 'あるべき箇所にあるべき要素があること、「こうだったらいいのに」という動きを先回りすること。小さな一つ一つの仕掛けが大きな顧客満足を生み出す、それがUI/UX設計の重要性です。マーケティングだけでもない、。デザインだけでもない、技術だけでもない総合力を大事にしています。'
     },
     {
-      title: '幅広い知見を活かし、最適解を選ぶWeb制作',
-      text1: 'Webサイトを制作する上でツールを導入することも多くありますが、豊富な実績と経験から幅広い知見を得てきたチャネルワークスは、お客様の解決すべき課題に適したツールを選定・提案することが可能です。',
-      text2: '例えばCMSであれば、約30種類の中から複数の候補製品を選定し、その上でお客様と一緒に採用するCMSを協議させていただきます。'
+      title: '弊社では、すべての技術をユーザー利便性向上のために集約します。',
+      text1: 'チャネルワークスにとっての「技術」はすべてUI/UX最適化のために集約される手段です。デザインにせよ、プログラミングせよ、写真撮影、動画撮影など弊社が提供するすべては「高度なユーザー体験」を生み出すためにあります。',
+      text2: '作ることをゴールとせず、ユーザーアクションこそをゴールとします。'
     }
   ]
 
   // サービス一覧
   const menu = [
     {
-      title: `ホームページ・サイト制作\n `,
-      icon: '/Assets/img/service-content/menu01.svg',
-      text: '各種分析やユーザー視点に基づく、ロジカルな設計・デザインで制作します。'
+      title: `市場の分析や強み・特徴の分析`,
+      text: 'SWOTや5フォースなどのメソッドを基にした市場分析、およびアプローチすべき方向性の策定をご支援します。'
     },
     {
-      title: `LP制作\n `,
-      icon: '/Assets/img/service-content/menu02.svg',
-      text: 'ユーザーがアクションすることに特化した、ランディングページを制作します。'
+      title: `ユーザー定義やペルソナの策定`,
+      text: '既存の運営情報や顧客データなどを元にして、ユーザー属性の定義や、推定ユーザーの策定を行います。'
     },
     {
-      title: `ECサイト制作\n `,
-      icon: '/Assets/img/service-content/menu03.svg',
-      text: 'マーケティング全体像と整合性を取ったサイト設計を構築します。'
+      title: `ユーザー定義に基づく構造設計`,
+      text: 'ターゲットユーザーに最適化したサイト全体やランディングページなどの詳細な構造設計を行います。'
     },
     {
-      title: `コーディング\n `,
-      icon: '/Assets/img/service-content/menu04.svg',
-      text: '高い知見と豊富なネットワークを活用し、幅広い種類のサイトを構築します。'
+      title: `高度なUIにおけるデザイン実装`,
+      text: '設計だけではなく、設計後のデザイン実装も合わせてご提供可能です。これにはJSを含めた実装を含みます。'
     },
     {
-      title: `UI/UX設計\n `,
-      icon: '/Assets/img/service-content/menu05.svg',
-      text: '集客・売上・申し込み増大を実現する、UI設計をご提供します。'
+      title: `AIなどの最新技術によるUI実装`,
+      text: 'チャットボットやAI自動応答などの最新技術を活用したUIについても、実装をご支援することが可能です。'
     },
-    {
-      title: `SEO対策・\nサイトコンサルティング`,
-      icon: '/Assets/img/service-content/menu06.svg',
-      text: '着実にゴールを目指す、本格的かつ良質なSEO対策を提案します。'
-    },
-    {
-      title: `Webサイト保守・運用\n `,
-      icon: '/Assets/img/service-content/menu07.svg',
-      text: '各種分析やユーザー視点に基づく、ロジカルな設計・デザインで制作します。'
-    }
   ]
 
   // 表示する実績データ
@@ -125,40 +103,37 @@ const ServiceUi = () => {
     }
   }
   
-  const [article, setArticle] = useState([]);
-  const [ajaxError, setAjaxError] = useState(false);
+  // const [article, setArticle] = useState([]);
+  // const [ajaxError, setAjaxError] = useState(false);
 
   useEffect(() => {
     document.title = 'UI/UX設計 | Channel Works';
 
-    // ブログ記事の取得
-    const RssParser = require('rss-parser');
-    const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
-    const rssParser = new RssParser();
+    // // ブログ記事の取得
+    // const RssParser = require('rss-parser');
+    // const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
+    // const rssParser = new RssParser();
   
-    rssParser.parseURL(url)
-      .then((feed) => {
-        const data = feed.items;
-        setArticle([...data]);
-      })
-      .catch((error) => {
-        console.log(error);
-        setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-      })
+    // rssParser.parseURL(url)
+    //   .then((feed) => {
+    //     const data = feed.items;
+    //     setArticle([...data]);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+    //   })
 
   }, [])
   
   return(
     <>
-
-      <nav id='topic-path'>
         <TopicPathService
           url = '/service/ui_ux'
           linkname = 'UI/UX'
         />
-      </nav>
 
-      <section id='lowerpage-top'>
+      <div className={styles.top}>
         <LowerPageTop 
           titleja = 'サービス内容'
           titleen = 'Service'
@@ -168,7 +143,8 @@ const ServiceUi = () => {
           icon = '/Assets/img/service-content/service02.png'
           content = { contents }
         />
-        <nav id="related-content-link">
+
+        <nav className={styles.linkRelatedContent}>
           <motion.ul
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
@@ -184,18 +160,18 @@ const ServiceUi = () => {
             })}
           </motion.ul>
         </nav>
-      </section>
+      </div>
 
-      <motion.p className='lowerpage-toptext'
+      <motion.p className={styles.lowerpage}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        課題抽出から戦略・設計までこだわりぬいた「課題解決型のWeb制作」
+        ユーザーに必要な情報へストレートに辿り着かせる最適・明快な構造設計
       </motion.p>
       
-      <motion.section id="service-contain01"
+      <motion.section id="service-contain01"  className={styles.content01}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -204,13 +180,13 @@ const ServiceUi = () => {
         <h3>このような課題を解決します。</h3>
         <ul>
           <li>
-            <span>Webサイトが分かりにくい</span>、と指摘されたことがある。
+            サイトやサービスを構築したが、社内外から<span>構造がわかりにくい</span>などの声が多く上がっている。
           </li>
           <li>
-            ただリニューアルするのではなく、細部まで設計された<span>成果の出るWebサイトにしたい。</span>
+            自社ユーザーの定義が明確でないと感じており、インターフェイスなどの<span>最適化の方向性が確定できない。</span>
           </li>
           <li>
-            Webの知見が少ないが、成果を出すために<span>案件進行をリードして欲しい。</span>
+            サービスやサイトなどの構造が複雑で一般的な制作会社では、適切な構造を制作できない<span>高度な画面設計が必要。</span>
           </li>
         </ul>
       </motion.section>
@@ -224,7 +200,7 @@ const ServiceUi = () => {
         works3 = {display3}
       />
 
-      <motion.section className="blog" id='blog'
+      {/* <motion.section className="blog" id='blog'
         variants={ mainVariants }
         initila='initial'
         animate='animate'
@@ -252,7 +228,7 @@ const ServiceUi = () => {
         <a href='http://tanakan.conohawing.com/wp/' data-aos='fade'>
           <span>ブログをみる</span>
         </a>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section className="contact"
         variants={ mainVariants }

@@ -1,13 +1,13 @@
 // サービス下層ページのパンくずリスト
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import styles from '../../styles/components/topicPath.module.scss'
 
 const LowerPageTopPlus = (props) => {
 
   return(
-    <>
+    <nav className={styles.topicPath}>
       <ul>
         <li>
           <Link to='/'>Top</Link>
@@ -26,7 +26,7 @@ const LowerPageTopPlus = (props) => {
           <Link to={props.url}>{props.linkname}</Link>
         </motion.li>
       </ul>
-    </>
+    </nav>
   )
 };
 

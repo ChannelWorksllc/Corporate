@@ -74,6 +74,7 @@
       opacity: .5;
       object-fit: cover;
     }
+    
     ul {
       position: absolute;
       right: 60px;
@@ -115,7 +116,7 @@
     }
   }
   
-  #related-content-link {
+  .relatedContentLink {
     position: absolute;
     bottom: 0;
     left: 15%;
@@ -186,6 +187,7 @@
           background-color: $black;
           color: $white;
         }
+
         & + li {
           border-left: unset;
         }

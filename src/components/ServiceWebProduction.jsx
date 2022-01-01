@@ -1,17 +1,12 @@
 // webサイト設計・構築ページ
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, /* useState */} from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
-import ServiceLowerPage from './atoms/ServiceLowerPage';
-import TopicPathService from './atoms/TopicPathService';
-import LowerPageTop from './atoms/LowerPageTop';
-import LinkRelatedContent from './atoms/LinkRelatedContent';
 import Data from '../json/works.json';
-import ScrollToTop from './atoms/ScrollToTop';
-import Table from './atoms/Table';
-import Blog from './atoms/Blog';
-import Contact from './atoms/Contact';
+import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
+import styles from '../styles/components/service.module.scss'
+
 
 const ServiceWebProduction = () => {
 
@@ -21,7 +16,6 @@ const ServiceWebProduction = () => {
     {text: '事例', to: 'service-contain02'},
     {text: 'サービス内容', to: 'service-contain03'},
     {text: 'サービス一覧', to: 'service-contain04'},
-    {text: '関連記事', to: 'blog'}
   ]
 
   // 関連ページ
@@ -55,54 +49,39 @@ const ServiceWebProduction = () => {
   // サービス内容
   const contains = [
     {
-      title: '徹頭徹尾こだわりぬく課題解決型のWeb制作',
-      text1: 'Web制作の基本的な流れとして、まずお客様が感じる課題のヒアリング、その後各種分析調査から潜在的な課題も抽出した上で、課題解決の方針をご提案します。方針が定まれば、要件定義にて構造や必要な機能、予算、スケジュールを定め、設計、デザイン、システム開発などの実制作へ進みます。',
-      text2: '弊社のWeb制作は、ビジネスで成果を上げることを第一として課題抽出と戦略策定を徹底的に行い、それに基づいて細部までこだわりぬいたサイト設計が特徴です。'
+      title: '「成果を創出する」ことがWebサイトやアプリの存在価値と考えます。',
+      text1: '弊社のWebサイト・アプリ制作は、キレイなサイト、カッコイイサイト、といった見た目重視ではありません。弊社がご提供するあらゆるサイトは「事業成果を生み出す」ことに特化しています。',
+      text2: '見た目の印象がユーザーアクションに影響を与えることは決して多くはなく、むしろ華美な装飾はアクション効果を低減させます。弊社では、「誰が何をどうしたいのか」にこだわり、サイト全体の導線最適化に全力で注力致します。'
     },
     {
-      title: '幅広い知見を活かし、最適解を選ぶWeb制作',
-      text1: 'Webサイトを制作する上でツールを導入することも多くありますが、豊富な実績と経験から幅広い知見を得てきたチャネルワークスは、お客様の解決すべき課題に適したツールを選定・提案することが可能です。',
-      text2: '例えばCMSであれば、約30種類の中から複数の候補製品を選定し、その上でお客様と一緒に採用するCMSを協議させていただきます。'
+      title: 'Webサイトを構成する全要素はユーザーアクションを生み出すため。',
+      text1: '弊社において、メインビジュアル、キャッチコピー、サービスや製品などの説明、各種ボタンやリンクといったWebサイトやアプリにおけるさまざまな構成要素は、「デザインパーツ」ではなく、「ユーザー導線要素」です。',
+      text2: '形状・サイズ・文章の意味によって、アクションは伸びも縮みもします。弊社では、事前調査と蓄積したノウハウから最適な導線を構築します。'
     }
   ]
 
   // サービス一覧
   const menu = [
     {
-      title: `ホームページ・サイト制作\n `,
-      icon: '/Assets/img/service-content/menu01.svg',
-      text: '各種分析やユーザー視点に基づく、ロジカルな設計・デザインで制作します。'
+      title: `EC/通販サイト構築`,
+      text: '商品点数10点以下の小規模ECから、数千点超の大規模サイトまでさまざまな方式のEC/通販サイト構築が可能。'
     },
     {
-      title: `LP制作\n `,
-      icon: '/Assets/img/service-content/menu02.svg',
-      text: 'ユーザーがアクションすることに特化した、ランディングページを制作します。'
+      title: `各種マッチングサイト構築`,
+      text: '求人サイトや施設・サービスのマッチングなどさまざまな用途のマッチングサイト構築に対応可能です。'
     },
     {
-      title: `ECサイト制作\n `,
-      icon: '/Assets/img/service-content/menu03.svg',
-      text: 'マーケティング全体像と整合性を取ったサイト設計を構築します。'
+      title: `予約・申し込みサイト構築`,
+      text: '旅館・ホテルや飲食店などの予約、またはサービスの申し込みサイトなどの構築が可能です。'
     },
     {
-      title: `コーディング\n `,
-      icon: '/Assets/img/service-content/menu04.svg',
-      text: '高い知見と豊富なネットワークを活用し、幅広い種類のサイトを構築します。'
+      title: `サービス紹介・採用サイト構築`,
+      text: 'さまざまなサービスや、企業・仕事の魅力などを紹介するサイトの企画・構築をご支援致します。'
     },
     {
-      title: `UI/UX設計\n `,
-      icon: '/Assets/img/service-content/menu05.svg',
-      text: '集客・売上・申し込み増大を実現する、UI設計をご提供します。'
+      title: `コーポレートサイト構築`,
+      text: '名刺代わりや自己紹介のためのサイトは作成しません。問い合わせを増やしたい企業サイト構築ならぜひ弊社へ。'
     },
-    {
-      title: `SEO対策・\nサイトコンサルティング`,
-      icon: '/Assets/img/service-content/menu06.svg',
-      text: '着実にゴールを目指す、本格的かつ良質なSEO対策を提案します。'
-    },
-    {
-      title: `Webサイト保守・運用\n `,
-      icon: '/Assets/img/service-content/menu07.svg',
-      text: '各種分析やユーザー視点に基づく、ロジカルな設計・デザインで制作します。'
-    }
   ]
 
   // 表示する実績データ
@@ -125,50 +104,48 @@ const ServiceWebProduction = () => {
     }
   }
 
-  const [article, setArticle] = useState([]);
-  const [ajaxError, setAjaxError] = useState(false);
+  // const [article, setArticle] = useState([]);
+  // const [ajaxError, setAjaxError] = useState(false);
 
   useEffect(() => {
     document.title = 'サイト制作 | Channel Works';
 
-    // ブログ記事の取得
-    const RssParser = require('rss-parser');
-    const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
-    const rssParser = new RssParser();
+    // // ブログ記事の取得
+    // const RssParser = require('rss-parser');
+    // const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
+    // const rssParser = new RssParser();
   
-    rssParser.parseURL(url)
-      .then((feed) => {
-        const data = feed.items;
-        setArticle([...data]);
-      })
-      .catch((error) => {
-        console.log(error);
-        setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-      })
+    // rssParser.parseURL(url)
+    //   .then((feed) => {
+    //     const data = feed.items;
+    //     setArticle([...data]);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+    //   })
 
   }, [])
 
   return(
     <>
+      <TopicPathService
+        url = '/service/marketing'
+        linkname = 'Marketing'
+      />
 
-      <nav id='topic-path'>
-        <TopicPathService
-          url = '/service/web_production'
-          linkname = 'Web Production'
-        />
-      </nav>
-
-      <section id='lowerpage-top'>
+      <div className={styles.top}>
         <LowerPageTop 
           titleja = 'サービス内容'
           titleen = 'Service'
-          text = 'Webサイト制作・構築'
+          text = 'Webサイト・アプリ制作・構築'
           img = '/Assets/img/service-content/service02.jpg'
           alt= 'webサイト制作'
           icon = '/Assets/img/service-content/service03.png'
           content = { contents }
         />
-        <nav id="related-content-link">
+
+        <nav className={styles.linkRelatedContent}>
           <motion.ul
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
@@ -184,18 +161,18 @@ const ServiceWebProduction = () => {
             })}
           </motion.ul>
         </nav>
-      </section>
+      </div>
 
-      <motion.p className='lowerpage-toptext'
+      <motion.p className={styles.lowerpage}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        課題抽出から戦略・設計までこだわりぬいた「課題解決型のWeb制作」
+        マーケティング戦略とUI/UXに裏打ちされた、成果創出のためのWeb制作
       </motion.p>
       
-      <motion.section id="service-contain01"
+      <motion.section className={styles.content01}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -204,19 +181,19 @@ const ServiceWebProduction = () => {
         <h3>このような課題を解決します。</h3>
         <ul>
           <li>
-            <span>Webサイトが分かりにくい</span>、と指摘されたことがある。
+            今まで、見た目にインパクトがあったり、リッチなデザインのサイトを作っても<span>成果につながらなかった。</span>
           </li>
           <li>
-            ただリニューアルするのではなく、細部まで設計された<span>成果の出るWebサイトにしたい。</span>
+            以前、サイトを作成したが更新方法が複雑で、ほとんど更新ができないまま<span>放置してしまっている。</span>
           </li>
           <li>
-            Webの知見が少ないが、成果を出すために<span>案件進行をリードして欲しい。</span>
+            いろいろなサイト展開をしたいと思っているが、その度に<span>大きな改修費用がかかってしまい、身動きできない。</span>
           </li>
         </ul>
       </motion.section>
 
       <ServiceLowerPage 
-        name = 'Webサイト制作・構築'
+        name = 'Webサイト・アプリ制作・構築'
         contains = {contains}
         menu = {menu}
         works1 = {display1}
@@ -224,7 +201,7 @@ const ServiceWebProduction = () => {
         works3 = {display3}
       />
 
-      <motion.section className="blog" id='blog'
+      {/* <motion.section className="blog" id='blog'
         variants={ mainVariants }
         initila='initial'
         animate='animate'
@@ -252,7 +229,7 @@ const ServiceWebProduction = () => {
         <a href='http://tanakan.conohawing.com/wp/' data-aos='fade'>
           <span>ブログをみる</span>
         </a>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section className="contact"
         variants={ mainVariants }
