@@ -25,6 +25,10 @@ const ServiceWebProduction = () => {
       name: 'マーケティング戦略'
     },
     {
+      url: '/service/consulting',
+      name: 'コンサルティング'
+    },
+    {
       url: '/service/ui_ux',
       name: 'UI/UX設計'
     },

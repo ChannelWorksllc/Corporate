@@ -20,6 +20,7 @@ const Service = () => {
   // サービス一覧の画像取得
   const serviceImg = [
     './Assets/img/service-content/service03.jpg',
+    './Assets/img/service-content/service01.jpg',
     './Assets/img/service-content/service04.jpg',
     './Assets/img/service-content/service02.jpg',
     './Assets/img/service-content/service05.jpg',
@@ -41,7 +42,7 @@ const Service = () => {
     {
       name: `CI/VI/BIなどの\n策定コンサルティング`, 
       text: '企業・製品・サービスを象徴するコピーやビジュアルを通し、PRやマーケティング戦略において有効な要素となる各種アイデンティティ策定をご支援します。', 
-      img: serviceImg[0], 
+      img: serviceImg[1], 
       url: '/service/marketing',
       alt: '策定コンサルティング',
       class: 'service02'
@@ -49,7 +50,7 @@ const Service = () => {
     {
       name: `UI/UXの設計・構築`, 
       text: 'UI/UXはデジタルマーケティングの要。弊社では「誰のために、なにをするのか」を追求し、貴社のデジタルマーケティング施策に最適解をご提供致します。', 
-      img: serviceImg[1], 
+      img: serviceImg[2], 
       url: '/service/ui_ux',
       alt: 'UI/UX設計',
       class: 'service03'
@@ -57,7 +58,7 @@ const Service = () => {
     {
       name: `Webサイトの設計・構築`, 
       text: '登録・予約・購買などの「CV（成果創出）」に特化し、貴社ビジネスを支援する、EC・マッチング・サービスサイト・アプリなどの企画・制作を行います。', 
-      img: serviceImg[2], 
+      img: serviceImg[3], 
       url: '/service/web_production',
       alt: 'サイト制作',
       class: 'service04'
@@ -65,7 +66,7 @@ const Service = () => {
     {
       name: 'Webシステム開発', 
       text: 'ゼロベースの開発はもとより、ASPやパッケージシステムの利用など「成果」への最短距離を導き出す最適なシステム開発・システム構成をご提供します。', 
-      img: serviceImg[3], 
+      img: serviceImg[4], 
       url: '/service/system',
       alt: 'システム開発',
       class: 'service05'
@@ -73,7 +74,7 @@ const Service = () => {
     {
       name: 'コンテンツ開発', 
       text: 'コンテンツマーケティングを支援する、さまざまな分野の記事コンテンツや動画コンテンツの開発を請け負います。または貴社内での制作ご支援を行います。', 
-      img: serviceImg[4], 
+      img: serviceImg[5], 
       url: '/service/content',
       alt: 'コンテンツ開発',
       class: 'service06'
@@ -81,7 +82,7 @@ const Service = () => {
     {
       name: `イメージ撮影・PR動画制作`, 
       text: 'Webサイトやサービスのブランディングを強化する人物・建物・商品などのイメージ撮影や、SNS訴求などにも強力な打ち手となるPR動画の撮影・制作を行います。',
-      img: serviceImg[5], 
+      img: serviceImg[6], 
       url: '/service/image',
       alt: 'イメージ制作',
       class: 'service07'

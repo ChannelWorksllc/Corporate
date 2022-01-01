@@ -48,7 +48,7 @@ const Header = () => {
             <li className={style === '/strength' ? styles.active : ''}>
               <Link to="/strength">Strength<span>強みと特徴</span></Link>
             </li>
-            <li className={style === '/service' ? styles.active : ''}>
+            <li className={style.includes('/service') ? styles.active : ''}>
               <Link to="/service">Service<span>サービス</span></Link>
             </li>
             <li className={style === '/works' ? styles.active : ''}>
@@ -60,7 +60,7 @@ const Header = () => {
             {/* <li>
               <a href='https://channelworks.biz/blog/'>Blog<span>ブログ</span></a>
             </li> */}
-            <li className={style === '/contact_estimate' || style === '/contact_us' ? `${styles.active} ${styles.contact}` : styles.contact}>
+            <li className={style.includes('/contact') ? `${styles.active} ${styles.contact}` : styles.contact}>
               Contact<span>お問い合わせ</span>
               <ul>
                 <li>

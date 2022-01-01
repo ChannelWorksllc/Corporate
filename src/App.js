@@ -22,6 +22,7 @@ const App = () => (
             <Route exact path="/service" component={ Component.Service } />
             <Route path="/service/web_production" component={ Component.ServiceWebProduction } />
             <Route path="/service/marketing" component={ Component.ServiceMarketing } />
+            <Route path="/service/consulting" component={ Component.ServiceConsulting } />
             <Route path="/service/ui_ux" component={ Component.ServiceUi } />
             <Route path="/service/system" component={ Component.ServiceSystem } />
             <Route path="/service/content" component={ Component.ServiceContent } />

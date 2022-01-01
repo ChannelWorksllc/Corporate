@@ -11,6 +11,7 @@ import styles from '../styles/components/home.module.scss'
 // サービス一覧の画像取得
 const serviceImg = [
   './Assets/img/service-content/service03.jpg',
+  './Assets/img/service-content/service01.jpg',
   './Assets/img/service-content/service04.jpg',
   './Assets/img/service-content/service02.jpg',
   './Assets/img/service-content/service05.jpg',

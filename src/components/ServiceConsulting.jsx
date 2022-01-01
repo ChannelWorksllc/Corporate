@@ -1,13 +1,13 @@
-// マーケティング戦略支援・運用ページ
 
-import React, { useEffect, /* useState */ } from 'react';
+// コンサルティングページ
+import React, { useEffect, /* useState */} from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json';
 import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
 import styles from '../styles/components/service.module.scss'
 
-const ServiceMarketing = () => {
+const ServiceConsulting = () => {
 
   // 目次
   const contents = [
@@ -52,42 +52,42 @@ const ServiceMarketing = () => {
   // サービス内容
   const contains = [
     {
-      title: '貴社課題を客観視し、整理、分類。課題カテゴリごとの施策に落とし込み。',
-      text1: '自社課題において難しいのが「課題の客観視」です。これは外部支援業者だからこそ可能になるといえる目線でもあり、社内人材では検討・実施が難しい施策立案を可能とします。加えて、課題を細かなファクターに分割することで、個別成果を計測しやすくし、より施策全体の効果を見えやすくするアプローチを行います。',
-      text2: '大きな施策は社内で立案し、実行フェイズの細かな施策を外部業者と共に遂行する。これが、もっとも効果を出しやすい方法のひとつと考えます。'
+      title: '「自分の会社はこうである」と明言できることは、何よりの強みです。',
+      text1: '代表や幹部であれば、肌感で理解している企業の方針や強みも、すべての社員には浸透していないことも多くあります。この状態は、さまざまな営業機械を損失こともあります。また、サービス提供や商品作りにおいても、基準となる方針が定まっていることはブレないサービス提供や、製品に繋がります。',
+      text2: '改めて「自社とは」を見つめ直すことで新たなサービスが生まれることもあるなど、数多くのメリットがあるのがCI/BIの策定です。'
     },
     {
-      title: '専門サービスならではの、新しい知見を貴社課題に適応し施策をご提案。',
-      text1: '外部の専門サービスの特徴や強みとして、ある意味で「無責任に施策立案ができる」ことにあります。社内では、さまざまなしがらみなどで検討にしにくいアイデアもどんどん出すことができるので、それまでできなかった数多くの施策を実施できるようになる場合が多くあります。',
-      text2: 'より数多くの検討角度を貴社施策にご提供するのが弊社ご提案の特徴です。'
+      title: '社員全員が自社の特徴を語れることは最強のマーケティング手法です。',
+      text1: '企業と社員が一貫したアイデンティティを有することは、顧客に向けての大きな訴求効果を生み出します。',
+      text2: 'さまざまな顧客コミュニケーションの場において、一貫した姿勢を見せていくことは、顧客からの信頼を生み出し、サービスや製品にも、好影響を発生させます。継続的に効果を生み出す会社の資産。それがCI/BIです。'
     }
   ]
 
   // サービス一覧
   const menu = [
     {
-      title: `集客戦略・施策の立案支援`,
-      text: 'Webサイト運用や、広告展開などの各種プロモーションにおけるKPI設定、戦略設計などの立案をご支援します。'
+      title: `コーポレートアイデンティティ策定`,
+      text: '企業の特徴、思い、方針、行動指針といった要項を抽出し、メインコピーやサブコピーとして設定していきます。'
     },
     {
-      title: `集客施策の各種運用支援`,
-      text: 'サイト更新やコンテンツ更新、アクセス解析や改善課題の抽出などといった運用対応全般をご支援します。'
+      title: `ブランドアイデンティティ策定`,
+      text: '商品・サービスごとにバリューやスローガンなどを定めてブランドを表現するキャッチフレーズを定めます。'
     },
     {
-      title: `広告運用・改善支援、および代行`,
-      text: 'リスティングやDSPなどの各種広告施策の運用代行やご支援、レポートなどからの課題抽出をご支援します。'
+      title: `コーポレートロゴの作成`,
+      text: 'コーポレートアイデンティティを元に企業ロゴを作成します。ロゴデータはWeb・印刷すべての利用可能。'
     },
     {
-      title: `各種SNSの運用支援・代行`,
-      text: 'TwitterやFacebook、Instagramなどの代表的なSNSにおける配信代行を始めとして運用支援を行います。'
+      title: `ブランド・サービス・製品ロゴ作成`,
+      text: 'ブランドアイデンティティや製品コンセプトなどを元にして、サービスや製品ロゴを作成します。'
     },
     {
-      title: `CI/BIの策定支援`,
-      text: 'コーポレート・ブランドアイデンティティの策定から、コーポレートキャッチコピー、ロゴの作成などをご支援。'
+      title: `訴求ビジュアル基準の策定`,
+      text: 'CI/BIに合わせて、Web・印刷物・製品などのさまざまなビジュアルアウトプットの基準を策定します。'
     },
   ]
 
-  // 表示する実績のデータ
+  // 表示する実績のデータIDを指定
   const display1 = Data.find((data) => data.id === 7);
   const display2 = Data.find((data) => data.id === 6);
   const display3 = Data.find((data) => data.id === 5);
@@ -111,11 +111,11 @@ const ServiceMarketing = () => {
   // const [ajaxError, setAjaxError] = useState(false);
 
   useEffect(() => {
-    document.title = 'マーケティング戦略 | Channel Works';
+    document.title = 'コンテンツ開発 | Channel Works';
 
     // // ブログ記事の取得
     // const RssParser = require('rss-parser');
-    // const url = 'http://tanakan.conohawing.com/wp/category/marketing//feed/';
+    // const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
     // const rssParser = new RssParser();
   
     // rssParser.parseURL(url)
@@ -133,18 +133,18 @@ const ServiceMarketing = () => {
   return(
     <>
         <TopicPathService
-          url = '/service/marketing'
-          linkname = 'Marketing'
+          url = '/service/content'
+          linkname = 'Content Development'
         />
 
         <div className={styles.top}>
           <LowerPageTop 
             titleja = 'サービス内容'
             titleen = 'Service'
-            text = 'マーケティング戦略支援・運用'
-            img = '/Assets/img/service-content/service03.jpg'
-            alt= 'webサイト制作'
-            icon = '/Assets/img/service-content/service01.png'
+            text = 'CI/VI/BIなどの策定コンサルティング'
+            img = '/Assets/img/service-content/service01.jpg'
+            alt= 'CI/VI/BIなどの策定コンサルティング'
+            icon = '/Assets/img/service-content/service02.png'
             content = { contents }
           />
 
@@ -172,7 +172,7 @@ const ServiceMarketing = () => {
         animate='animate'
         exit='exit'
       >
-        貴社の集客・販促の課題解決を豊富なノウハウと柔軟なアイデアでご支援
+        貴社の魅力と立ち位置を改めて定義し、揺るぎないブランドを確立します
       </motion.p>
 
       <motion.section id="service-contain01" className={styles.content01}
@@ -184,19 +184,19 @@ const ServiceMarketing = () => {
         <h3>このような課題を解決します。</h3>
         <ul>
           <li>
-            新しく集客や販促などのマーケティング施策を行いたいが、<span>なにから始めたらよいかがわからない。</span>
+            施策検討やサービス訴求を行う際に、<span>何を強みや特徴として打ち出せばよいのかがわからない。</span>
           </li>
           <li>
-            社内にマーケティングの専門家がおらず、専門の部署や知見もないため、<span>課題解決が進まない。</span>
+            <span>社内に自社特徴や目指す方向などを周知したい</span>が、より客観的に整理し、無理なく受け入れられるようにしたい。
           </li>
           <li>
-            施策を実施しているが、改善課題の抽出や改善施策の実施に対して<span>技術やノウハウが不足していると感じる。</span>
+            社員教育や、採用などにおいて、自社サービスや製品などの<span>特徴や強みをわかりやすく打ち出したい。</span>
           </li>
         </ul>
       </motion.section>
       
       <ServiceLowerPage 
-        name = 'マーケティング戦略支援・運用'
+        name = 'CI/VI/BIなどの策定コンサルティング'
         contains = {contains}
         menu = {menu}
         works1 = {display1}
@@ -256,4 +256,4 @@ const ServiceMarketing = () => {
   )
 }
 
-export default ServiceMarketing;
+export default ServiceConsulting;
