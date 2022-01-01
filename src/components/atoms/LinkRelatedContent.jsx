@@ -1,8 +1,7 @@
 // 下層ページで関連するページへのリンク
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styles from '../../styles/components/service.module.scss'
-// import classNames from 'classnames';
+import styles from '../../styles/components/linkRelatedContent.module.scss'
 
 const LinkRelatedContent = (props) => {
   const location = useLocation();

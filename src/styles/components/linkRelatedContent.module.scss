@@ -1,0 +1,17 @@
+@import '../variables';
+
+.lists {
+  background-color: $white;
+  color: $black;
+  transition: .3s;
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+  }
+
+  &.active {
+    background-color: $black;
+    color: $white;
+  }
+}
