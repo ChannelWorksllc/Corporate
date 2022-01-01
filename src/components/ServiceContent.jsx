@@ -88,8 +88,8 @@ const ServiceContent = () => {
   ]
 
   // 表示する実績のデータIDを指定
-  const display1 = Data.find((data) => data.id === 7);
-  const display2 = Data.find((data) => data.id === 6);
+  const display1 = Data.find((data) => data.id === 6);
+  const display2 = Data.find((data) => data.id === 19);
   const display3 = Data.find((data) => data.id === 5);
 
   // アニメーション設定

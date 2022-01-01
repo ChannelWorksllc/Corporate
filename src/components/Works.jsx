@@ -5,19 +5,16 @@ import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { animateScroll as scroll } from 'react-scroll';
 import MediaQuery from 'react-responsive';
-import LowerPageTop from './atoms/LowerPageTop';
-import TopicPath from './atoms/TopicPath';
 import Data from '../json/works.json'
-import Blog from './atoms/Blog';
-import ScrollToTop from './atoms/ScrollToTop';
-import Table from './atoms/Table';
+import { LowerPageTop, TopicPath, ScrollToTop, Table, /* Blog */} from './atoms';
+import styles from '../styles/components/works.module.scss'
 
 const Works = () => {
 
   // ページ内リンク
   const contents = [
     {text: '実績紹介', to: 'works'},
-    {text: '関連記事', to: 'blog'}
+    // {text: '関連記事', to: 'blog'}
   ]
 
   // この下からjsonファイルを読み出しに関する処理
@@ -25,7 +22,7 @@ const Works = () => {
   const [visible, setVisible] = useState(4);
   const [title, setTitle] = useState('すべて');
   const [style, setStyle] = useState(0);
-  const [change, setChange] = useState('active');
+  const [change, setChange] = useState(true);
 
   const location = useLocation();
 
@@ -33,10 +30,11 @@ const Works = () => {
   const everyWroksData = () => {
 
     setStyle(0);
-    setChange('');
+    setChange(false);
+
     setTimeout(function(){
       setWorksData(Data);
-      setChange('active');
+      setChange(true);
       setTitle('すべて');
     }, 300)
 
@@ -45,15 +43,17 @@ const Works = () => {
   // カテゴリーごとに読み込む
   const eachWorksData = (category, index) => {
 
-    const data = Data.filter(item => item.category.includes(category));
-    setChange('');
+    const data = Data.filter(item => item.type.includes(index));
+    setChange(false);
+
     setTimeout(function(){
       setWorksData(data);
-      setChange('active');
+      setChange(true);
       setTitle(category);
     }, 300)
 
     setStyle(index);
+    setVisible(4)
   }
 
   // 読み込む数
@@ -61,11 +61,12 @@ const Works = () => {
     setVisible(visible + 4);
   }
 
-  const [article, setArticle] = useState([]);
-  const [ajaxError, setAjaxError] = useState(false);
+  // const [article, setArticle] = useState([]);
+  // const [ajaxError, setAjaxError] = useState(false);
 
   // 読み込まれたとき、または実績コンテンツからとんで来た場合の処理
   useEffect(() => {
+
     const allWorksData = () => {
       // 実績コンテンツからとんで来た場合は、その実績をいちばん上に並び替える
       Data.sort(function(a, b) {
@@ -85,20 +86,20 @@ const Works = () => {
     allWorksData();
     document.title='実績 | Channel Works';
 
-    // ブログ記事の取得
-    const RssParser = require('rss-parser');
-    const url = 'https://channelworks.biz/blog/feed/';
-    const rssParser = new RssParser();
+    // // ブログ記事の取得
+    // const RssParser = require('rss-parser');
+    // const url = 'https://channelworks.biz/blog/feed/';
+    // const rssParser = new RssParser();
   
-    rssParser.parseURL(url)
-      .then((feed) => {
-        const data = feed.items;
-        setArticle([...data]);
-      })
-      .catch((error) => {
-        console.log(error);
-        setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-      })
+    // rssParser.parseURL(url)
+    //   .then((feed) => {
+    //     const data = feed.items;
+    //     setArticle([...data]);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+    //   })
 
   }, [location.state])
 
@@ -118,12 +119,18 @@ const Works = () => {
 
   // 各実績の表示構造
   const renderWorks = (work, index) => {
+
     return(
-      <article key={index} className={change}>
+      <article key={index} className={change ? styles.active : ''}>
         <div>
-          <p className="title">{work.client} 様</p>
+          <p className={styles.title}>{work.client} 様</p>
           <h4>{work.title}</h4>
-          <a href={work.url}>{work.url}</a>
+          {work.url.includes('https') ? (
+            <a href={work.url} target="_blank" rel="noopener noreferrer">{work.url}</a>
+            ) : (
+              <span>{work.url}</span>
+            )
+          }
           <ul>
             {work.category.map((category, num) => {
               return(
@@ -131,8 +138,8 @@ const Works = () => {
               )
             })}
           </ul>
-          <p className="text">{work.text}</p>
-          <p className="text">プロジェクト期間：{work.period}</p>
+          <p className={styles.text}>{work.text}</p>
+          <p className={styles.period}>プロジェクト期間：{work.period}</p>
         </div>
         <div>
           <img src={work.img} alt={work.client} />
@@ -143,15 +150,12 @@ const Works = () => {
 
   return(
     <>
+      <TopicPath 
+        url = '/works'
+        linkname = 'Works'
+      />
 
-      <nav id='topic-path'>
-        <TopicPath 
-          url = '/works'
-          linkname = 'Works'
-        />
-      </nav>
-
-      <section id='lowerpage-top'>
+      <div className={styles.top}>
         <LowerPageTop
           titleja = '実績紹介'
           titleen = 'Works'
@@ -161,37 +165,39 @@ const Works = () => {
           icon = ''
           content = { contents }
         />
-        <motion.nav id="category" 
+
+        <motion.nav className={styles.category}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
           exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
         >
           <ul>
-            <li className={style === 0 ? 'active' : ''} onClick={everyWroksData}>すべて</li>
-            <li className={style === 1 ? 'active' : ''} onClick={() => eachWorksData('マーケティング戦略', 1)}>マーケティング戦略</li>
-            <li className={style === 2 ? 'active' : ''} onClick={() => eachWorksData('UI/UX設計', 2)}>UI/UX設計</li>
-            <li className={style === 3 ? 'active' : ''} onClick={() => eachWorksData('サイト制作', 3)}>サイト制作</li>
-            <li className={style === 4 ? 'active' : ''} onClick={() => eachWorksData('システム開発', 4)}>システム開発</li>
-            <li className={style === 5 ? 'active' : ''} onClick={() => eachWorksData('コンテンツ開発', 5)}>コンテンツ開発</li>
-            <li className={style === 6 ? 'active' : ''} onClick={() => eachWorksData('イメージ制作', 6)}>イメージ制作</li>
+            <li className={style === 0 ? styles.active : ''} onClick={everyWroksData}>すべて</li>
+            <li className={style === 1 ? styles.active : ''} onClick={() => eachWorksData('マーケティング戦略', 1)}>マーケティング戦略</li>
+            <li className={style === 7 ? styles.active : ''} onClick={() => eachWorksData('コンサルティング', 7)}>コンサルティング</li>
+            <li className={style === 2 ? styles.active : ''} onClick={() => eachWorksData('UI/UX設計', 2)}>UI/UX設計</li>
+            <li className={style === 3 ? styles.active : ''} onClick={() => eachWorksData('サイト制作', 3)}>サイト制作</li>
+            <li className={style === 4 ? styles.active : ''} onClick={() => eachWorksData('システム開発', 4)}>システム開発</li>
+            <li className={style === 5 ? styles.active : ''} onClick={() => eachWorksData('コンテンツ開発', 5)}>コンテンツ開発</li>
+            <li className={style === 6 ? styles.active : ''} onClick={() => eachWorksData('イメージ制作', 6)}>イメージ制作</li>
           </ul>
         </motion.nav>
-      </section>
+      </div>
 
-      <motion.section id="works"
+      <motion.section id="works" className={styles.works}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 className={change} id="link">{title}の実績</h3>
+        <h3 className={change ? styles.active : ''} id="link">{title}の実績</h3>
         {worksData.slice(0, visible).map(renderWorks)}
         {visible < worksData.length &&(
           <button onClick={loadMore}>もっとみる</button>
         )}
       </motion.section>
 
-      <motion.section className="blog" id='blog'
+      {/* <motion.section className="blog" id='blog'
         variants={ mainVariants }
         initila='initial'
         animate='animate'
@@ -219,7 +225,7 @@ const Works = () => {
         <a href='https://channelworks.biz/blog/' data-aos='fade'>
           <span>ブログをみる</span>
         </a>
-      </motion.section>
+      </motion.section> */}
 
       <MediaQuery query='(min-width: 768px)'>
         <ScrollToTop />

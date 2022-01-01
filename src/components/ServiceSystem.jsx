@@ -88,9 +88,9 @@ const ServiceSystem = () => {
   ]
 
   // 表示する実績のデータ
-  const display1 = Data.find((data) => data.id === 7);
-  const display2 = Data.find((data) => data.id === 6);
-  const display3 = Data.find((data) => data.id === 5);
+  const display1 = Data.find((data) => data.id === 9);
+  const display2 = Data.find((data) => data.id === 8);
+  const display3 = Data.find((data) => data.id === 7);
 
   // アニメーション設定
   const mainVariants = {

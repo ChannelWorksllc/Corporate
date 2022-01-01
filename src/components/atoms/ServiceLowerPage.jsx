@@ -93,13 +93,6 @@ const ServiceLowerPage = (props) => {
                 </div>
               </div>
               <h4>{props.works1.title}</h4>
-              <ul>
-                {props.works1.category.map((category, index) => {
-                  return(
-                    <li key={index}>{category}</li>
-                  )
-                })}
-              </ul>
             </Link>
           </article>
           <article>
@@ -111,13 +104,6 @@ const ServiceLowerPage = (props) => {
                 </div>
               </div>
               <h4>{props.works2.title}</h4>
-              <ul>
-                {props.works2.category.map((category, index) => {
-                  return(
-                    <li key={index}>{category}</li>
-                  )
-                })}
-              </ul>
             </Link>
           </article>
           <article>
@@ -129,13 +115,6 @@ const ServiceLowerPage = (props) => {
                 </div>
               </div>
               <h4>{props.works3.title}</h4>
-              <ul>
-                {props.works3.category.map((category, index) => {
-                  return(
-                    <li key={index}>{category}</li>
-                  )
-                })}
-              </ul>
             </Link>
           </article>
         </div>
