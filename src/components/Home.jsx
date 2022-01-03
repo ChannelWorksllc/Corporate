@@ -33,7 +33,7 @@ const services = [
   {
     name: `CI/VI/BIなどの\n策定コンサルティング`, 
     text: '企業・製品・サービスを象徴するコピーやビジュアルを通し、PRやマーケティング戦略において有効な要素となる各種アイデンティティ策定をご支援します。', 
-    img: serviceImg[0], 
+    img: serviceImg[1], 
     url: '/service/marketing',
     alt: '策定コンサルティング',
     class: 'service02'
@@ -41,7 +41,7 @@ const services = [
   {
     name: `UI/UXの設計・構築`, 
     text: 'UI/UXはデジタルマーケティングの要。弊社では「誰のために、なにをするのか」を追求し、貴社のデジタルマーケティング施策に最適解をご提供致します。', 
-    img: serviceImg[1], 
+    img: serviceImg[2], 
     url: '/service/ui_ux',
     alt: 'UI/UX設計',
     class: 'service03'
@@ -49,7 +49,7 @@ const services = [
   {
     name: `Webサイトの設計・構築`, 
     text: '登録・予約・購買などの「CV（成果創出）」に特化し、貴社ビジネスを支援する、EC・マッチング・サービスサイト・アプリなどの企画・制作を行います。', 
-    img: serviceImg[2], 
+    img: serviceImg[3], 
     url: '/service/web_production',
     alt: 'サイト制作',
     class: 'service04'
@@ -57,7 +57,7 @@ const services = [
   {
     name: 'Webシステム開発', 
     text: 'ゼロベースの開発はもとより、ASPやパッケージシステムの利用など「成果」への最短距離を導き出す最適なシステム開発・システム構成をご提供します。', 
-    img: serviceImg[3], 
+    img: serviceImg[4], 
     url: '/service/system',
     alt: 'システム開発',
     class: 'service05'
@@ -65,7 +65,7 @@ const services = [
   {
     name: 'コンテンツ開発', 
     text: 'コンテンツマーケティングを支援する、さまざまな分野の記事コンテンツや動画コンテンツの開発を請け負います。または貴社内での制作ご支援を行います。', 
-    img: serviceImg[4], 
+    img: serviceImg[5], 
     url: '/service/content',
     alt: 'コンテンツ開発',
     class: 'service06'
@@ -73,7 +73,7 @@ const services = [
   {
     name: `イメージ撮影・PR動画制作`, 
     text: 'Webサイトやサービスのブランディングを強化する人物・建物・商品などのイメージ撮影や、SNS訴求などにも強力な打ち手となるPR動画の撮影・制作を行います。',
-    img: serviceImg[5], 
+    img: serviceImg[6], 
     url: '/service/image',
     alt: 'イメージ制作',
     class: 'service07'
@@ -81,12 +81,12 @@ const services = [
 ]
 
 // 実績セクションでスライドショー表示するデータのidを指定
-const slideData1 = Data.find((data) => data.id === 9);
-const slideData2 = Data.find((data) => data.id === 8);
-const slideData3 = Data.find((data) => data.id === 7);
+const slideData1 = Data.find((data) => data.id === 21);
+const slideData2 = Data.find((data) => data.id === 18);
+const slideData3 = Data.find((data) => data.id === 15);
 // 実績セクションで小窓で表示するデータのidを指定
-const smallDisplay1 = Data.find((data) => data.id === 7);
-const smallDsiplay2 = Data.find((data) => data.id === 6);
+const smallDisplay1 = Data.find((data) => data.id === 12);
+const smallDsiplay2 = Data.find((data) => data.id === 10);
 const smallDsiplay3 = Data.find((data) => data.id === 5);
 
 // 画面遷移時のアニメーション設定
@@ -196,7 +196,8 @@ const Home = () => {
                     <img src={ service.img } alt={ service.alt } />
                   </div>
                   <h4>{ service.name }</h4>
-                  <p className='only-pc'>{ service.text }</p>
+                  <p>{ service.text }</p>
+                  <small>詳しくみる</small>
                 </Link>
               </li>
             )
@@ -225,41 +226,21 @@ const Home = () => {
             >
 
               <Link to={{ pathname: '/works', state: slideData1.id }}>
-                <ul>
-                  {slideData1.category.map((category, index) => {
-                    return(
-                      <li key={index}>{category}</li>
-                    )
-                  })}
-                </ul>
-                <h4>{slideData1.title}</h4>
                 <p>{slideData1.client} 様</p>
+                <h4>{slideData1.title}</h4>
               </Link>
               <Link to={{ pathname: '/works', state: slideData2.id }}>
-                <ul>
-                  {slideData2.category.map((category, index) => {
-                    return(
-                      <li key={index}>{category}</li>
-                    )
-                  })}
-                </ul>
-                <h4>{slideData2.title}</h4>
                 <p>{slideData2.client} 様</p>
+                <h4>{slideData2.title}</h4>
               </Link>
               <Link to={{ pathname: '/works', state: slideData3.id }}>
-                <ul>
-                  {slideData3.category.map((category, index) => {
-                    return(
-                      <li key={index}>{category}</li>
-                    )
-                  })}
-                </ul>
-                <h4>{slideData3.title}</h4>
                 <p>{slideData3.client} 様</p>
+                <h4>{slideData3.title}</h4>
               </Link>
 
             </Slider>
           </div>
+
           <div className={styles.works02}>
             <Slider
               {...settingThumbs}
@@ -284,13 +265,6 @@ const Home = () => {
                 </div>
               </div>
               <h4>{smallDisplay1.title}</h4>
-              <ul>
-                {smallDisplay1.category.map((category, index) => {
-                  return(
-                    <li key={index}>{category}</li>
-                  )
-                })}
-              </ul>
             </Link>
           </article>
           <article>
@@ -302,13 +276,6 @@ const Home = () => {
                 </div>
               </div>
               <h4>{smallDsiplay2.title}</h4>
-              <ul>
-                {smallDsiplay2.category.map((category, index) => {
-                  return(
-                    <li key={index}>{category}</li>
-                  )
-                })}
-              </ul>
             </Link>
           </article>
           <article>
@@ -320,13 +287,6 @@ const Home = () => {
                 </div>
               </div>
               <h4>{smallDsiplay3.title}</h4>
-              <ul>
-                {smallDsiplay3.category.map((category, index) => {
-                  return(
-                    <li key={index}>{category}</li>
-                  )
-                })}
-              </ul>
             </Link>
           </article>
         </div>

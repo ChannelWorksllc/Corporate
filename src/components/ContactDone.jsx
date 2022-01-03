@@ -1,16 +1,11 @@
 // お問い合わせ完了ページ
-
 import React, { useState ,useEffect } from 'react';
 import { useLocation, Redirect, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import TopicPath from './atoms/TopicPath';
-import LowerPageTop from './atoms/LowerPageTop';
-import LinkRelatedContent from './atoms/LinkRelatedContent';
-import ScrollToTop from './atoms/ScrollToTop';
-import Button from './atoms/Button';
-import Blog from './atoms/Blog';
+import { TopicPath, LowerPageTop, LinkRelatedContent, ScrollToTop, Button, /* Blog */ } from './atoms';
+import styles from '../styles/components/contactDone.module.scss'
 
 const ContactDone = () => {
 
@@ -28,53 +23,70 @@ const ContactDone = () => {
     }
   ]
 
-  const serviceIcons = [
-    '/Assets/img/icon-service/service01.png',
-    '/Assets/img/icon-service/service02.png',
-    '/Assets/img/icon-service/service03.png',
-    '/Assets/img/icon-service/service04.png',
-    '/Assets/img/icon-service/service05.png',
-    '/Assets/img/icon-service/service06.png'
-  ]
-  
-  const services = [
-    {
-      name: `マーケティング戦略支援・運用`, 
-      img: serviceIcons[0], 
-      url: '/service/marketing',
-      alt: 'マーケティング戦略'
-    },
-    {
-      name: `UI/UX設計・構築`, 
-      img: serviceIcons[1], 
-      url: '/service/ui_ux',
-      alt: 'UI/UX設計'
-    },
-    {
-      name: `Webサイト設計・構築`, 
-      img: serviceIcons[2], 
-      url: '/service/web_production',
-      alt: 'サイト制作'
-    },
-    {
-      name: 'Webシステム開発', 
-      img: serviceIcons[3], 
-      url: '/service/system',
-      alt: 'システム開発'
-    },
-    {
-      name: 'コンテンツ開発', 
-      img: serviceIcons[4], 
-      url: '/service/content',
-      alt: 'コンテンツ開発'
-    },
-    {
-      name: `イメージ撮影・PR動画制作`, 
-      img: serviceIcons[5], 
-      url: '/service/image',
-      alt: 'イメージ制作'
-    }
-  ]
+// サービス一覧の画像取得
+const serviceImg = [
+  '/Assets/img/service-content/service03.jpg',
+  '/Assets/img/service-content/service01.jpg',
+  '/Assets/img/service-content/service04.jpg',
+  '/Assets/img/service-content/service02.jpg',
+  '/Assets/img/service-content/service05.jpg',
+  '/Assets/img/service-content/service06.jpg',
+  '/Assets/img/service-content/service07.jpg',
+  '/Assets/img/service-content/service08.jpg'
+]
+
+// サービス一覧のテキスト設定
+const services = [
+  {
+    name: `マーケティング戦略支援・運用`, 
+    img: serviceImg[0], 
+    url: '/service/marketing',
+    alt: 'マーケティング戦略',
+    class: 'service01'
+  },
+  {
+    name: `CI/VI/BIなどの\n策定コンサルティング`, 
+    img: serviceImg[1], 
+    url: '/service/marketing',
+    alt: '策定コンサルティング',
+    class: 'service02'
+  },
+  {
+    name: `UI/UXの設計・構築`, 
+    img: serviceImg[2], 
+    url: '/service/ui_ux',
+    alt: 'UI/UX設計',
+    class: 'service03'
+  },
+  {
+    name: `Webサイトの設計・構築`, 
+    img: serviceImg[3], 
+    url: '/service/web_production',
+    alt: 'サイト制作',
+    class: 'service04'
+  },
+  {
+    name: 'Webシステム開発', 
+    img: serviceImg[4], 
+    url: '/service/system',
+    alt: 'システム開発',
+    class: 'service05'
+  },
+  {
+    name: 'コンテンツ開発', 
+    img: serviceImg[5], 
+    url: '/service/content',
+    alt: 'コンテンツ開発',
+    class: 'service06'
+  },
+  {
+    name: `イメージ撮影・PR動画制作`, 
+    img: serviceImg[6], 
+    url: '/service/image',
+    alt: 'イメージ制作',
+    class: 'service07'
+  }
+]
 
   const mainVariants = {
     initial: {
@@ -95,8 +107,8 @@ const ContactDone = () => {
   const [errorMessage, setErrorMessage] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  const [article, setArticle] = useState([]);
-  const [ajaxError, setAjaxError] = useState(false);
+  // const [article, setArticle] = useState([]);
+  // const [ajaxError, setAjaxError] = useState(false);
   
   // phpからの返事が000の場合、メール送信完了
   // phpからの返事が111の場合、メール送信失敗
@@ -112,23 +124,24 @@ const ContactDone = () => {
       }
     }
     setMessage()
+
     Aos.init({ duration: 1000, easing: 'ease-in-out' });
 
-    // ブログ記事の取得
-    const RssParser = require('rss-parser');
-    const url = 'https://channelworks.biz/blog/feed/';
-    const rssParser = new RssParser();
+    // // ブログ記事の取得
+    // const RssParser = require('rss-parser');
+    // const url = 'https://channelworks.biz/blog/feed/';
+    // const rssParser = new RssParser();
 
-    rssParser.parseURL(url)
-      .then((feed) => {
-        const data = feed.items;
-        setArticle([...data]);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-      })
+    // rssParser.parseURL(url)
+    //   .then((feed) => {
+    //     const data = feed.items;
+    //     setArticle([...data]);
+    //     console.log(data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+    //   })
 
   }, [location.state]);
 
@@ -139,14 +152,12 @@ const ContactDone = () => {
     {doneMessage && 
       <>
 
-        <nav id="topic-path">
         <TopicPath
           url = { location.state.url }
           linkname = { location.state.name }
         />
-        </nav>
 
-        <section id="lowerpage-top">
+        <div className={styles.top}>
           <LowerPageTop
             titleja = 'お見積もり依頼'
             titleen = 'Contact'
@@ -155,7 +166,8 @@ const ContactDone = () => {
             icon = ''
             content = {contents}
           />
-          <motion.nav id="related-content-link"
+
+          <motion.nav className={styles.linkRelatedContent}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
             exit={{ opacity: 0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
@@ -171,9 +183,9 @@ const ContactDone = () => {
               })}
             </ul>
           </motion.nav>
-        </section>
+        </div>
 
-      <motion.section id="done01"
+      <motion.section className={styles.done01}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -181,22 +193,23 @@ const ContactDone = () => {
       >
         <p>お問い合わせ、ありがとうございました。<br />送信が完了しました。<br />確認次第、速やかに担当者よりご連絡いたします。</p>
         </motion.section>
-        <motion.section id="done02"
+        <motion.section className={styles.done02}
           variants={ mainVariants }
           initial='initial'
           animate='animate'
           exit='exit'
         >
-          <h3 data-aos='fade-up'>提供するサービス</h3>
-          <ul data-aos='fade-up'>
-          {services.map((service, index) => {
+          <h3>提供するサービス</h3>
+          <ul>
+            {services.map((service, index) => {
               return(
-                <li key={ index }>
+                <li key={ index } className={styles[service.class]}>
                   <Link to={{ pathname: service.url, state: 'active' }}>
                     <div>
                       <img src={ service.img } alt={ service.alt } />
                     </div>
                     <h4>{ service.name }</h4>
+                    <small>詳しくみる</small>
                   </Link>
                 </li>
               )
@@ -207,7 +220,7 @@ const ContactDone = () => {
             name = 'サービスの詳細をみる'
           />
         </motion.section>
-        <motion.section className="blog" id='blog'
+        {/* <motion.section className="blog" id='blog'
           variants={ mainVariants }
           initial='initial'
           animate='animate'
@@ -235,7 +248,7 @@ const ContactDone = () => {
             <a href='https://channelworks.biz/blog/' data-aos='fade'>
               <span>ブログをみる</span>
             </a>
-        </motion.section>
+        </motion.section> */}
         <ScrollToTop />
       </>
     }
@@ -243,14 +256,12 @@ const ContactDone = () => {
     {errorMessage && 
       <>
 
-        <nav id="topic-path">
         <TopicPath
           url = { location.state.url }
           linkname = { location.state.name }
         />
-        </nav>
 
-        <section id="lowerpage-top">
+        <div className={styles.top}>
           <LowerPageTop
             titleja = 'お見積もり依頼'
             titleen = 'Contact'
@@ -259,7 +270,7 @@ const ContactDone = () => {
             icon = ''
             content = {contents}
           />
-          <motion.nav id="related-content-link"
+          <motion.nav className={styles.linkRelatedContent}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
             exit={{ opacity: 0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
@@ -275,22 +286,22 @@ const ContactDone = () => {
               })}
             </ul>
           </motion.nav>
-        </section>
+        </div>
 
-        <motion.section id="done01"
+        <motion.section className={styles.done01}
           variants={ mainVariants }
           initial='initial'
           animate='animate'
           exit='exit'
         >
-          <p className='error-message'>申し訳ございません。<br className='only-sp' />エラーが発生しました。<br />もう一度フォームからご入力ください。</p>
+          <p className={styles.errorMessage}>申し訳ございません。<br className='only-sp' />エラーが発生しました。<br />もう一度フォームからご入力ください。</p>
           <Button
             url = { location.state.url }
             name = '入力フォームに戻る'
           />
         </motion.section>
 
-        <motion.section id="done02"
+        <motion.section className={styles.done02}
           variants={ mainVariants }
           initial='initial'
           animate='animate'
@@ -298,14 +309,15 @@ const ContactDone = () => {
         >
           <h3>提供するサービス</h3>
           <ul>
-          {services.map((service, index) => {
+            {services.map((service, index) => {
               return(
-                <li key={ index }>
+                <li key={ index } className={styles[service.class]}>
                   <Link to={{ pathname: service.url, state: 'active' }}>
                     <div>
                       <img src={ service.img } alt={ service.alt } />
                     </div>
                     <h4>{ service.name }</h4>
+                    <small>詳しくみる</small>
                   </Link>
                 </li>
               )
@@ -317,7 +329,7 @@ const ContactDone = () => {
           />
         </motion.section>
 
-        <motion.section className="blog" id='blog'
+        {/* <motion.section className="blog" id='blog'
           variants={ mainVariants }
           initial='initial'
           animate='animate'
@@ -344,7 +356,7 @@ const ContactDone = () => {
           <a href='https://channelworks.biz/blog/' data-aos='fade'>
             <span>ブログをみる</span>
           </a>
-      </motion.section>
+      </motion.section> */}
       <ScrollToTop />
     </>
     }

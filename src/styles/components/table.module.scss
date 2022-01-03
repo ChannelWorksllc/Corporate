@@ -1,0 +1,105 @@
+@import '../variables';
+
+@include media(sp) {
+  .pageIndex {
+    width: 50px;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    z-index: 900;
+
+    > nav {
+      width: calc(100% - 51px);
+      position: fixed;
+      top: 90px;
+
+      left: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+
+      span {
+        padding: 20px 8px;
+        background-color: $black;
+        box-shadow: 0 4px 16px $border-black;
+        color: $white;
+        font-weight: bold;
+        font-size: .6em;
+        text-align: center;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: -50px;
+
+        &::before {
+          content: '';
+          width: 9px;
+          height: 9px;
+          margin: 0 3px 0 0;
+          display: inline-block;
+          background-image: url(../../img/arrow-rw.svg);
+          background-size: contain;
+          background-repeat: no-repeat;
+          transform: rotate(180deg);
+          transition: .3s;
+        }
+      }
+
+      ul {
+        padding: 20px 0;
+        background-color: $black;
+        box-shadow: unset;
+
+        li {
+          padding: 0 0 0 80px;
+          color: $white;
+          font-weight: bold;
+          position: relative;
+          font-size: .9em;
+  
+          & + li {
+            margin: 15px 0 0 0;
+          }
+          &:nth-of-type(1) {
+            padding: 10px 0 10px 80px;
+          }
+          &::after {
+            content: '';
+            height: 1px;
+            width: 20px;
+            background-color: $white;
+            position: absolute;
+            left: 40px;
+            top: 50%;
+          }
+
+          a {
+            width: 100%;
+            padding: 10px 0;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    &.show {
+      nav {
+        opacity: 1;
+        visibility: visible;
+
+        &.open {
+          left: 51px;
+
+          span::before {
+            transform: rotate(0);
+          } 
+          
+          ul {
+            box-shadow: 0 4px 16px $border-black;
+          }
+        }
+      }
+    }
+  }
+}

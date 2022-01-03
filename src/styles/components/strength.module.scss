@@ -213,3 +213,147 @@
     line-height: 1.5;
   }
 }
+
+@include media(tab) {
+  .lowerpageToptext {
+    font-size: 16px;
+  }
+
+  .strength01 {
+    article {
+      > div:nth-of-type(1) {
+        padding: 80px 30px;
+
+        h4 {
+          font-size: 20px;
+
+          br {
+            display: none;
+          }
+        }
+      }
+
+      &:nth-of-type(2n) {
+        > div:nth-of-type(1) {
+          padding: 80px 30px;
+
+          h4 {
+            font-size: 20px;
+
+            br {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    & + article {
+      margin: 200px 0 0 0;
+    }
+  }
+}
+
+@include media(sp) {
+  .lowerpageToptext {
+    padding: 40px 20px 0;
+    text-align: left;
+
+      .pc {
+        display: none;
+      }
+  }
+
+  .strength01 {
+    padding: 80px 0 0 0;
+
+    h3 {
+      margin: 0 0 30px 0;
+      font-size: 24px;
+    }
+
+    article {
+      flex-direction: column-reverse;
+
+      > div:nth-of-type(1) {
+        width: 100%;
+        padding: 40px 20px;
+
+        a {
+          margin: 40px auto 0;
+        }
+      }
+
+      > div:nth-of-type(2) {
+        width: 100%;
+        height: 140px;
+      }
+
+      &:nth-of-type(2n) {
+        flex-direction: column-reverse;
+
+        > div:nth-of-type(1) {
+          width: 100%;
+          padding: 40px 20px;
+  
+          a {
+            margin: 40px auto 0;
+          }
+        }
+  
+        > div:nth-of-type(2) {
+          width: 100%;
+          height: 140px;
+        }
+      }
+    }
+  }
+
+  .strength02 {
+    padding: 80px 20px 60px;
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    p:nth-of-type(1) {
+      font-size: .9em;
+      margin: 0 auto 20px;
+    }
+
+    dl {
+      > div {
+        padding: 20px 0;
+
+        dt {
+          margin: 0 auto 20px;
+          padding: 0 10px;
+          font-size: 16px;
+
+          span {
+            padding: 5px 10px;
+            margin: 0 10px 0 0;
+          }
+        }
+
+        dd {
+          padding: 0 10px;
+          font-size: .9em;
+        }
+
+        & + div {
+          &::after {
+            width: 20px;
+            height: 20px;
+            top: -8px;
+          }
+        }
+      }
+    }
+
+    p:nth-of-type(2) {
+      margin: 20px auto 0;
+      font-size: .9em;
+    }
+  }
+}

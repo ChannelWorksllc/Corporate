@@ -1,5 +1,4 @@
 // 強みと特徴ページ
-
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Aos from 'aos';

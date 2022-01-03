@@ -177,7 +177,7 @@ const Service = () => {
         alt= 'サービス内容'
         icon = ''
         content = { contents }
-      />
+      /> 
 
       <motion.p className={styles.lowerpage}
         variants={ mainVariants }
@@ -195,30 +195,6 @@ const Service = () => {
         exit='exit'
       >
         <h3>提供するサービス一覧</h3>
-        {/* <ul data-aos='fade-up'>
-          {serviceLists.map((service, index) => {
-            return(
-              <li key={index}>
-                <div>
-                  <img src={service.img} alt={service.alt} />
-                </div>
-                <h4>{service.title}</h4>
-                <ul>
-                  {service.menu.map((menu, index) => {
-                    return (
-                      <li key={index}>{menu}</li>
-                      )
-                    })}
-                </ul>
-                <p>{service.text}</p>
-                <Link to={{ pathname: service.url, state: 'active' }}>
-                  <span className='other-sp'>{service.linktitle}</span>
-                  <span className='only-sp'>詳細をみる</span>
-                  </Link>
-              </li>
-            )
-          })}
-        </ul> */}
         <ul>
           {services.map((service, index) => {
             return(
@@ -229,6 +205,7 @@ const Service = () => {
                   </div>
                   <h4>{ service.name }</h4>
                   <p className='only-pc'>{ service.text }</p>
+                  <small>詳しくみる</small>
                 </Link>
               </li>
             )

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { animateScroll as scroll, Link } from 'react-scroll';
+import styles from '../../styles/components/table.module.scss'
 
 const Table = (props) => {
   
@@ -14,15 +15,10 @@ const Table = (props) => {
     scroll.scrollToTop();
     setClick(!click);
   }
-  const openIndex = () => {
-    if(click) {
-      return 'open';
-    }
-  }
 
   return (
-    <div id='page-index' ref={ ref } className={ inView ? 'show' : '' }>
-      <nav className={openIndex()}>
+    <div ref={ ref } className={ inView ? styles.pageIndex : `${styles.pageIndex} ${styles.show}` }>
+      <nav className={ click ? styles.open : "" }>
         <span onClick={() => setClick(!click)}>目次</span>
         <ul>
           <li onClick={() => scrollTop()}>ページトップ</li>

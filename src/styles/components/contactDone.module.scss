@@ -1,35 +1,107 @@
 @import '../variables';
 
-.lowerpage {
-  width: 100%;
-  padding: 100px 0 0;
-  line-height: 1.75;
-  font-size: 1.2em;
-  text-align: center;
-  background-color: $white;
+.top {
   position: relative;
-  z-index: 10;
+  overflow: hidden;
+}
 
-  .sp {
-    display: none;
+.linkRelatedContent {
+  position: absolute;
+  bottom: 1px;
+  left: 15%;
+  z-index: 1;
+
+  ul {
+    display: flex;
+
+    li {
+      a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        padding: 20px 10px;
+        border: 1px $border-black solid;
+        border-bottom: unset;
+      }
+
+      &.lists {
+        background-color: $white;
+        color: $black;
+        transition: .3s;
+
+        &:hover {
+          background-color: $black;
+          color: $white;
+        }
+
+        &.active {
+          background-color: $black;
+          color: $white;
+        }
+      }
+
+      & + li {
+        a {
+          border-left: unset;
+        }
+      }
+    }
+  }
+} 
+
+.done01 {
+  padding: 100px 0 60px 0;
+  text-align: center;
+
+  p {
+    font-size: 1.2em;
+    line-height: 2;
+
+    &::before {
+      content: '';
+      width: 30px;
+      height: 30px;
+      margin: 0 20px -8px 0;
+      background-image: url(../../img/done.svg);
+      background-size: 30px 30px;
+      background-repeat: no-repeat;
+      display: inline-block;
+    }
+
+    &.errorMessage {
+      margin: 0 0 60px 0;
+
+      &::before {
+        content: '';
+        width: 30px;
+        height: 30px;
+        margin: 0 20px -8px 0;
+        background-image: url(../../img/attention.svg);
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+    }
+  }
+  a {
+    margin: 50px auto 0;
   }
 }
 
-.services01 {
-  padding: 140px 6% 0;
+.done02 {
+  padding: 100px 20px 100px;
   text-align: center;
 
   h3 {
-    text-align: center;
-    font-size: 2.2em;
+    font-size: 26px;
     font-family: 'Noto Sans JP medium';
     font-weight: bold;
-    letter-spacing: .05em;
+    text-align: center;
   }
 
   ul {
     width: 100%;
-    margin: 40px auto 50px;
+    margin: 20px auto 50px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -114,6 +186,10 @@
           line-height: 1.6;
         }
 
+        small {
+          display: none;
+        }
+
         &:hover {
           div {
             img {
@@ -150,91 +226,37 @@
   }
 }
 
-.services02 {
-  margin: 140px 0 0 0;
-  padding: 140px 30px 140px;
-  background-color: $gray;
-
-  h3 {
-    text-align: center;
-    font-size: 2.2em;
-    font-family: 'Noto Sans JP medium';
-    font-weight: bold;
-    letter-spacing: .05em;
-  }
-
-  p {
-    max-width: 700px;
-    width: 100%;
-    margin: 40px auto 0;
-    line-height: 1.5;
-  }
-
-  dl {
-    max-width: 960px;
-    width: 100%;
-    margin: 60px auto 0;
-    position: relative;
-
-    div {
-      padding: 40px 120px;
-      border-top: 1px $border-black solid;
-
-      dt {
-        font-size: 1.1em;
-        font-weight: bold;
-
-        span {
-          margin: 0 20px 0 0;
-          display: inline-block;
-          color: $red;
-        }
-      }
-
-      dd {
-        margin: 20px 0 0 34px;
-        line-height: 1.5;
-
-        span {
-          margin: 0 0 0 5px;
-          display: inline-block;
-          font-size: .7em;
-        }
-      }
-
-      &:nth-of-type(5) {
-        border-bottom: 1px $border-black solid;
-      }
-    }
-    &::before {
-      content: '';
-      width: 40px;
-      height: 100%;
-      background-image: url(../../img/arrow-big.svg);
-      background-size: 40px 100%;
-      background-repeat: no-repeat;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-  }
-} 
-
 @include media(tab) {
-  .lowerpage {
-    font-size: 16px;
-  }
-
-  .services01 {
-    padding: 100px 30px 0;
-
-    h3 {
-      font-size: 32px;
-    }
+  .linkRelatedContent {
+    position: unset;
+    width: 100%;
 
     ul {
+      width: 100%;
+      flex-wrap: wrap;
+
+      li {
+        width: calc(100% / 2);
+        text-align: center;
+
+        a {
+          padding: 10px 8px;
+          font-size: 14px;
+          border: unset;
+          border-bottom: 1px $border-black solid;
+          
+          &:nth-of-type(2n - 1) {
+            border-right: 1px $border-black solid;
+          }
+        }
+      }
+    }
+  }
+
+  .done02 {
+    ul {
       justify-content: space-between;
-      margin: 20px auto 0;
+      margin: 20px auto 60px;
 
       li {
         width: calc((100% - 60px) / 3);
@@ -259,39 +281,49 @@
       }
     }
   }
-
-  .services02 {
-    margin: 100px 0 0 0;
-    padding: 100px 30px 100px;
-
-    h3 {
-      font-size: 32px;
-    }
-
-    dl {
-      div {
-        padding: 40px 40px 40px 60px;
-      }
-    }
-  }
 }
 
 @include media(sp) {
-  .lowerpage {
-    padding: 40px 20px 0;
-    text-align: left;
+  .done01 {
+    padding: 100px 0 0;
 
-      br {
-        display: none;
+    p {
+      font-size: .9em;
+      position: relative;
+
+      &::before {
+        width: 50px;
+        height: 50px;
+        background-size: 50px 50px;
+        position: absolute;
+        top: -70px;
+        left: 50%;
+        transform: translateX(-50%);
       }
+      &.error-message {
+        margin: 0 0  30px 0;
+
+        &::before {
+          width: 50px;
+          height: 50px;
+          background-size: 50px 50px;
+          position: absolute;
+          top: -70px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+    a {
+      font-size: .9em;
+    }
   }
 
-  .services01 {
-    padding: 80px 0 0 0;
+  .done02 {
+    padding: 80px 20px 40px;
 
     h3 {
-      margin: 0 0 30px 0;
-      font-size: 1.5em;
+      font-size: 24px;
     }
 
     ul {
@@ -346,39 +378,6 @@
               content: '';
             }
           }
-        }
-      }
-    }
-  }
-
-  .services02 {
-    margin: 60px 0 0 0;
-    padding: 80px 20px 60px;
-
-    h3 {
-      margin: 0 0 30px 0;
-      font-size: 24px;
-    }
-
-    p {
-      font-size: 16px;
-    }
-
-    dl {
-      margin: 30px auto 0;
-
-      div {
-        padding: 40px 10px 40px 50px;
-        dt {
-          font-size: .9em;
-          span {
-            margin: 0 10px 0 0;
-          }
-        }
-
-        dd {
-          margin: 10px 0 0 22px;
-          font-size: .9em;
         }
       }
     }

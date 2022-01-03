@@ -2,7 +2,7 @@
 
 .topicPath {
   width: 100%;
-  padding: 10px 60px;
+  padding: 10px 6%;
   border-bottom: 1px $border-black solid;
 
   ul {
@@ -12,6 +12,10 @@
 
     li {
       margin: 0 10px 0 0;
+
+      a {
+        font-size: 14px;
+      }
     }
 
     span {
@@ -22,6 +26,23 @@
       img {
         width: 100%;
       }
+    }
+  }
+}
+
+@include media(tab) {
+  .topicPath {
+    padding: 10px 30px;
+  }
+}
+
+@include media(sp) {
+  .topic-path {
+    padding: 10px 20px;
+    font-size: .7em;
+
+    span {
+      width: 10px;
     }
   }
 }

@@ -15,9 +15,6 @@ const Footer = () => {
             <Link to="/service">サービス</Link>
           </li>
           <li>
-            <Link to="/works">実績</Link>
-          </li>
-          <li>
             <Link to="/company">会社情報</Link>
           </li>
         </ul>
@@ -28,7 +25,7 @@ const Footer = () => {
         </div>
         <ul>
           <li>
-            <a href='https://channelworks.biz/blog/'>ブログ</a>
+            <Link to="/works">実績</Link>
           </li>
           <li>
             <Link to="/contact_estimate">お見積り依頼</Link>

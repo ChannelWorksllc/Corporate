@@ -71,7 +71,7 @@
     #nav {
       display: none;
     }
-  }
+  } 
 
   /******************************** フッター ********************************/
   footer {
@@ -119,6 +119,7 @@
       div:nth-of-type(1) {
         margin: 0 0 0 30px;
       }
+
       div:nth-of-type(2) {
         ul {
           right: 30px;
@@ -148,7 +149,6 @@
               padding: 15px 5px;
           }
         }
-
       }
     }
 
@@ -185,7 +185,7 @@
             }
             }
         }
-      }
+      } 
     }
 
     /******************************** 強みと特徴ページ ********************************/
@@ -212,6 +212,7 @@
 
       }
     }
+
     #strength02 {
       dl {
         > div {
@@ -237,6 +238,7 @@
           p {
             margin: 10px 90px 0;
           }
+
           a {
             margin: 20px 0 0 0;
           }
@@ -771,6 +773,7 @@
         }
 
       }
+      
       #related-content-link {
         position: unset;
         width: 100%;
@@ -795,6 +798,7 @@
           }
         }
       }
+
       #category {
         position: unset;
         width: 100%;
@@ -887,13 +891,16 @@
       h3 {
         font-size: 3em;
       }
+
       > p {
         font-size: .9em;
         line-height: 1.5;
       }
+
       > article {
         display: none;
       }
+
       > div {
         margin: 40px auto 30px;
         flex-direction: column;
@@ -918,10 +925,12 @@
           }
         }
       }
+      
       a {
         font-size: .9em;
       }
     }
+
     .lowerpage-toptext {
       padding: 50px 20px 0;
       font-size: .9em;
@@ -1279,6 +1288,7 @@
           }
         }
       }
+
       button {
         max-width: 320px;
         width: 100%;

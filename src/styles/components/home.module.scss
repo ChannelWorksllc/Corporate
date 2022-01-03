@@ -229,6 +229,10 @@
           line-height: 1.6;
         }
 
+        small {
+          display: none;
+        }
+
         &:hover {
           div {
             img {
@@ -295,14 +299,14 @@
   }
   
   > article {
-    max-width: 1100px;
+    max-width: 1040px;
     width: 100%;
     margin: 70px auto;
     position: relative;
     
     .works02 {
       max-width: 960px;
-      width: 100%;
+      width: 80%;
       margin: 0 auto;
       overflow: hidden;
 
@@ -313,6 +317,7 @@
         transition: .2s;
       }
     }
+    
     .works01 {
       width: 350px;
       height: 210px;
@@ -340,7 +345,6 @@
             font-weight: bold;
 
             & + li {
-
               &::before {
                 content: '・';
                 font-size: .75em;
@@ -372,6 +376,7 @@
           left: 0;
         }
       }
+
       @keyframes redline {
         from {
           width: 0;
@@ -380,6 +385,7 @@
           width: 100%;
         }
       }
+
       &:hover {
         a::before {
           animation: redline .4s ease-in-out both;
@@ -392,34 +398,18 @@
         }
       }
 
-      .slick-dots {
-        padding: 0 20px 0 0;
-        bottom: -35px;
-        text-align: right;
-      }
-
-      .slick-dots li {
-        margin: 0 auto 0 0;
-        text-align: unset;
-      }
-
-      .slick-dots li button::before
-      {
-        opacity: 1;
-        color: rgba(194, 39, 44, 0.40); /* hover時の色を変更 */
-      }
-
-      .slick-dots li button:hover:before,
-      .slick-dots li button:focus:before
-      {
-        opacity: 1;
-        color: $red; /* hover時の色を変更 */
-      }
-
-      .slick-dots li.slick-active button:before
-      {
-        opacity: 1;
-        color: $red; /* active時の色を変更 */
+      > div {
+        ul {
+          padding: 0 20px 0 0;
+          bottom: -35px;
+          text-align: right;
+        }
+        
+        li {
+          margin: 0 auto 0 0;
+          text-align: unset;
+        }
+        
       }
     }
   }
@@ -432,8 +422,8 @@
     justify-content: space-between;
 
     article {
-      width: calc(100% / 3);
-      height: 300px;
+      width: calc((100% - 60px) / 3);
+      margin: 0 10px;
 
       a {
         display: inline-block;
@@ -441,19 +431,50 @@
         height: 100%;
         margin: 0 auto;
         text-align: left;
-        border-bottom: 1px $border-gray solid;
 
         > div {
           position: relative;
 
           div {
+            position: relative;
+            width: 100%;
+            height: 61.8%;
             overflow: hidden;
+  
+            &::before {
+              position: absolute;
+              top: 0;
+              left: 0;
+              display: block;
+              width: 100%;
+              height: 100%;
+              content: '';
+            }
+
+            &::after {
+              position: absolute;
+              top: 0;
+              left: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+              color: $white;
+              font-size: 14px;
+              font-family: 'Noto Sans JP medium';
+              content: '詳しく見る ＞';
+              opacity: 0;
+              visibility: hidden;
+              transition: .3s;
+            }
 
             img {
               width: 100%;
-              
+              height: 100%;
               transform: scale(1);
-              transition: .2s;
+              transition: .3s;
             }
           }
 
@@ -471,42 +492,237 @@
         }
 
         h4 {
-          padding: 30px 10px;
+          margin: 25px 0 0;
+          font-size: 15px;
+          font-family: 'Noto Sans JP medium';
           font-weight: bold;
+          line-height: 1.35;
+          letter-spacing: 0;
         }
 
         ul {
-          padding: 0 10px 0;
+          margin: 10px 0 0 0;
           display: flex;
-
+          flex-wrap: wrap;
+  
           li {
-            font-size: .75em;
-            color: $black-light;
-
+            padding: 5px 10px;
+            border: 1px $border-black solid;
+            font-size: .6em;
+            font-weight: bold;
+  
             & + li {
-
-              &::before {
-                content: '・';
-                font-size: .75em;
-                color: $black-light;
-                margin: 0 3px;
-              }
+              margin: 0 0 0 10px;
             }
           }
         }
 
         &:hover {
           > div {
+
+            div::after {
+              opacity: 1;
+              visibility: visible;
+            }
+
             img {
-              transform: scale(1.05);
-              transition: .4s;
+              transform: scale(1.1);
             }
           }
         }
       }
     }
   }
-  > a {
-    @include main-button();
+}
+
+@include media(tab) {
+  .top {
+    h2 {
+      text-align: left;
+      left: 10%;
+    }
+  }
+
+  .service {
+    padding: 100px 30px 70px;
+
+    ul {
+      justify-content: space-between;
+      margin: 20px auto 60px;
+
+      li {
+        width: calc((100% - 60px) / 3);
+        margin: 40px 0 0;
+
+        &:nth-of-type(1),
+        &:nth-of-type(4) {
+          margin: 40px 0 0;
+        }
+  
+        &:nth-of-type(5),
+        &:nth-of-type(7) {
+          margin: 40px 0 0;
+        }
+
+        a {
+          h4 {
+            line-height: 1.1;
+            white-space: pre-line;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media (sp) {
+  .top {
+    h2 {
+      font-size: 1.3em;
+      left: 30px;
+
+      .spOnly {
+        display: block;
+      }
+    }
+  }
+
+  .strength {
+    h3 {
+      font-size: 1.3em;
+    }
+
+    p {
+      font-size: .9em;
+      line-height: 1.5;
+
+      .spOnly {
+        display: block;
+      }
+    }
+
+    a {
+      font-size: .9em;
+    }
+  }
+
+  .service {
+    padding: 60px 30px;
+
+    h3 {
+      font-size: 3em;
+    }
+
+    p {
+      font-size: .9em;
+      line-height: 1.5;
+
+      .spOnly {
+        display: block;
+      }
+    }
+
+    ul {
+      margin: 0 auto 60px;
+
+      li {
+        width: 100%;
+        max-width: 350px;
+        margin: 40px 0 0;
+
+        &:nth-of-type(1),
+        &:nth-of-type(5) {
+          margin: 40px 0 0;
+        }
+  
+        &:nth-of-type(4),
+        &:nth-of-type(7) {
+          margin: 40px 0 0;
+        }
+
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          h4 {
+            width: 100%;
+            margin: 10px 0 0;
+            font-size: 16px;
+          }
+
+          p {
+            font-size: 14px;
+          }
+
+          small {
+            position: relative;
+            display: inline-block;
+            margin: 10px auto 0 0;
+            font-size: 14px;
+
+            &::after {
+              position: absolute;
+              top: 50%;
+              right: -15px;
+              transform: translate(0, -50%);
+              width: 6px;
+              height: 10px;
+              background: no-repeat url(../../img/arrow-rb.svg);
+              background-size: 100%;
+              content: '';
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .works {
+    padding: 60px 30px 80px;
+
+    h3 {
+      font-size: 3em;
+    }
+
+    > p {
+      font-size: .9em;
+      line-height: 1.5;
+
+      br {
+        display: block;
+      }
+    }
+
+    > article {
+      display: none;
+    }
+
+    > div {
+      max-width: 350px;
+      margin: 40px auto 60px;
+      flex-direction: column;
+
+      article {
+        width: 100%;
+        height: auto;
+
+        & + article {
+          margin: 30px 0 0 0;
+        }
+
+        a {
+          width: 100%;
+
+          ul {
+            padding: 0;
+          }
+        }
+      }
+    }
+    
+    a {
+      font-size: .9em;
+    }
   }
 }

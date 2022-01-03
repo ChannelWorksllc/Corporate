@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { animateScroll as scroll } from 'react-scroll';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json'
-import { LowerPageTop, TopicPath, ScrollToTop, Table, /* Blog */} from './atoms';
+import { LowerPageTop, TopicPath, ScrollToTop, Table, Contact, /* Blog */} from './atoms';
 import styles from '../styles/components/works.module.scss'
 
 const Works = () => {
@@ -226,6 +226,15 @@ const Works = () => {
           <span>ブログをみる</span>
         </a>
       </motion.section> */}
+
+      <motion.section className="contact"
+        variants={ mainVariants }
+        initial='initial'
+        animate='animate'
+        exit='exit'
+      >
+        <Contact />
+      </motion.section>
 
       <MediaQuery query='(min-width: 768px)'>
         <ScrollToTop />
