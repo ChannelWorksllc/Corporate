@@ -4,10 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion';
-import TopicPath from './atoms/TopicPath';
-import LowerPageTop from './atoms/LowerPageTop';
-import LinkRelatedContent from './atoms/LinkRelatedContent';
-import ScrollToTop from './atoms/scrollToTop';
+import { TopicPath, LowerPageTop, LinkRelatedContent, ScrollToTop } from './atoms';
+import styles from '../styles/components/contact.module.scss';
 
 const Estimate = () => {
 
@@ -118,14 +116,12 @@ const Estimate = () => {
 
   return(
     <>
-      <nav id="topic-path">
-        <TopicPath
-          url = '/contact_estimate'
-          linkname = 'Contact about Estimate'
-        />
-      </nav>
+      <TopicPath
+        url = '/contact_estimate'
+        linkname = 'Contact about Estimate'
+      />
 
-      <section id="lowerpage-top">
+      <div className={styles.top}>
         <LowerPageTop
           titleja = 'お見積もり依頼'
           titleen = 'Contact'
@@ -134,7 +130,7 @@ const Estimate = () => {
           icon = ''
           content = {contents}
         />
-        <motion.nav id="related-content-link"
+        <motion.nav className={styles.linkRelatedContent}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
           exit={{ opacity: 0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
@@ -150,9 +146,9 @@ const Estimate = () => {
             })}
           </ul>
         </motion.nav>
-      </section>
+      </div>
 
-      <motion.section id="contact"
+      <motion.section className={styles.form}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -161,10 +157,11 @@ const Estimate = () => {
         <h3>お見積もり依頼</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <dl>
-            <div id="contact01">
+            <div className={styles.form01}>
               <dt>
                 ご希望のサービス内容
                 <span>必須</span>
+                {errors.service && <small>{errors.service.message}</small>}
               </dt>
               <div>
                 {serviceLists.map((service, index) => {
@@ -182,13 +179,14 @@ const Estimate = () => {
                     </dd>
                   )
                 })}
-                {errors.service && <small>{errors.service.message}</small>}
               </div>
             </div>
-            <div id="contact02">
+            <div className={styles.form02}>
               <dt>
                 ご依頼に際しての主なご要望
                 <span>必須</span>
+                {errors.request && <small>{errors.request.message}</small>}
+                {errors.requestContain && <small>{errors.requestContain.message}</small>}
               </dt>
               <div>
                 {requestLists.map((request, index) => {
@@ -211,8 +209,6 @@ const Estimate = () => {
                   {required: '入力してください。', maxLength: {value: 1000, message: '1,000文字以内で入力してください。'}}
                   )}/>}
                 </dd>
-                {errors.request && <small>{errors.request.message}</small>}
-                {errors.requestContain && <small>{errors.requestContain.message}</small>}
               </div>
             </div>
             <div>
@@ -220,7 +216,7 @@ const Estimate = () => {
                 ご予算感
                 <span>必須</span>
               </dt>
-              <dd className="contact-wid">
+              <dd className={styles.contactWid}>
                 <select {...register('budget', {required: '選択してください。'})}>
                   <option value=''>選択してください</option>
                   {budgetLists.map((budget, index) => {
@@ -237,7 +233,7 @@ const Estimate = () => {
                 氏名
                 <span>必須</span>
               </dt>
-              <dd className="contact-wid half">
+              <dd className={`${styles.contactWid} ${styles.half}`}>
                 <input 
                   type="text" 
                   placeholder="例：田中太朗" 
@@ -253,7 +249,7 @@ const Estimate = () => {
                 メールアドレス
                 <span>必須</span>
               </dt>
-              <dd className="contact-wid">
+              <dd className={styles.contactWid}>
                 <input 
                   type="text" 
                   placeholder="例：email@channelworks.biz" 
@@ -264,7 +260,7 @@ const Estimate = () => {
                 {errors.email && <small>{errors.email.message}</small>}
               </dd>
             </div>
-            <div id="contact03">
+            <div className={styles.form03}>
               <dt>
                 住所
                 <span>必須</span>
@@ -292,7 +288,7 @@ const Estimate = () => {
                 電話番号
                 <span>必須</span>
               </dt>
-              <dd className="contact-wid half">
+              <dd className={`${styles.contactWid} ${styles.half}`}>
                 <input 
                   type="number" 
                   placeholder="例：0123456789" 
@@ -307,7 +303,7 @@ const Estimate = () => {
               <dt>
                 会社・組織名
               </dt>
-              <dd className="contact-wid">
+              <dd className={styles.contactWid}>
                 <input 
                   type="text"   
                   placeholder="例：合同会社チャネルワークス" 
@@ -320,13 +316,13 @@ const Estimate = () => {
               <dt>
                 お問い合わせ内容
               </dt>
-              <dd className="contact-wid">
+              <dd className={styles.contactWid}>
                 <textarea {...register('contain', {maxLength: {value: 1000, message: '1,000文字以内で入力してください。'}})} />
                 {errors.contain && <samll>{errors.contain.message}</samll>}
               </dd>
             </div>
           </dl>
-          <input id='submit' type='submit' value='送信する' />
+          <input id='submit' type='submit' value='送信する' className={styles.submit} />
           {phpError && <small>入力内容をご確認ください。</small>}
         </form>
       </motion.section>

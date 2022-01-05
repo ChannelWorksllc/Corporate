@@ -9,13 +9,6 @@ $border-black: rgba(36, 36, 36, 0.20);
 $border-gray: rgba(36, 36, 36, 0.05);
 $shadow-black: 0 4px 16px rgba(36, 36, 36, 0.08);
 
-body {
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: .1em;
-  color: $black;
-}
 
 // ヘッダーでのホバー時や、該当ページにいるとき
 @mixin header-nav-active($color, $opacity, $visibility) {
@@ -90,7 +83,7 @@ body {
   max-width: 300px;
   width: 100%;
 
-  span{
+  span {
     width: 100%;
     padding: 20px 0 20px 40px;
     color: $black;

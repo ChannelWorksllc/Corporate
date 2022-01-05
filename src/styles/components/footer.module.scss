@@ -1,0 +1,94 @@
+@import '../variables';
+
+
+.footer {
+  padding: 80px 0 20px;
+  
+  nav {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+      width: calc((100% - 180px) / 2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      li {
+        a {
+          font-family: 'Noto Sans JP medium';
+          transition: .3s;
+
+          &:hover {
+            color: $black-light;
+          }
+        }
+      }
+    }
+    > div {
+      width: 80px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  > div {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    border-top: 1px $border-black solid;
+    text-align: center;
+
+    small {
+      letter-spacing: .05em;
+      color: $black-light;
+    }
+  }
+}
+
+@include media(tab) {
+  .footer {
+    padding: 80px 30px 20px;
+
+    nav {
+      ul {
+        width: calc((100% - 130px) / 2);
+        
+        li {
+          a {
+            font-size: .9em;
+          }
+        }
+      }
+      > div {
+        width: 70px;
+      }
+    }
+
+    > div {
+      font-size: .5em;
+    }
+  }
+}
+
+@include media(sp) {
+  .footer {
+    padding: 30px 30px 10px;
+
+    nav {
+      margin: 0 0 10px 0;
+
+      ul {
+        display: none;
+      }
+
+      > div {
+        margin: 0 auto;
+      }
+    }
+  }
+}

@@ -1,16 +1,11 @@
 // 強みと特徴ページ
-
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import MediaQuery from 'react-responsive';
-import Button from './atoms/Button';
-import Contact from './atoms/Contact';
-import LowerPageTop from './atoms/LowerPageTop';
-import TopicPath from './atoms/TopicPath';
-import ScrollToTop from './atoms/scrollToTop';
-import Index from './atoms/Index';
+import { Button, Contact, TopicPath, ScrollToTop, Table, LowerPageTop } from './atoms'
+import styles from '../styles/components/strength.module.scss'
 
 const Strength = () => {
 
@@ -36,52 +31,48 @@ const Strength = () => {
     },
     animate: {
       opacity: 1,
-      transition: { delay: .28, duration: 1, ease: 'easeInOut'  }
+      transition: { delay: .15, duration: 1, ease: 'easeInOut'  }
     },
     exit: {
       opacity: 0, 
-      transition: { duration: .2, ease: 'easeInOut'}
+      transition: { duration: .1, ease: 'easeInOut'}
     }
   }
 
   useEffect(() => {
-    Aos.init({ duration: 1000, easing: 'ease-in-out' });
+    Aos.init({ duration: 500, easing: 'ease-in-out' });
     document.title='強みと特徴 | Channel Works'
   }, []);
 
   return(
     <>
 
-      <nav id="topic-path">
-        <TopicPath
-          url = '/strength'
-          linkname = 'Strength'
-        />
-      </nav>
+      <TopicPath
+        url = '/strength'
+        linkname = 'Strength'
+      />
 
-      <section id="lowerpage-top">
-        <LowerPageTop
-          titleja = '強みと特徴'
-          titleen = 'Strength'
-          text = '実践的なマーケティングノウハウを基軸とした、効果創出を得意とします。'
-          img = './Assets/img/strength/strength01.jpg'
-          alt = '強みと特徴'
-          icon = ''
-          content = { contents }
-        />
-      </section>
+      <LowerPageTop
+        titleja = '強みと特徴'
+        titleen = 'Strength'
+        text = '実践的なマーケティングノウハウを基軸とした、効果創出を得意とします。'
+        img = './Assets/img/strength/strength01.jpg'
+        alt = '強みと特徴'
+        icon = ''
+        content = { contents }
+      />
 
-      <motion.p className="lowerpage-toptext"
+      <motion.p className={styles.lowerpageToptext}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        チャネルワークスは、実践的なマーケティングノウハウを基軸に、<br className='other-sp'/>集客・ 購買・認知UPなどの具体的な効果創出に特化した<br className='other-sp'/>企画・設計・制作・開発のご提供を得意とします。<br/><br className='only-sp'/>
-        また、品質と完了確実性を高めるため、独自の案件進行方法で<br className='other-sp'/>ご提案しております。
+        チャネルワークスは、実践的なマーケティングノウハウを基軸に、<br className={styles.pc}/>集客・ 購買・登録・認知UPなどの具体的な効果（CV）創出に特化した<br className={styles.pc}/>Web/アプリの企画・設計・制作・開発のご提供を得意としています。<br/><br className={styles.sp} />
+        また、あらゆるお客様・案件での品質向上・安定化と案件完了確実性を<br className={styles.pc}/>高めるため、独自の案件進行方法でのご提案をさせていただきます。
       </motion.p>
 
-      <motion.section id="strength01"
+      <motion.section className={styles.strength01} id='strength01'
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -90,126 +81,115 @@ const Strength = () => {
         <h3>得意とする業務</h3>
         <article data-aos='fade-up'>
           <div>
-              <h4>短期間で高度に実現する。<br/>マーケティング戦略</h4>
-              <img src={articleImgs[0]} alt="マーケティング戦略" />
-            <div>
-              <p>
-                <span>
-                  実戦(実際のサイトやサービスの運営)を基とする、実践的なマーケティング実績が豊富です。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。
-                </span>
-              </p>
-            </div>
+            <span>1. Marketing</span>
+            <h4>短期間で確実・高度に実現する、貴社に最適化した<br/>マーケティング戦略立案・実践支援</h4>
+            <p>
+              実戦(実際のサイトやサービスの運営)経験からのノウハウを基軸とした、実践的なマーケティング実績を多数保有します。
+              コンテンツマーケティングを中心としたSEO施策や、UI/UX向上を基とした最適な導線設計から、継続的な効果創出をご支援。
+              この他にも、検索エンジン連動広告、バナー広告ネットワーク、SNS運用などあらゆるプロモーション手段をサポートします。
+            </p>
+            <Button
+              url = '/service/marketing'
+              name = 'サービス内容をみる'
+            />
           </div>
-          <Button
-            url = '/service/marketing'
-            name = 'サービス内容をみる'
-          />
+          <div>
+            <img src={articleImgs[0]} alt="マーケティング戦略" />
+          </div>
         </article>
+
         <article data-aos='fade-up'>
           <div>
+            <span>2. UI/UX</span>
             <h4>
-              <span>ターゲットユーザーを導く。<br/>UI/UX設計</span>
+              ターゲットユーザーを正確に目的へと導く、<br/>先端ニーズにマッチしたUI/UX設計
             </h4>
+            <p>
+              表現手法の進化・発展に伴うさまざまな形態や形状に最適化したユーザーインターフェイスは効果創出の最短経路。
+              技術だけでも、デザインだけでも到達し得ない、高度なユーザー定義とインターフェイス設計をご提供します。
+              数多くの事例・実例に裏打ちされたチャネルワークスのUI/UX設計が、貴社サービスを成功に導きます。
+            </p>
+            <Button
+              url = '/service/ui_ux'
+              name = 'サービス内容をみる'
+            />
+          </div>
+          <div>
             <img src={articleImgs[1]} alt="UI/UX設計" />
-            <div>
-              <p>
-                <span>
-                  実戦(実際のサイトやサービスの運営)を基とする、実践的なマーケティング実績が豊富です。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。
-                </span>
-              </p>
-            </div>
           </div>
-          <Button
-            url = '/service/ui_ux'
-            name = 'サービス内容をみる'
-          />
         </article>
+
         <article data-aos='fade-up'>
           <div>
-            <h4>高い集客力を得ることが可能な、<br/>Webデザイン</h4>
+            <span>3. Design</span>
+            <h4>企業・サービス・製品のブランド価値を<br />最大限に表現する、デザイン技術</h4>
+            <p>
+              好き・嫌いだけではない、多くのユーザーが「これだ」と感じる無理のないデザイン表現。
+              華美でもなく、質素すぎることもない、最適な装飾・イメージ作りはブランディングに不可欠の要素です。
+              チャネルワークスのデザイン技術は、「”顧客の顧客”にとって最適なアウトプット」を目指します。
+            </p>
+            <Button
+              url = '/service/web_production'
+              name = 'サービス内容をみる'
+            />
+          </div>
+          <div>
             <img src={articleImgs[2]} alt="Webデザイン" />
-            <div>
-              <p>
-                <span>
-                  実戦(実際のサイトやサービスの運営)を基とする、実践的なマーケティング実績が豊富です。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。
-                </span>
-              </p>
-            </div>
           </div>
-          <Button
-            url = '/service/web_production'
-            name = 'サービス内容をみる'
-          />
         </article>
+
         <article data-aos='fade-up'>
           <div>
+            <span>4. Form development</span>
             <h4>
-              <span>高い集客力を得ることが可能な、<br/>各種フォーム開発</span>
+              あらゆるサイトのゴールである”フォーム”。<br />その最適化をご支援します。
             </h4>
-            <img src={articleImgs[3]} alt="フォーム開発" />
-            <div>
-              <p>
-                <span>
-                  実戦(実際のサイトやサービスの運営)を基とする、実践的なマーケティング実績が豊富です。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。
-                </span>
-              </p>
-            </div>
+            <p>
+              EC/通販サイト、予約、登録、問い合わせ、それらすべてはフォームに集約されます。
+              フォームは時代ごとに進化し、チャットボット、AI応答など形状はますます進化を遂げていくでしょう。
+              チャネルワークスでは、それらの進化に合わせて、サービスに最適なフォーム構造をご提案します。
+            </p>
+            <Button
+              url = '/service/system'
+              name = 'サービス内容をみる'
+            />
           </div>
-          <Button
-            url = '/service/system'
-            name = 'サービス内容をみる'
-          />
+          <div>
+            <img src={articleImgs[3]} alt="フォーム開発" />
+          </div>
         </article>
+
         <article data-aos='fade-up'>
           <div>
-            <h4>高い集客力を得ることが可能な、<br/>PR動画制作・写真撮影</h4>
-            <img src={articleImgs[4]} alt="イメージ制作" />
-            <div>
-              <p>
-                <span>
-                  実戦(実際のサイトやサービスの運営)を基とする、実践的なマーケティング実績が豊富です。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。<br/>
-                  <br/>
-                  目的・ゴールが何なのかを明確にしたWebプロモーション広告。広告のプランニングは、ターゲットの明確化が重要となります。緻密な分析による、的確な広告戦略の設計をいたします。
-                </span>
-              </p>
-            </div>
+            <span>4. Video production</span>
+            <h4>なによりも雄弁に企業・製品・サービスの魅力を<br />訴求する、イメージ撮影＆PR動画制作</h4>
+            <p>
+              100万言のテキストよりも1枚の写真、1分の動画のほうが効果を発揮することがあります。
+              しかし、ありふれたイメージ・動画では、かえって冗長な情報発信になりかねません。
+              チャネルワークスでは、それが効果創出のための最適な表現となる箇所に適切なイメージ・動画を制作します。
+            </p>
+            <Button
+              url = '/service/image'
+              name = 'サービス内容をみる'
+            />
           </div>
-          <Button
-            url = '/service/image'
-            name = 'サービス内容をみる'
-          />
+          <div>
+            <img src={articleImgs[4]} alt="イメージ制作" />
+          </div>
         </article>
       </motion.section>
 
-      <motion.section id="strength02"
+      <motion.section className={styles.strength02} id='strength02'
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>効果的な進め方</h3>
-        <p data-aos='fade-up'>
+        <h3>効果的な進め方</h3>
+        <p>
           弊社では豊富な経験・実績から、進捗やタスクをわかりやすく、そして手戻りや検討不足、責任範囲の不明確化などによる諸問題を発生させないよう、以下のような方法をご提案しております。
         </p>
-        <dl data-aos='fade-up'>
+        <dl>
           <div>
             <dt>
               <span>STEP 01</span>
@@ -267,7 +247,7 @@ const Strength = () => {
         <ScrollToTop />
       </MediaQuery>
       <MediaQuery query='(max-width: 767px)'>
-        <Index 
+        <Table
           contents = {contents}
         />
       </MediaQuery>

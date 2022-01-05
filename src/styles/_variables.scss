@@ -1,0 +1,155 @@
+$red: #c2272c;
+$black: #242424;
+$black-light: rgba(36, 36, 36, 0.80);
+$white: #fff;
+$gray: #FBFBFB;
+$border-black: rgba(36, 36, 36, 0.20);
+$border-gray: rgba(36, 36, 36, 0.05);
+$shadow-black: 0 4px 16px rgba(36, 36, 36, 0.08);
+$breakpoints: (
+  'tab': 1024px,
+  'sp': 767px
+);
+
+@mixin media($size) {
+  @media screen and (max-width: #{map-get($breakpoints, $size)}) {
+    @content;
+  }
+}
+
+// ヘッダーでのホバー時や、該当ページにいるとき
+@mixin header-nav-active($color, $opacity, $visibility) {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: $color;
+  border-radius: 100%;
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: $opacity;
+  visibility: $visibility;
+  transition: .3s;
+}
+
+// サイト内リンクに使用している主なボタン
+@mixin main-button() {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+
+  span{
+    width: 100%;
+    padding: 20px 0 20px 40px;
+    color: $white;
+    font-weight: bold;
+    text-align: left;
+    border: 1px solid $border-black;
+    display: inline-block;
+    position: relative;
+    
+    background-color: $black;
+    transition: .3s;
+    
+    &::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      
+      background-image: url(../img/arrow-rw.svg);
+      transition: .3s;
+    }
+  }
+  &:hover {
+    span {
+
+      color: $black;
+      background-color: $white;
+      
+      &::after {
+        background-image: url(../img/arrow-rb.svg);
+      }
+    }
+  }
+}
+
+// ブログへのリンクに使用しているボタン
+@mixin blog-button() {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+
+  span {
+    width: 100%;
+    padding: 20px 0 20px 40px;
+    color: $black;
+    font-weight: bold;
+    text-align: left;
+    border: 1px solid $black;
+    display: inline-block;
+    position: relative;
+    
+    transition: .3s;
+    
+    &::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      
+      background-image: url(../img/icon/external-b.svg);
+      transition: .3s;
+    }
+  }
+  &:hover {
+    span {
+
+      color: $white;
+      background-color: $black;
+      
+      &::after {
+        background-image: url(../img/icon/external-w.svg);
+      }
+    }
+  }
+}
+
+// トップページの各セクションタイトルのアンダーライン 
+@mixin index-underline($color) {
+  content: "";
+  width: 135px;
+  height: 2px;
+  background-color: $color;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+// トップページの各セクションタイトル
+@mixin index-section-title($color) {
+  padding: 0 0 10px 0;
+  font-size: 60px;
+  font-weight: bold;
+  color: ($color);
+  position: relative;
+  letter-spacing: .1em;
+  font-family: 'PT Serif', serif;
+}

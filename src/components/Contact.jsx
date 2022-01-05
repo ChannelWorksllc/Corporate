@@ -1,12 +1,10 @@
 // 各種お問い合わせページ
-
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import TopicPath from './atoms/TopicPath';
-import LowerPageTop from './atoms/LowerPageTop';
-import LinkRelatedContent from './atoms/LinkRelatedContent';
+import { TopicPath, LowerPageTop, LinkRelatedContent } from './atoms';
+import styles from '../styles/components/contact.module.scss';
 
 const Contact = () => {
 
@@ -90,15 +88,12 @@ const Contact = () => {
 
   return(
     <>
-    
-      <nav id="topic-path">
-        <TopicPath
-          url = '/contact_us'
-          linkname = 'Contact us'
-        />
-      </nav>
+      <TopicPath
+        url = '/contact_us'
+        linkname = 'Contact us'
+      />
 
-      <section id="lowerpage-top">
+      <div className={styles.top}>
         <LowerPageTop
           titleja = '各種ご相談'
           titleen = 'Contact'
@@ -107,7 +102,7 @@ const Contact = () => {
           icon = ''
           content = {contents}
         />
-        <motion.nav id="related-content-link"
+        <motion.nav className={styles.linkRelatedContent}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
           exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
@@ -123,9 +118,9 @@ const Contact = () => {
             })}
           </ul>
         </motion.nav>
-      </section>
+      </div>
 
-      <motion.section id="contact"
+      <motion.section className={styles.form}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -134,7 +129,7 @@ const Contact = () => {
         <h3>各種お問い合わせ</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <dl>
-            <div id="contact01">
+            <div className={styles.form01}>
               <dt>
                 お問い合わせ内容
                 <span>必須</span>
@@ -164,7 +159,7 @@ const Contact = () => {
                 氏名
                 <span>必須</span>
               </dt>
-              <dd className="contact-wid half">
+              <dd className={`${styles.contactWid} ${styles.half}`}>
                 <input 
                   type="text" 
                   placeholder="例：田中太朗" 
@@ -180,7 +175,7 @@ const Contact = () => {
                 メールアドレス
                 <span>必須</span>
               </dt>
-              <dd className="contact-wid">
+              <dd className={styles.contactWid}>
                 <input 
                   type="text" 
                   placeholder="例：email@channelworks.biz" 
@@ -195,7 +190,7 @@ const Contact = () => {
               <dt>
                 電話番号
               </dt>
-              <dd className="contact-wid half">
+              <dd className={`${styles.contactWid} ${styles.half}`}>
                 <input 
                   type="number" 
                   placeholder="例：0123456789" 
@@ -210,7 +205,7 @@ const Contact = () => {
               <dt>
                 会社・組織名
               </dt>
-              <dd className="contact-wid">
+              <dd className={styles.contactWid}>
               <input 
                   type="text"   
                   placeholder="例：合同会社チャネルワークス" 
@@ -225,13 +220,13 @@ const Contact = () => {
               <dt>
                 お問い合わせ内容詳細
               </dt>
-              <dd className="contact-wid">
+              <dd className={styles.contactWid}>
                 <textarea {...register('contain', {maxLength: {value: 1000, message: '1,000文字以内で入力してください。'}})} />
                 {errors.contain && <samll>{errors.contain.message}</samll>}
               </dd>
             </div>
           </dl>
-          <input id='submit' type='submit' value='送信する' />
+          <input id='submit' type='submit' value='送信する' className={styles.submit}/>
           {phpError && <small>入力内容をご確認ください。</small>}
         </form>
       </motion.section>

@@ -1,20 +1,20 @@
 // 下層ページで関連するページへのリンク
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import classNames from 'classnames';
+import styles from '../../styles/components/linkRelatedContent.module.scss'
 
 const LinkRelatedContent = (props) => {
-
   const location = useLocation();
-  const relatedTags = () => {
+
+  const [ active , setActive ] = useState(false)
+  useEffect(() => {
     if(location.pathname === props.link.url) {
-      return 'active';
+      setActive(prev => !prev)
     };
-  }
+  }, [props.link.url, location.pathname])
 
   return(
-    <li key={props.index} className={classNames(['lists', relatedTags()])}>
+    <li key={props.index} className={active ? `${styles.lists} ${styles.active}` : styles.lists}>
       <Link to={{ pathname: props.link.url }}>{props.link.name}</Link>
     </li>
   )

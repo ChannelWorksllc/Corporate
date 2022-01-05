@@ -4,13 +4,8 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import LowerPageTop from './atoms/LowerPageTop';
-import TopicPath from './atoms/TopicPath';
-import Contact from './atoms/Contact';
-import ScrollToTop from './atoms/scrollToTop';
+import { LowerPageTop, TopicPath, Contact, ScrollToTop } from './atoms';
+import styles from '../styles/components/company.module.scss'
 
 // アニメーション設定
 const mainVariants = {
@@ -33,22 +28,7 @@ const Company = () => {
   const contents = [
     {text: '会社概要', to: 'company01'},
     {text: '代表あいさつ', to: 'company02'},
-    {text: 'メンバー紹介', to: 'company03'}
   ]
-
-  // スクロールアニメーション設定
-  const setting = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    centerMode: true,
-    variableWidth: true,
-    arrows: false,
-    autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 7000,
-    dots: false
-  }
 
   useEffect(() => {
     Aos.init({ duration: 1000, easing: 'ease-in-out' });
@@ -56,27 +36,22 @@ const Company = () => {
   }, []);
 
   return(
-    
     <>
-      <nav id="topic-path">
-        <TopicPath
-          url = '/company'
-          linkname = 'Company'
-        />
-      </nav>
+      <TopicPath
+        url = '/company'
+        linkname = 'Company'
+      />
 
-      <section id="lowerpage-top">
-        <LowerPageTop
-          titleja = '会社情報'
-          titleen = 'Company'
-          text = ''
-          img = './Assets/img/company/company01.jpg'
-          alt = '会社情報'
-          content = { contents }
-        />
-      </section>
+      <LowerPageTop
+        titleja = '会社情報'
+        titleen = 'Company'
+        text = ''
+        img = './Assets/img/company/company01.jpg'
+        alt = '会社情報'
+        content = { contents }
+      />
 
-      <motion.section id="company01"
+      <motion.section id="company01" className={styles.company01}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -94,7 +69,7 @@ const Company = () => {
           </div>
           <div>
             <dt>資本金</dt>
-            <dd>60,000,000円</dd>
+            <dd>6,000,000円</dd>
           </div>
           <div>
             <dt>所在地</dt>
@@ -106,17 +81,17 @@ const Company = () => {
           </div>
           <div>
             <dt>主要事業</dt>
-            <dd>
-              マーケティング戦略・立案<br/>
-              UI/UX設計および実施<br/>
-              プロジェクトマネジメント・ディレクション<br/>
-              Web・DTPデザイン全般<br/>
-              Webシステム開発<br/>
-              写真撮影<br/>
-              イラストレーション<br/>
-              PR動画制作<br/>
-              コピーライティング<br/>
-            </dd>
+            <div>
+              <dd>デジタルマーケティング戦略立案・改善・運用</dd>
+              <dd>UI/UX設計・改善、および実装</dd>
+              <dd>プロジェクトマネジメント・ディレクション</dd>
+              <dd>Web・アプリ・DTPデザイン全般</dd>
+              <dd>Web・アプリのシステム開発</dd>
+              <dd>写真（スチール）撮影</dd>
+              <dd>PR・セールス動画制作</dd>
+              <dd>イラストレーション</dd>
+              <dd>コピーライティング</dd>
+            </div>
           </div>
           <div>
             <dt>対応スキル</dt>
@@ -159,15 +134,17 @@ const Company = () => {
         </dl>
       </motion.section>
 
-      <motion.section id="company02"
+      <motion.section id="company02" className={styles.company02}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 data-aos='fade-up'>代表あいさつ</h3>
-        <article data-aos='fade-up'>
-          <div></div>
+        <h3>代表あいさつ</h3>
+        <article>
+          <div>
+            <img src='./Assets/img/company/company03.jpg' alt='石田真吾' />
+          </div>
           <div>
             <h5>初めまして。代表の石田真吾と申します。</h5>
             <p>
@@ -181,65 +158,6 @@ const Company = () => {
             </p>
           </div>
         </article>
-      </motion.section>
-
-      <motion.section id="company03"
-        variants={ mainVariants }
-        initial='initial'
-        animate='animate'
-        exit='exit'
-      >
-        <h3 data-aos='fade-up'>メンバー紹介</h3>
-        <Slider {...setting}>
-          <article data-aos='fade-up'>
-            <div>
-              <div></div>
-              <h5>葵</h5>
-              <p>Web・DTPデザイナー</p>
-            </div>
-            <p>
-              Webの時代に馴染むや、たちまち紙からの脱却を目指す時代適合型デザイナー兼アートディレクター。
-            </p>
-            <p>
-              基本的に知らない人はニガテだが、いざ知り合うと長い。仕事中に確認・質問などで邪魔をされるのを嫌がる代わりに仕事は早い。
-            </p>
-            <p>
-              顧客のニーズを的確に汲み取りビジュアルイメージに落とすのがもっとも得意。
-            </p>
-          </article>
-          <article data-aos='fade-up'>
-            <div>
-              <div></div>
-              <h5>伊藤</h5>
-              <p>Web・DTPデザイナー</p>
-            </div>
-            <p>
-              Webの時代に馴染むや、たちまち紙からの脱却を目指す時代適合型デザイナー兼アートディレクター。
-            </p>
-            <p>
-              基本的に知らない人はニガテだが、いざ知り合うと長い。仕事中に確認・質問などで邪魔をされるのを嫌がる代わりに仕事は早い。
-            </p>
-            <p>
-              顧客のニーズを的確に汲み取りビジュアルイメージに落とすのがもっとも得意。
-            </p>
-          </article>
-          <article data-aos='fade-up'>
-            <div>
-              <div></div>
-              <h5>伊藤</h5>
-              <p>Web・DTPデザイナー</p>
-            </div>
-            <p>
-              Webの時代に馴染むや、たちまち紙からの脱却を目指す時代適合型デザイナー兼アートディレクター。
-            </p>
-            <p>
-              基本的に知らない人はニガテだが、いざ知り合うと長い。仕事中に確認・質問などで邪魔をされるのを嫌がる代わりに仕事は早い。
-            </p>
-            <p>
-              顧客のニーズを的確に汲み取りビジュアルイメージに落とすのがもっとも得意。
-            </p>
-          </article>
-        </Slider>
       </motion.section>
       
       <motion.section className='contact'

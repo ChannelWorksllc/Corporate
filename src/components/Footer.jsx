@@ -1,11 +1,11 @@
 // フッター
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from '../styles/components/footer.module.scss'
 
 const Footer = () => {
   return(
-    <footer>
+    <footer className={styles.footer}>
       <nav>
         <ul>
           <li>
@@ -13,9 +13,6 @@ const Footer = () => {
           </li>
           <li>
             <Link to="/service">サービス</Link>
-          </li>
-          <li>
-            <Link to="/works">実績</Link>
           </li>
           <li>
             <Link to="/company">会社情報</Link>
@@ -28,7 +25,7 @@ const Footer = () => {
         </div>
         <ul>
           <li>
-            <a href='https://channelworks.biz/blog/'>ブログ</a>
+            <Link to="/works">実績</Link>
           </li>
           <li>
             <Link to="/contact_estimate">お見積り依頼</Link>

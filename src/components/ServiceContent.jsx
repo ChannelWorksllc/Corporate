@@ -1,17 +1,11 @@
 // コンテンツ開発ページ
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, /* useState */} from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
-import ServiceLowerPage from './atoms/ServiceLowerPage';
-import TopicPathService from './atoms/TopicPathService';
-import LowerPageTop from './atoms/LowerPageTop';
-import LinkRelatedContent from './atoms/LinkRelatedContent';
 import Data from '../json/works.json';
-import ScrollToTop from './atoms/scrollToTop';
-import Index from './atoms/Index';
-import Blog from './atoms/Blog';
-import Contact from './atoms/Contact';
+import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
+import styles from '../styles/components/service.module.scss'
 
 const ServiceContent = () => {
 
@@ -21,7 +15,6 @@ const ServiceContent = () => {
     {text: '事例', to: 'service-contain02'},
     {text: 'サービス内容', to: 'service-contain03'},
     {text: 'サービス一覧', to: 'service-contain04'},
-    {text: '関連記事', to: 'blog'}
   ]
 
   // 関連ページ
@@ -29,6 +22,10 @@ const ServiceContent = () => {
     {
       url: '/service/marketing',
       name: 'マーケティング戦略'
+    },
+    {
+      url: '/service/consulting',
+      name: 'コンサルティング'
     },
     {
       url: '/service/ui_ux',
@@ -55,59 +52,44 @@ const ServiceContent = () => {
   // サービス内容
   const contains = [
     {
-      title: '徹頭徹尾こだわりぬく課題解決型のWeb制作',
-      text1: 'Web制作の基本的な流れとして、まずお客様が感じる課題のヒアリング、その後各種分析調査から潜在的な課題も抽出した上で、課題解決の方針をご提案します。方針が定まれば、要件定義にて構造や必要な機能、予算、スケジュールを定め、設計、デザイン、システム開発などの実制作へ進みます。',
-      text2: '弊社のWeb制作は、ビジネスで成果を上げることを第一として課題抽出と戦略策定を徹底的に行い、それに基づいて細部までこだわりぬいたサイト設計が特徴です。'
+      title: 'オリジナルコンテンツは、もっとも説得力のある「サイト資産」です。',
+      text1: '昨今のWebにおいて、オリジナルかつ有用性の高いコンテンツは何よりも効果的な訴求ポイントです。しかし、独自コンテンツや継続性のあるコンテンツは容易に作成できるものではありません。たとえば、ブログ要素は多くのWebサイトにおいて取り入れられていますが、有効に更新されていることはほとんどありません。',
+      text2: '有効性の高いコンテンツを継続的に発信する、実はこれだけでも大きな成果を生み出します。弊社のコンテンツ制作はこの点をサポート致します。'
     },
     {
-      title: '幅広い知見を活かし、最適解を選ぶWeb制作',
-      text1: 'Webサイトを制作する上でツールを導入することも多くありますが、豊富な実績と経験から幅広い知見を得てきたチャネルワークスは、お客様の解決すべき課題に適したツールを選定・提案することが可能です。',
-      text2: '例えばCMSであれば、約30種類の中から複数の候補製品を選定し、その上でお客様と一緒に採用するCMSを協議させていただきます。'
+      title: '良質なコンテンツの継続発信こそが、サイトパワーを向上させます。',
+      text1: 'どのようなコンテンツなら、継続発信できるのか。継続発信するための社内の仕組みはどのように作るのか。コンテンツ発信はいつもそれが課題。',
+      text2: '弊社ではコンテンツを作成するだけではなく、継続して作成し続ける仕組みも含めてご提供が可能です。社内だけではなく、社外のリソースなども柔軟に取り入れるなど、さまざまな方法をご提案させていただきます。'
     }
   ]
 
   // サービス一覧
   const menu = [
     {
-      title: `ホームページ・サイト制作\n `,
-      icon: '/Assets/img/service-content/menu01.svg',
-      text: '各種分析やユーザー視点に基づく、ロジカルな設計・デザインで制作します。'
+      title: `サービス独自コンテンツ企画・制作`,
+      text: '広告などのプロモーション目的で制作するサービス紹介のための独自コンテンツを企画・制作します。'
     },
     {
-      title: `LP制作\n `,
-      icon: '/Assets/img/service-content/menu02.svg',
-      text: 'ユーザーがアクションすることに特化した、ランディングページを制作します。'
+      title: `各種取材および取材記事の制作`,
+      text: 'さまざまな取材の対応、および取材記事の撮影を行います。出張実費がかかりますが遠方への取材も可能です。'
     },
     {
-      title: `ECサイト制作\n `,
-      icon: '/Assets/img/service-content/menu03.svg',
-      text: 'マーケティング全体像と整合性を取ったサイト設計を構築します。'
+      title: `各種専門記事・テクニカルコピー制作`,
+      text: '士業などの専門分野の記事や、技術的な知見が必要な専門記事の作成、種文の制作などを行います。'
     },
     {
-      title: `コーディング\n `,
-      icon: '/Assets/img/service-content/menu04.svg',
-      text: '高い知見と豊富なネットワークを活用し、幅広い種類のサイトを構築します。'
+      title: `記事広告・サービス記事制作`,
+      text: '広告掲載などのためのサービス紹介記事の制作を行います。LP内のコンテンツなどの制作も可能です。'
     },
     {
-      title: `UI/UX設計\n `,
-      icon: '/Assets/img/service-content/menu05.svg',
-      text: '集客・売上・申し込み増大を実現する、UI設計をご提供します。'
+      title: `映像・LPシナリオの制作`,
+      text: 'さまざまなPR映像や、サービス紹介映像などの撮影シナリオやナレーション台本などの作成を行います。'
     },
-    {
-      title: `SEO対策・\nサイトコンサルティング`,
-      icon: '/Assets/img/service-content/menu06.svg',
-      text: '着実にゴールを目指す、本格的かつ良質なSEO対策を提案します。'
-    },
-    {
-      title: `Webサイト保守・運用\n `,
-      icon: '/Assets/img/service-content/menu07.svg',
-      text: '各種分析やユーザー視点に基づく、ロジカルな設計・デザインで制作します。'
-    }
   ]
 
   // 表示する実績のデータIDを指定
-  const display1 = Data.find((data) => data.id === 7);
-  const display2 = Data.find((data) => data.id === 6);
+  const display1 = Data.find((data) => data.id === 6);
+  const display2 = Data.find((data) => data.id === 19);
   const display3 = Data.find((data) => data.id === 5);
 
   // アニメーション設定
@@ -125,77 +107,75 @@ const ServiceContent = () => {
     }
   }
   
-  const [article, setArticle] = useState([]);
-  const [ajaxError, setAjaxError] = useState(false);
+  // const [article, setArticle] = useState([]);
+  // const [ajaxError, setAjaxError] = useState(false);
 
   useEffect(() => {
     document.title = 'コンテンツ開発 | Channel Works';
 
-    // ブログ記事の取得
-    const RssParser = require('rss-parser');
-    const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
-    const rssParser = new RssParser();
+    // // ブログ記事の取得
+    // const RssParser = require('rss-parser');
+    // const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
+    // const rssParser = new RssParser();
   
-    rssParser.parseURL(url)
-      .then((feed) => {
-        const data = feed.items;
-        setArticle([...data]);
-      })
-      .catch((error) => {
-        console.log(error);
-        setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-      })
+    // rssParser.parseURL(url)
+    //   .then((feed) => {
+    //     const data = feed.items;
+    //     setArticle([...data]);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+    //   })
 
   }, [])
 
   return(
     <>
-
-      <nav id='topic-path'>
         <TopicPathService
           url = '/service/content'
           linkname = 'Content Development'
         />
-      </nav>
 
-      <section id='lowerpage-top'>
-        <LowerPageTop 
-          titleja = 'サービス内容'
-          titleen = 'Service'
-          text = 'コンテンツ開発'
-          img = '/Assets/img/service-content/service06.jpg'
-          alt= 'コンテンツ開発'
-          icon = '/Assets/img/service-content/service05.png'
-          content = { contents }
-        />
-        <nav id="related-content-link">
-          <motion.ul
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
-            exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
-          >
-            {relatedLinks.map((link, index) => {
-              return(
-                <LinkRelatedContent 
-                  key = {index}
-                  link = {link}
-                />
-              )
-            })}
-          </motion.ul>
-        </nav>
-      </section>
+        <div className={styles.top}>
+          <LowerPageTop 
+            titleja = 'サービス内容'
+            titleen = 'Service'
+            text = 'コンテンツ開発'
+            img = '/Assets/img/service-content/service06.jpg'
+            alt= 'コンテンツ開発'
+            icon = '/Assets/img/service-content/service05.png'
+            content = { contents }
+          />
 
-      <motion.p className='lowerpage-toptext'
+          <nav className={styles.linkRelatedContent}>
+            <motion.ul
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
+              exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
+            >
+              {relatedLinks.map((link, index) => {
+                return(
+                  <LinkRelatedContent 
+                    key = {index}
+                    link = {link}
+                  />
+                )
+              })}
+            </motion.ul>
+          </nav>
+        </div>
+
+      <motion.p className={styles.lowerpage}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        課題抽出から戦略・設計までこだわりぬいた「課題解決型のWeb制作」
+        集客施策でもあり、サイト資源ともなるさまざまなコンテンツ開発をご支援
       </motion.p>
 
-      <motion.section id="service-contain01"
+      <motion.section id="service-contain01" className={styles.content01}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -204,19 +184,19 @@ const ServiceContent = () => {
         <h3>このような課題を解決します。</h3>
         <ul>
           <li>
-            <span>Webサイトが分かりにくい</span>、と指摘されたことがある。
+            サイトオリジナルのコンテンツを作成したいが、<span>コンテンツ制作の知見やノウハウがない</span>ため作れない。
           </li>
           <li>
-            ただリニューアルするのではなく、細部まで設計された<span>成果の出るWebサイトにしたい。</span>
+            ブログ更新を継続して行いたいが、どんなコンテンツを更新したらよいかわからず、<span>更新が続かない。</span>
           </li>
           <li>
-            Webの知見が少ないが、成果を出すために<span>案件進行をリードして欲しい。</span>
+            サービス固有の専門情報を発信したく、情報はあるが<span>記事作成などのスキルやノウハウがない。</span>
           </li>
         </ul>
       </motion.section>
-
+      
       <ServiceLowerPage 
-        name = 'コンテンツ開発'
+        name = 'Webシステム開発'
         contains = {contains}
         menu = {menu}
         works1 = {display1}
@@ -224,7 +204,7 @@ const ServiceContent = () => {
         works3 = {display3}
       />
 
-      <motion.section className="blog" id='blog'
+      {/* <motion.section className="blog" id='blog'
         variants={ mainVariants }
         initila='initial'
         animate='animate'
@@ -250,9 +230,9 @@ const ServiceContent = () => {
 
         </div>
         <a href='http://tanakan.conohawing.com/wp/' data-aos='fade'>
-            <span>ブログをみる</span>
+          <span>ブログをみる</span>
         </a>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section className="contact"
         variants={ mainVariants }
@@ -267,11 +247,11 @@ const ServiceContent = () => {
         <ScrollToTop />
       </MediaQuery>
       <MediaQuery query='(max-width: 767px)'>
-        <Index 
-          contents = {contents}
+        <Table
+          contents={contents}
         />
       </MediaQuery>
-
+      
     </>
   )
 }

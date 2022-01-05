@@ -1,17 +1,12 @@
 // サービスページ
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, /* useState */ } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import MediaQuery from 'react-responsive';
-import LowerPageTop from './atoms/LowerPageTop';
-import TopicPath from './atoms/TopicPath';
-import Blog from './atoms/Blog';
-import Contact from './atoms/Contact';
-import ScrollToTop from './atoms/scrollToTop';
-import Index from './atoms/Index';
+import { LowerPageTop, TopicPath, Contact, ScrollToTop, Table, /* Blog */ } from './atoms'
+import styles from '../styles/components/services.module.scss'
 
 const Service = () => {
 
@@ -19,64 +14,78 @@ const Service = () => {
   const contents = [
     {text: 'サービス一覧', to: 'service01'},
     {text: '制作の流れ', to: 'service02'},
-    {text: '関連記事', to: 'blog'}
+    // {text: '関連記事', to: 'blog'}
   ]
 
-  // サービス内容一覧
-  const serviceLists = [
+  // サービス一覧の画像取得
+  const serviceImg = [
+    './Assets/img/service-content/service03.jpg',
+    './Assets/img/service-content/service01.jpg',
+    './Assets/img/service-content/service04.jpg',
+    './Assets/img/service-content/service02.jpg',
+    './Assets/img/service-content/service05.jpg',
+    './Assets/img/service-content/service06.jpg',
+    './Assets/img/service-content/service07.jpg',
+    './Assets/img/service-content/service08.jpg'
+  ]
+
+  // サービス一覧のテキスト設定
+  const services = [
     {
-      img: './Assets/img/icon-service/service01.png',
-      alt: 'マーケティング戦略',
-      title: 'マーケティング戦略支援・運用',
-      menu: ['LP制作', 'ECサイト制作', 'UI/UX設計', '保守・運用', 'ホームページ・サイト制作', 'SEO対策・サイトコンサルティング', ],
-      text: '新たな体制を社内に作ることなく、短期間で高度なデジタルマーケティングを実現します。新たな体制を社内に作ることなく実現します。',
-      linktitle: '「マーケティング戦略支援・運用」の詳細をみる',
+      name: `マーケティング戦略支援・運用`, 
+      text: '新たな体制を社内に作ることなく、短期間で高度なデジタルマーケティングを実現します。新たな体制を社内に作ることなく実現します。', 
+      img: serviceImg[0], 
       url: '/service/marketing',
+      alt: 'マーケティング戦略',
+      class: 'service01'
     },
     {
-      img: './Assets/img/icon-service/service02.png',
-      alt: 'UI/UX設計',
-      title: 'UI/UX設計・構築',
-      menu: ['ホームページ・サイト制作', 'LP制作', 'ECサイト制作'],
-      text: 'すでにある製品のUI/UXを改善するのか、より新しい表現をするのか的確なご提案をいたします。',
-      linktitle: '「UI/UX設計・構築」の詳細をみる',
+      name: `CI/VI/BIなどの\n策定コンサルティング`, 
+      text: '企業・製品・サービスを象徴するコピーやビジュアルを通し、PRやマーケティング戦略において有効な要素となる各種アイデンティティ策定をご支援します。', 
+      img: serviceImg[1], 
+      url: '/service/marketing',
+      alt: '策定コンサルティング',
+      class: 'service02'
+    },
+    {
+      name: `UI/UXの設計・構築`, 
+      text: 'UI/UXはデジタルマーケティングの要。弊社では「誰のために、なにをするのか」を追求し、貴社のデジタルマーケティング施策に最適解をご提供致します。', 
+      img: serviceImg[2], 
       url: '/service/ui_ux',
+      alt: 'UI/UX設計',
+      class: 'service03'
     },
     {
-      img: './Assets/img/icon-service/service03.png',
-      alt: 'Webサイト設計・構築',
-      title: 'Webサイト設計・構築',
-      menu: ['ホームページ・サイト制作', 'LP制作', 'ECサイト制作', 'SEO対策・サイトコンサルティング', 'UI/UX設計', '保守・運用'],
-      text: 'ビジネスの成長を目的としたWebサイト制作や、Webサービスの企画、制作を行います。',
-      linktitle: '「Webサイト設計・構築」の詳細をみる',
+      name: `Webサイトの設計・構築`, 
+      text: '登録・予約・購買などの「CV（成果創出）」に特化し、貴社ビジネスを支援する、EC・マッチング・サービスサイト・アプリなどの企画・制作を行います。', 
+      img: serviceImg[3], 
       url: '/service/web_production',
+      alt: 'サイト制作',
+      class: 'service04'
     },
     {
-      img: './Assets/img/icon-service/service04.png',
-      alt: 'システム開発',
-      title: 'Webシステム開発',
-      menu: ['ホームページ・サイト制作', 'SEO対策・サイトコンサルティング', 'UI/UX設計', '保守・運用'],
-      text: 'さまざまなプラットフォームのWebサービス・システム開発に対応することが可能です。',
-      linktitle: '「Webシステム開発」の詳細をみる',
+      name: 'Webシステム開発', 
+      text: 'ゼロベースの開発はもとより、ASPやパッケージシステムの利用など「成果」への最短距離を導き出す最適なシステム開発・システム構成をご提供します。', 
+      img: serviceImg[4], 
       url: '/service/system',
+      alt: 'システム開発',
+      class: 'service05'
     },
     {
-      img: './Assets/img/icon-service/service05.png',
-      alt: 'コンテンツ開発',
-      title: 'コンテンツ開発',
-      menu: ['SEO対策・サイトコンサルティング', 'UI/UX設計', '保守・運用'],
-      text: '課題を正しく理解し、常に「ビジネスオーナーはどう考える」という視点で取り組みます。',
-      linktitle: '「コンテンツ開発」の詳細をみる',
+      name: 'コンテンツ開発', 
+      text: 'コンテンツマーケティングを支援する、さまざまな分野の記事コンテンツや動画コンテンツの開発を請け負います。または貴社内での制作ご支援を行います。', 
+      img: serviceImg[5], 
       url: '/service/content',
+      alt: 'コンテンツ開発',
+      class: 'service06'
     },
     {
-      img: './Assets/img/icon-service/service06.png',
-      alt: 'イメージ制作',
-      title: 'イメージ撮影・PR動画制作',
-      menu: ['UI/UX設計', '保守・運用'],
-      text: '商品・サービス・既存サイトなどの課題や強みを探し、最適な動画マーケティングプランをご提案いたします。',
-      linktitle: '「イメージ撮影・PR動画制作」の詳細をみる',
+      name: `イメージ撮影・PR動画制作`, 
+      text: 'Webサイトやサービスのブランディングを強化する人物・建物・商品などのイメージ撮影や、SNS訴求などにも強力な打ち手となるPR動画の撮影・制作を行います。',
+      img: serviceImg[6], 
       url: '/service/image',
+      alt: 'イメージ制作',
+      class: 'service07'
     }
   ]
 
@@ -130,52 +139,47 @@ const Service = () => {
   }
 
   // ブログ記事取得
-  const [article, setArticle] = useState([]);
-  const [ajaxError, setAjaxError] = useState(false);
+  // const [article, setArticle] = useState([]);
+  // const [ajaxError, setAjaxError] = useState(false);
 
   useEffect(() => {
     Aos.init({ duration: 1000, easing: 'ease-in-out' });
     document.title = 'サービス内容 | Channel Works';
 
-    const RssParser = require('rss-parser');
-    const url = 'https://channelworks.biz/blog/feed/';
-    const rssParser = new RssParser();
+    // const RssParser = require('rss-parser');
+    // const url = 'https://channelworks.biz/blog/feed/';
+    // const rssParser = new RssParser();
   
-    rssParser.parseURL(url)
-      .then((feed) => {
-        const data = feed.items;
-        setArticle([...data]);
-      })
-      .catch((error) => {
-        console.log(error);
-        setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-      })
+    // rssParser.parseURL(url)
+    //   .then((feed) => {
+    //     const data = feed.items;
+    //     setArticle([...data]);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+    //   })
 
   }, []);
 
   return (
     <>
+      <TopicPath
+        url = '/service'
+        linkname = 'Service'
+      />
 
-      <nav id='topic-path' >
-        <TopicPath
-          url = '/service'
-          linkname = 'Service'
-        />
-      </nav>
+      <LowerPageTop
+        titleja = 'サービス内容'
+        titleen = 'Service'
+        text = '幅広いご要望範囲をカバーします。'
+        img = './Assets/img/service-content/service01.jpg'
+        alt= 'サービス内容'
+        icon = ''
+        content = { contents }
+      /> 
 
-      <section id="lowerpage-top">
-        <LowerPageTop
-          titleja = 'サービス内容'
-          titleen = 'Service'
-          text = '幅広いご要望範囲をカバーします。'
-          img = './Assets/img/service-content/service01.jpg'
-          alt= 'サービス内容'
-          icon = ''
-          content = { contents }
-        />
-      </section>
-
-      <motion.p className="lowerpage-toptext"
+      <motion.p className={styles.lowerpage}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -184,40 +188,32 @@ const Service = () => {
         各分野の専門家にマイクロタスクとして対応を振り分け、<br/>分業・高速化を実現したアウトプット体制をとっております。
       </motion.p>
 
-      <motion.section id="service01"
+      <motion.section id="service01" className={styles.services01}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
         <h3>提供するサービス一覧</h3>
-        <ul data-aos='fade-up'>
-          {serviceLists.map((service, index) => {
+        <ul>
+          {services.map((service, index) => {
             return(
-              <li key={index}>
-                <div>
-                  <img src={service.img} alt={service.alt} />
-                </div>
-                <h4>{service.title}</h4>
-                <ul>
-                  {service.menu.map((menu, index) => {
-                    return (
-                      <li key={index}>{menu}</li>
-                      )
-                    })}
-                </ul>
-                <p>{service.text}</p>
+              <li key={ index } className={styles[service.class]}>
                 <Link to={{ pathname: service.url, state: 'active' }}>
-                  <span className='other-sp'>{service.linktitle}</span>
-                  <span className='only-sp'>詳細をみる</span>
-                  </Link>
+                  <div>
+                    <img src={ service.img } alt={ service.alt } />
+                  </div>
+                  <h4>{ service.name }</h4>
+                  <p className='only-pc'>{ service.text }</p>
+                  <small>詳しくみる</small>
+                </Link>
               </li>
             )
           })}
         </ul>
       </motion.section>
 
-      <motion.section id="service02"
+      <motion.section id="service02"  className={styles.services02}
         variants={ mainVariants }
         initial='initial'
         animate='animate'
@@ -246,14 +242,14 @@ const Service = () => {
         </dl>
       </motion.section>
 
-      <motion.section className="blog" id='blog'
+      {/* <motion.section className="blog" id='blog'
         variants={ mainVariants }
         initial='initial'
         animate='animate'
         exit='exit'
       >
-        <h3 className='blog-subtitle' data-aos='fade-up'>サービス内容関連記事</h3>
-        <div data-aos='fade-up'>
+        <h3 className='blog-subtitle'>サービス内容関連記事</h3>
+        <div>
           
           {article.map((article, index) => {
             return(
@@ -274,7 +270,7 @@ const Service = () => {
         <a href='https://channelworks.biz/blog/' data-aos='fade'>
             <span>ブログをみる</span>
         </a>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section className="contact"
         variants={ mainVariants }
@@ -289,7 +285,7 @@ const Service = () => {
         <ScrollToTop />
       </MediaQuery>
       <MediaQuery query='(max-width: 767px)'>
-        <Index 
+        <Table
           contents={ contents }
         />
       </MediaQuery>
