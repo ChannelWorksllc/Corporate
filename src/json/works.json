@@ -1,6 +1,6 @@
 [
   {
-    "id": 21,
+    "id": 22,
     "client": "東京 ICTソリューション企業",
     "title": "コンテンツマーケティングを含むBtoBプロモーションサイト提案",
     "url": "※実績詳細はお問い合わせください",
@@ -11,7 +11,7 @@
     "img": "/Assets/img/works/client01.jpg" 
   },
   {
-    "id": 20,
+    "id": 21,
     "client": "東京 総合人材サービス企業",
     "title": "事業拡大の大規模Webプロモーションの企画・運営",
     "url": "※実績詳細はお問い合わせください",
@@ -22,7 +22,7 @@
     "img": "/Assets/img/works/client02.jpg"
   },
   {
-    "id": 19,
+    "id": 20,
     "client": "神奈川 ナイトワーク求人サイト",
     "title": "ナイトワークにまつわる大規模なサイトプロモーション企画・運営",
     "url": "※実績詳細はお問い合わせください",
@@ -33,7 +33,7 @@
     "img": "/Assets/img/works/client03.jpg"
   },
   {
-    "id": 18,
+    "id": 19,
     "client": "大阪 中堅美容院チェーン",
     "title": "製品ブランド訴求＆Webプロモーション展開強化のためのCI策定",
     "url": "※実績詳細はお問い合わせください",
@@ -44,7 +44,7 @@
     "img": "/Assets/img/works/client04.jpg"
   },
   {
-    "id": 17,
+    "id": 18,
     "client": "青森 東北圏展開の飲食チェーン",
     "title": "東北圏に展開する飲食チェーンにおけるBARブランドのBI策定",
     "url": "※実績詳細はお問い合わせください",
@@ -55,7 +55,7 @@
     "img": "/Assets/img/works/client05.jpg"
   },
   {
-    "id": 16,
+    "id": 17,
     "client": "茨城 中堅派遣人材サービス",
     "title": "茨城を中心に北関東に展開する派遣求人サービス様のCI策定",
     "url": "※実績詳細はお問い合わせください",
@@ -66,7 +66,7 @@
     "img": "/Assets/img/works/client06.jpg"
   },
   {
-    "id": 15,
+    "id": 16,
     "client": "北関東 大手家電量販チェーン",
     "title": "インテリア用品販売の専門ECサイトの新規構築",
     "url": "※実績詳細はお問い合わせください",
@@ -77,7 +77,7 @@
     "img": "/Assets/img/works/client07.jpg"
   },
   {
-    "id": 14,
+    "id": 15,
     "client": "東京 BtoBソリューション企業",
     "title": "企業向けの大規模BtoBデータサービスのプラットフォーム改善",
     "url": "※実績詳細はお問い合わせください",
@@ -88,7 +88,7 @@
     "img": "/Assets/img/works/client08.jpg"
   },
   {
-    "id": 13,
+    "id": 14,
     "client": "東京 ビデオレンタルチェーン",
     "title": "大手ビデオレンタルチェーンの動画配信プラットフォーム改善",
     "url": "※実績詳細はお問い合わせください",
@@ -99,7 +99,7 @@
     "img": "/Assets/img/works/client09.jpg"
   },
   {
-    "id": 12,
+    "id": 13,
     "client": "東京 バイクパーツメーカー",
     "title": "Wordpressを利用したECサイトの大幅フルリニューアル",
     "url": "https://world-walk.com/",
@@ -110,7 +110,7 @@
     "img": "/Assets/img/works/client10.jpg"
   },
   {
-    "id": 11,
+    "id": 12,
     "client": "東京 イタリアンバルチェーン",
     "title": "東京他で複数のイタリアンバルを運営する企業の店舗紹介サイト",
     "url": "https://www.delsole.st/",
@@ -121,7 +121,7 @@
     "img": "/Assets/img/works/client11.jpg"
   },  
   {
-    "id": 10,
+    "id": 11,
     "client": "海外人材の活躍を支援するNPO",
     "title": "国際人材の活躍をサポートするNPO法人の公式サイト構築",
     "url": "https://www.glolab.org/",
@@ -132,7 +132,7 @@
     "img": "/Assets/img/works/client12.jpg"
   },
   {
-    "id": 9,
+    "id": 10,
     "client": "東京 高級飲食店チェーン会社",
     "title": "飲食人材を募集するための求人サイトプラットフォーム構築",
     "url": "※実績詳細はお問い合わせください",
@@ -143,7 +143,7 @@
     "img": "/Assets/img/works/client13.jpg"
   },
   {
-    "id": 8,
+    "id": 9,
     "client": "パーティー・イベント支援会社",
     "title": "パーティーやイベント開催のシュミレーションシステム構築",
     "url": "※実績詳細はお問い合わせください",
@@ -154,7 +154,7 @@
     "img": "/Assets/img/works/client14.jpg"
   },
   {
-    "id": 7,
+    "id": 8,
     "client": "東京 展示会開催支援会社",
     "title": "アート関連の展示会開催や画材販売を行う企業様のECリニューアル",
     "url": "https://www.rakuya.com/",
@@ -165,7 +165,7 @@
     "img": "/Assets/img/works/client15.jpg"
   },
   {
-    "id": 6,
+    "id": 7,
     "client": "東京 人材教育サービス企業",
     "title": "エンジニア人材を募集するためのメディアサイトにおける技術記事",
     "url": "※実績詳細はお問い合わせください",
@@ -176,7 +176,7 @@
     "img": "/Assets/img/works/client16.jpg"
   },
   {
-    "id": 5,
+    "id": 6,
     "client": "東京 ICTソリューション企業",
     "title": "BtoBプロモーションサイトのコンテンツマーケティング施策対応",
     "url": "※実績詳細はお問い合わせください",
@@ -186,6 +186,17 @@
     "period": "約10ヶ月",
     "img": "/Assets/img/works/client17.jpg"
   },
+    {
+    "id": 5,
+    "client": "東京 イタリアンバルチェーン",
+    "title": "イタリアンバルを運営する企業の店舗紹介サイトでのイメージ撮影",
+    "url": "https://www.delsole.st/",
+    "category": ["イメージ撮影", "サイト企画", "デザイン制作", "コーディング"],
+    "type":[6],
+    "text": "イタリアンバルチェーンにおける各店舗イメージの撮影や、ポートレート撮影、調理シーンや完成した料理の撮影を行いました。",
+    "period": "約8ヶ月",
+    "img": "/Assets/img/works/client18.jpg"
+  },  
   {
     "id": 4,
     "client": "神奈川 中華街の老舗料理店",
@@ -195,7 +206,7 @@
     "type":[3, 6],
     "text": "古いサイトのフルリニューアルに伴い、サイト内外に利用する外観・内観を始め、料理のイメージなどもすべて撮影を行いました。",
     "period": "約4ヶ月",
-    "img": "/Assets/img/works/client18.jpg"
+    "img": "/Assets/img/works/client19.jpg"
   },
   {
     "id": 3,
@@ -206,7 +217,7 @@
     "type":[6],
     "text": "観光協会における地域の観光紹介サイトにおけるさまざまな紹介イメージの撮影や動画制作などのサイト構成素材撮影を行いました。",
     "period": "約4ヶ月",
-    "img": "/Assets/img/works/client19.jpg"
+    "img": "/Assets/img/works/client20.jpg"
   }
 
 ]
