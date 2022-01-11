@@ -133,8 +133,8 @@ const ServiceConsulting = () => {
   return(
     <>
         <TopicPathService
-          url = '/service/content'
-          linkname = 'Content Development'
+          url = '/service/consulting'
+          linkname = 'Consulting'
         />
 
         <div className={styles.top}>
