@@ -34,7 +34,7 @@ const services = [
     name: `CI/VI/BIなどの\n策定コンサルティング`, 
     text: '企業・製品・サービスを象徴するコピーやビジュアルを通し、PRやマーケティング戦略において有効な要素となる各種アイデンティティ策定をご支援します。', 
     img: serviceImg[1], 
-    url: '/service/marketing',
+    url: '/service/consulting',
     alt: '策定コンサルティング',
     class: 'service02'
   },
