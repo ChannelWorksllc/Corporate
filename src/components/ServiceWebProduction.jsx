@@ -134,8 +134,8 @@ const ServiceWebProduction = () => {
   return(
     <>
       <TopicPathService
-        url = '/service/marketing'
-        linkname = 'Marketing'
+        url = '/service/web_production'
+        linkname = 'Web production'
       />
 
       <div className={styles.top}>
