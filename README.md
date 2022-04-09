@@ -80,3 +80,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !(^/assets/)
 RewriteCond %{REQUEST_URI} !(^/static/)
 RewriteRule (.*) index.html [L]
+
+# node -v
+v16.14.2
