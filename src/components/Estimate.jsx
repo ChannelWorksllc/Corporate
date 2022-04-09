@@ -1,9 +1,10 @@
 // 見積もり依頼ページ
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion';
+import HeadBlock from './atoms/HeadBlock';
 import { TopicPath, LowerPageTop, LinkRelatedContent, ScrollToTop } from './atoms';
 import styles from '../styles/components/contact.module.scss';
 
@@ -59,6 +60,7 @@ const Estimate = () => {
   // phpとのajax通信
   const onSubmit = (data) => {
     fetch("https://channelworks.biz/form/estimate.php", {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -110,12 +112,12 @@ const Estimate = () => {
     }
   }
 
-  useEffect(() => {
-    document.title='お見積り依頼 | Channel Works'
-  })
-
   return(
     <>
+      <HeadBlock 
+        title='お見積り依頼 | Channel Works'
+      />
+
       <TopicPath
         url = '/contact_estimate'
         linkname = 'Contact about Estimate'
@@ -290,7 +292,7 @@ const Estimate = () => {
               </dt>
               <dd className={`${styles.contactWid} ${styles.half}`}>
                 <input 
-                  type="number" 
+                  type="tel" 
                   placeholder="例：0123456789" 
                   {...register('phoneNum', 
                     {required: '入力してください。', pattern: {value: /[0-9０-９]/, message: '数字を入力してください。'}, maxLength: {value: 11, message: '11文字以内で入力してください。'}, minLength: {value: 9, message: '9文字以上で入力してください。'}}

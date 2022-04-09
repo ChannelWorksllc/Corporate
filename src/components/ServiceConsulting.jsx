@@ -4,6 +4,7 @@ import React, { useEffect, /* useState */} from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json';
+import HeadBlock from './atoms/HeadBlock';
 import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
 import styles from '../styles/components/service.module.scss'
 
@@ -111,7 +112,6 @@ const ServiceConsulting = () => {
   // const [ajaxError, setAjaxError] = useState(false);
 
   useEffect(() => {
-    document.title = 'コンテンツ開発 | Channel Works';
 
     // // ブログ記事の取得
     // const RssParser = require('rss-parser');
@@ -132,39 +132,44 @@ const ServiceConsulting = () => {
 
   return(
     <>
-        <TopicPathService
-          url = '/service/consulting'
-          linkname = 'Consulting'
+      <HeadBlock 
+        title='コンサルティング | Channel Works'
+        description='さまざまな顧客コミュニケーションの場において、一貫した姿勢を見せていくことは、顧客からの信頼を生み出し、サービスや製品にも、好影響を発生させます。' // descriptionのcontent部分に入ります
+      />
+
+      <TopicPathService
+        url = '/service/consulting'
+        linkname = 'Consulting'
+      />
+
+      <div className={styles.top}>
+        <LowerPageTop 
+          titleja = 'サービス内容'
+          titleen = 'Service'
+          text = 'CI/VI/BIなどの策定コンサルティング'
+          img = '/Assets/img/service-content/service01.jpg'
+          alt= 'CI/VI/BIなどの策定コンサルティング'
+          icon = '/Assets/img/service-content/service02.png'
+          content = { contents }
         />
 
-        <div className={styles.top}>
-          <LowerPageTop 
-            titleja = 'サービス内容'
-            titleen = 'Service'
-            text = 'CI/VI/BIなどの策定コンサルティング'
-            img = '/Assets/img/service-content/service01.jpg'
-            alt= 'CI/VI/BIなどの策定コンサルティング'
-            icon = '/Assets/img/service-content/service02.png'
-            content = { contents }
-          />
-
-          <nav className={styles.linkRelatedContent}>
-            <motion.ul
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
-              exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
-            >
-              {relatedLinks.map((link, index) => {
-                return(
-                  <LinkRelatedContent 
-                    key = {index}
-                    link = {link}
-                  />
-                )
-              })}
-            </motion.ul>
-          </nav>
-        </div>
+        <nav className={styles.linkRelatedContent}>
+          <motion.ul
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
+            exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
+          >
+            {relatedLinks.map((link, index) => {
+              return(
+                <LinkRelatedContent 
+                  key = {index}
+                  link = {link}
+                />
+              )
+            })}
+          </motion.ul>
+        </nav>
+      </div>
 
       <motion.p className={styles.lowerpage}
         variants={ mainVariants }

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import MediaQuery from 'react-responsive';
+
+import HeadBlock from './atoms/HeadBlock';
 import { Button, Contact, TopicPath, ScrollToTop, Table, LowerPageTop } from './atoms'
 import styles from '../styles/components/strength.module.scss'
 
@@ -41,12 +43,15 @@ const Strength = () => {
 
   useEffect(() => {
     Aos.init({ duration: 500, easing: 'ease-in-out' });
-    document.title='強みと特徴 | Channel Works'
   }, []);
 
   return(
     <>
-
+      <HeadBlock 
+        title='強みと特徴 | Channel Works'
+        description='実践的なマーケティングノウハウを基軸とした、効果創出を得意とします。' // descriptionのcontent部分に入ります
+      />
+      
       <TopicPath
         url = '/strength'
         linkname = 'Strength'

@@ -1,8 +1,9 @@
 // 各種お問い合わせページ
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
+import HeadBlock from './atoms/HeadBlock';
 import { TopicPath, LowerPageTop, LinkRelatedContent } from './atoms';
 import styles from '../styles/components/contact.module.scss';
 
@@ -35,7 +36,7 @@ const Contact = () => {
 
   const { register, formState: {errors}, handleSubmit, getValues } = useForm();
   const [phpError, setPHPError] = useState(false);
-
+  
   // phpとのajax通信
   const onSubmit = (data) => {
     fetch("https://channelworks.biz/form/contact.php", {
@@ -82,12 +83,12 @@ const Contact = () => {
     }
   }
 
-  useEffect(() => {
-    document.title='各種お問合わせ | Channel Works' // タイトル
-  })
-
   return(
     <>
+      <HeadBlock 
+        title='各種お問合わせ | Channel Works'
+      />
+
       <TopicPath
         url = '/contact_us'
         linkname = 'Contact us'
@@ -192,7 +193,7 @@ const Contact = () => {
               </dt>
               <dd className={`${styles.contactWid} ${styles.half}`}>
                 <input 
-                  type="number" 
+                  type="tel" 
                   placeholder="例：0123456789" 
                   {...register('phoneNum', 
                     {pattern: {value: /[0-9０-９]/, message: '数字を入力してください。'}, maxLength: {value: 11, message: '11文字以内で入力してください。'}, minLength: {value: 9, message: '9文字以上で入力してください。'}}

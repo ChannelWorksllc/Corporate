@@ -1,9 +1,10 @@
 // UI/UX設計ページ
 
-import React, { useEffect, /* useState */ } from 'react';
+import React, { /* useEffect, useState */ } from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json'
+import HeadBlock from './atoms/HeadBlock';
 import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
 import styles from '../styles/components/service.module.scss'
 
@@ -110,32 +111,36 @@ const ServiceUi = () => {
   // const [article, setArticle] = useState([]);
   // const [ajaxError, setAjaxError] = useState(false);
 
-  useEffect(() => {
-    document.title = 'UI/UX設計 | Channel Works';
+  // useEffect(() => {
 
-    // // ブログ記事の取得
-    // const RssParser = require('rss-parser');
-    // const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
-    // const rssParser = new RssParser();
+  //   // ブログ記事の取得
+  //   const RssParser = require('rss-parser');
+  //   const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
+  //   const rssParser = new RssParser();
   
-    // rssParser.parseURL(url)
-    //   .then((feed) => {
-    //     const data = feed.items;
-    //     setArticle([...data]);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-    //   })
+  //   rssParser.parseURL(url)
+  //     .then((feed) => {
+  //       const data = feed.items;
+  //       setArticle([...data]);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+  //     })
 
-  }, [])
+  // }, [])
   
   return(
     <>
-        <TopicPathService
-          url = '/service/ui_ux'
-          linkname = 'UI/UX'
-        />
+      <HeadBlock 
+        title='UI/UX設計 | Channel Works'
+        description='あるべき箇所にあるべき要素があること、「こうだったらいいのに」という動きを先回りすること。小さな一つ一つの仕掛けが大きな顧客満足を生み出す、それがUI/UX設計の重要性です。' // descriptionのcontent部分に入ります
+      />
+
+      <TopicPathService
+        url = '/service/ui_ux'
+        linkname = 'UI/UX'
+      />
 
       <div className={styles.top}>
         <LowerPageTop 

@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import HeadBlock from './atoms/HeadBlock';
 import { Button, Contact, ScrollToTop, /* Blog */ } from './atoms'
+
 import Data from '../json/works.json';
 import styles from '../styles/components/home.module.scss'
 
@@ -153,6 +156,7 @@ const Home = () => {
 
   return(
     <>
+      <HeadBlock />
       <motion.section className={styles.top}
         variants={ mainVariants }
         initial='initial'

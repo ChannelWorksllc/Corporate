@@ -78,7 +78,7 @@ const LowerPageTop = (props) => {
       >
         <img src={props.img} alt={props.alt} />
         <ul>
-          {props.content.map((content, index) => {
+          {props.content && props.content.map((content, index) => {
             return(
               <motion.li key={index}
                 initial={{ opacity: 0, x: 30, visibility: 'hidden' }}

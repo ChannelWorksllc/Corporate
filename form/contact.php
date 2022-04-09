@@ -1,8 +1,9 @@
 <?php
 
   header('X-FRAME-OPTIONS: SAMEORIGIN');
-
-  header("Access-Control-Allow-Origin: https://channelworks.biz/"); // reactからのデータ受け取りを許可
+  
+  header("Access-Control-Allow-Origin: https://develop.onecode-web.com/"); // reactからのデータ受け取りを許可
+  // header("Access-Control-Allow-Origin: https://channelworks.biz/"); // reactからのデータ受け取りを許可
   header('Access-Control-Allow-Headers: Content-Type'); // 受け取るデータを設定
   $rest_json = file_get_contents("php://input"); // JSONでPOSTされたデータを取り出す
   $_POST = json_decode($rest_json, true); // JSON文字列をデコード
@@ -73,7 +74,15 @@
 
     mb_language('japanese');
     mb_internal_encoding('UTF-8');
-    
+
+    // 変数とタイムゾーン
+    $header = null;
+    $auto_replay_subject = null;
+    $auto_replay_text = null;
+    $admin_replay_subject = null;
+    $admin_replay_text = null;
+    date_default_timezone_set('Asia/Tokyo');
+
 //     $to = 's-ishida@channelworks.biz';
     $to = 'sakurajimaas@gmail.com';
     $from = str_replace(["\r\n", "\r", "\n"], '', $data['email']);
@@ -82,19 +91,51 @@
     $companyName = $data['company'];
     $service = implode("," , $data['service']);
     $message = $data['contain'];
-    $subject = 'お問い合わせがありました！';
 
-    $body = '各種ご相談ページからお問い合わせがありました。' . "\n\n";
-    $body .=  "氏名： " .$yourName . "\n";
-    $body .=  "Email： " . $from . "\n"  ;
-    $body .=  "電話番号： " . $phoneNum. "\n" ;
-    $body .=  "会社・組織名： " . $companyName. "\n\n" ;
-    $body .=  "【お問い合わせ内容】" . "\n" . $service . "\n";
-    $body .=  "【詳細】" . "\n" . $message;
+    // ヘッダー情報
+    $header .= "Content-Type: text/plain \r\n";
+    $header = "MIME-Version: 1.0\n";
+    $header .= "From: ChannelWorks <s-ishida@channelworks.biz>\n";
+    $hedaer .= "Replay-To: ChannelWorks <s-ishida@channelworks.biz>\n";
+    $header .= "Return-Path: s-ishida@channelworks.biz";
+    // $param = "-f s-ishida@channelworks.biz";
 
-    $success = mb_send_mail($to, $subject, $body, 'From'.$from);
+    // 件名
+    $auto_replay_subject = 'お問い合わせありがとうございます';
+    $admin_replay_subject = 'お問い合わせを受け付けました';
 
-    if($success) {
+    // 本文
+    $auto_replay_text = 'この度は、お問い合わせ頂き誠にありがとうございます。' . "\n" . '下記の内容でお問い合わせを受け付けました。' . "\n\n";
+    $auto_replay_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
+    $auto_replay_text .=  "氏名： " .$yourName . "\n";
+    $auto_replay_text .=  "Email： " . $from . "\n"  ;
+    $auto_replay_text .=  "電話番号： " . $phoneNum. "\n" ;
+    $auto_replay_text .=  "会社・組織名： " . $companyName. "\n\n" ;
+    $auto_replay_text .=  "【お問い合わせ内容】" . "\n" . $service . "\n";
+    $auto_replay_text .=  "【詳細】" . "\n" . $message . "\n\n";
+    $auto_replay_text .= "ChannelWorks 石田". "\n";
+    $auto_replay_text .= "──────────────────────────────" . "\n";
+    $auto_replay_text .= "Limited Liability Company ChannelWorks / 合同会社 Channel Works -チャネルワークス-" . "\n" . "マーケティング&ICTソリューションを複合展開し、すべての企業の繁栄戦略をサポートします！" . "\n\n";
+    $auto_replay_text .= "石田 真吾 -Shingo Ishida-" . "\n" . "Mobile：080-7015-6455｜E-mail：s-ishida@channelworks.biz" . "\n\n";
+    $auto_replay_text .= "〒105-0013 東京都港区浜松町2-2-15 浜松町ダイヤビル2F" . "\n" . "TEL：050-3695-2606" . "\n" . "URL：https://www.channelworks.biz/" . "\n\n";
+    $auto_replay_text .= "LINE_ID：channelworks" . "\n" . "Chatwork_ID：sakurajimaas" . "\n" . "Skype_ID：sakurajimaas" . "\n\n";
+    $auto_replay_text .= "【比較サイト様に掲載していただいています！】" . "\n" . "・リカイゼン：https://rekaizen.com/company/channelworks/doc/" . "\n" . "・Web幹事：https://web-kanji.com/companies/channelworks" . "\n";
+    $auto_replay_text .= "──────────────────────────────";
+
+    $admin_replay_text = '各種ご相談ページからお問い合わせがありました。' . "\n\n";
+    $admin_replay_text .=  "氏名： " .$yourName . "\n";
+    $admin_replay_text .=  "Email： " . $from . "\n"  ;
+    $admin_replay_text .=  "電話番号： " . $phoneNum. "\n" ;
+    $admin_replay_text .=  "会社・組織名： " . $companyName. "\n\n" ;
+    $admin_replay_text .=  "【お問い合わせ内容】" . "\n" . $service . "\n";
+    $admin_replay_text .=  "【詳細】" . "\n" . $message . "\n";
+    $admin_replay_text .= "お問い合わせ日時：" . date("Y-m-d H:i");
+
+    // メール送信
+    $auto_replay_success = mb_send_mail($from, $auto_replay_subject, $auto_replay_text, $header);
+    $admin_replay_success = mb_send_mail($to, $admin_replay_subject, $admin_replay_text, $header);
+
+    if($admin_replay_success && $auto_replay_success) {
       $res['state'] = '000';
 
       $data = array();
@@ -105,6 +146,7 @@
     } else {
       $res['state'] = '111';
     }
+
     return $res;
   }
 
