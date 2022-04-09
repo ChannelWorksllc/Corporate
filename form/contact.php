@@ -73,6 +73,14 @@
 
     mb_language('japanese');
     mb_internal_encoding('UTF-8');
+
+    // 変数とタイムゾーン
+    $header = null;
+    $auto_replay_subject = null;
+    $auto_replay_text = null;
+    $admin_replay_subject = null;
+    $admin_replay_text = null;
+    date_default_timezone_set('Asia/Tokyo');
     
 //     $to = 's-ishida@channelworks.biz';
     $to = 'sakurajimaas@gmail.com';
