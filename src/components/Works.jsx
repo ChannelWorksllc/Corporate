@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { animateScroll as scroll } from 'react-scroll';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json'
+import HeadBlock from './atoms/HeadBlock';
 import { LowerPageTop, TopicPath, ScrollToTop, Table, Contact, /* Blog */} from './atoms';
 import styles from '../styles/components/works.module.scss'
 
@@ -84,7 +85,6 @@ const Works = () => {
       setStyle(0);
     }
     allWorksData();
-    document.title='実績 | Channel Works';
 
     // // ブログ記事の取得
     // const RssParser = require('rss-parser');
@@ -150,6 +150,11 @@ const Works = () => {
 
   return(
     <>
+      <HeadBlock 
+        title='実績 | Channel Works'
+        description='さまざまな知見やスキルでご支援します。' // descriptionのcontent部分に入ります
+      />
+
       <TopicPath 
         url = '/works'
         linkname = 'Works'
@@ -163,7 +168,7 @@ const Works = () => {
           img = './Assets/img/works/works01.jpg'
           alt= '実績紹介'
           icon = ''
-          content = { contents }
+          content = ''
         />
 
         <motion.nav className={styles.category}

@@ -1,8 +1,9 @@
 // 各種お問い合わせページ
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
+import HeadBlock from './atoms/HeadBlock';
 import { TopicPath, LowerPageTop, LinkRelatedContent } from './atoms';
 import styles from '../styles/components/contact.module.scss';
 
@@ -35,10 +36,11 @@ const Contact = () => {
 
   const { register, formState: {errors}, handleSubmit, getValues } = useForm();
   const [phpError, setPHPError] = useState(false);
-
+  
   // phpとのajax通信
   const onSubmit = (data) => {
-    fetch("https://channelworks.biz/form/contact.php", {
+    // fetch("https://channelworks.biz/form/contact.php", {
+    fetch("https://develop.onecode-web.com/form/contact.php", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -82,12 +84,12 @@ const Contact = () => {
     }
   }
 
-  useEffect(() => {
-    document.title='各種お問合わせ | Channel Works' // タイトル
-  })
-
   return(
     <>
+      <HeadBlock 
+        title='各種お問合わせ | Channel Works'
+      />
+
       <TopicPath
         url = '/contact_us'
         linkname = 'Contact us'

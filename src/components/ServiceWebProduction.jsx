@@ -1,9 +1,10 @@
 // webサイト設計・構築ページ
 
-import React, { useEffect, /* useState */} from 'react';
+import React, { /* useEffect, useState */} from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json';
+import HeadBlock from './atoms/HeadBlock';
 import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
 import styles from '../styles/components/service.module.scss'
 
@@ -111,28 +112,32 @@ const ServiceWebProduction = () => {
   // const [article, setArticle] = useState([]);
   // const [ajaxError, setAjaxError] = useState(false);
 
-  useEffect(() => {
-    document.title = 'サイト制作 | Channel Works';
+  // useEffect(() => {
 
-    // // ブログ記事の取得
-    // const RssParser = require('rss-parser');
-    // const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
-    // const rssParser = new RssParser();
+  //   // ブログ記事の取得
+  //   const RssParser = require('rss-parser');
+  //   const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
+  //   const rssParser = new RssParser();
   
-    // rssParser.parseURL(url)
-    //   .then((feed) => {
-    //     const data = feed.items;
-    //     setArticle([...data]);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-    //   })
+  //   rssParser.parseURL(url)
+  //     .then((feed) => {
+  //       const data = feed.items;
+  //       setArticle([...data]);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+  //     })
 
-  }, [])
+  // }, [])
 
   return(
     <>
+      <HeadBlock 
+        title='サイト制作 | Channel Works'
+        description='弊社のWebサイト・アプリ制作は、キレイなサイト、カッコイイサイト、といった見た目重視ではありません。弊社がご提供するあらゆるサイトは「事業成果を生み出す」ことに特化しています。' // descriptionのcontent部分に入ります
+      />
+
       <TopicPathService
         url = '/service/web_production'
         linkname = 'Web production'

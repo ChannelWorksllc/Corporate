@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import HeadBlock from './atoms/HeadBlock';
 import { LowerPageTop, TopicPath, Contact, ScrollToTop } from './atoms';
 import styles from '../styles/components/company.module.scss'
 
@@ -32,11 +33,14 @@ const Company = () => {
 
   useEffect(() => {
     Aos.init({ duration: 1000, easing: 'ease-in-out' });
-    document.title='会社情報 | Channel Works' // タイトル
   }, []);
 
   return(
     <>
+      <HeadBlock 
+        title='会社情報 | Channel Works'
+      />
+
       <TopicPath
         url = '/company'
         linkname = 'Company'

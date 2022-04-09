@@ -1,9 +1,10 @@
 // 見積もり依頼ページ
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { motion } from 'framer-motion';
+import HeadBlock from './atoms/HeadBlock';
 import { TopicPath, LowerPageTop, LinkRelatedContent, ScrollToTop } from './atoms';
 import styles from '../styles/components/contact.module.scss';
 
@@ -58,7 +59,9 @@ const Estimate = () => {
 
   // phpとのajax通信
   const onSubmit = (data) => {
-    fetch("https://channelworks.biz/form/estimate.php", {
+    // fetch("https://channelworks.biz/form/estimate.php", {
+    fetch("https://develop.onecode-web.com/form/contact.php", {
+
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -110,12 +113,12 @@ const Estimate = () => {
     }
   }
 
-  useEffect(() => {
-    document.title='お見積り依頼 | Channel Works'
-  })
-
   return(
     <>
+      <HeadBlock 
+        title='お見積り依頼 | Channel Works'
+      />
+
       <TopicPath
         url = '/contact_estimate'
         linkname = 'Contact about Estimate'

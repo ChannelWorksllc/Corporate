@@ -6,12 +6,10 @@
   transition: .3s;
 
   &:hover {
-    background-color: $black;
-    color: $white;
+    background-color: rgb(231, 231, 231);
   }
 
   &.active {
-    background-color: $black;
-    color: $white;
+    background-color: rgb(231, 231, 231);
   }
 }

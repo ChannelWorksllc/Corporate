@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import MediaQuery from 'react-responsive';
+import HeadBlock from './atoms/HeadBlock';
 import { LowerPageTop, TopicPath, Contact, ScrollToTop, Table, /* Blog */ } from './atoms'
 import styles from '../styles/components/services.module.scss'
 
@@ -144,7 +145,6 @@ const Service = () => {
 
   useEffect(() => {
     Aos.init({ duration: 1000, easing: 'ease-in-out' });
-    document.title = 'サービス内容 | Channel Works';
 
     // const RssParser = require('rss-parser');
     // const url = 'https://channelworks.biz/blog/feed/';
@@ -164,6 +164,10 @@ const Service = () => {
 
   return (
     <>
+      <HeadBlock 
+        title='サービス内容 | Channel Works'
+      />
+
       <TopicPath
         url = '/service'
         linkname = 'Service'
@@ -205,7 +209,6 @@ const Service = () => {
                   </div>
                   <h4>{ service.name }</h4>
                   <p className='only-pc'>{ service.text }</p>
-                  <small>詳しくみる</small>
                 </Link>
               </li>
             )

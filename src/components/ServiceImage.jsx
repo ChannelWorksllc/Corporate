@@ -1,9 +1,10 @@
 // イメージ撮影・PR動画制作ページ
 
-import React, { useEffect, /* useState */ } from 'react';
+import React, { /* useEffect, /* useState */ } from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json';
+import HeadBlock from './atoms/HeadBlock';
 import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
 import styles from '../styles/components/service.module.scss'
 
@@ -110,32 +111,36 @@ const ServiceImage = () => {
   // const [article, setArticle] = useState([]);
   // const [ajaxError, setAjaxError] = useState(false);
 
-  useEffect(() => {
-    document.title = 'イメージ制作 | Channel Works';
+  // useEffect(() => {
 
-    // // ブログ記事の取得
-    // const RssParser = require('rss-parser');
-    // const url = 'http://tanakan.conohawing.com/wp/category/image/feed/';
-    // const rssParser = new RssParser();
+  //   // ブログ記事の取得
+  //   const RssParser = require('rss-parser');
+  //   const url = 'http://tanakan.conohawing.com/wp/category/image/feed/';
+  //   const rssParser = new RssParser();
   
-    // rssParser.parseURL(url)
-    //   .then((feed) => {
-    //     const data = feed.items;
-    //     setArticle([...data]);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-    //   })
+  //   rssParser.parseURL(url)
+  //     .then((feed) => {
+  //       const data = feed.items;
+  //       setArticle([...data]);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+  //     })
 
-  }, [])
+  // }, [])
   
   return(
     <>
-        <TopicPathService
-          url = '/service/image'
-          linkname = 'Image Production'
-        />
+      <HeadBlock 
+        title='イメージ制作 | Channel Works'
+        description='弊社では、撮影単体でもお引き受けするなど、専門的な撮影サービスをご提供しており、企業・サービスに最適化したイメージをご提供します。' // descriptionのcontent部分に入ります
+      />
+
+      <TopicPathService
+        url = '/service/image'
+        linkname = 'Image Production'
+      />
 
       <div className={styles.top}>
         <LowerPageTop 

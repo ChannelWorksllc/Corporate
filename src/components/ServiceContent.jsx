@@ -1,9 +1,10 @@
 // コンテンツ開発ページ
 
-import React, { useEffect, /* useState */} from 'react';
+import React, { /* useEffect, useState */} from 'react';
 import { motion } from 'framer-motion';
 import MediaQuery from 'react-responsive';
 import Data from '../json/works.json';
+import HeadBlock from './atoms/HeadBlock';
 import { ServiceLowerPage, TopicPathService, LowerPageTop, LinkRelatedContent, ScrollToTop, Table, Contact, /* Blog */ } from './atoms'
 import styles from '../styles/components/service.module.scss'
 
@@ -110,61 +111,65 @@ const ServiceContent = () => {
   // const [article, setArticle] = useState([]);
   // const [ajaxError, setAjaxError] = useState(false);
 
-  useEffect(() => {
-    document.title = 'コンテンツ開発 | Channel Works';
+  // useEffect(() => {
 
-    // // ブログ記事の取得
-    // const RssParser = require('rss-parser');
-    // const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
-    // const rssParser = new RssParser();
+  //   // ブログ記事の取得
+  //   const RssParser = require('rss-parser');
+  //   const url = 'http://tanakan.conohawing.com/wp/category/management/feed/';
+  //   const rssParser = new RssParser();
   
-    // rssParser.parseURL(url)
-    //   .then((feed) => {
-    //     const data = feed.items;
-    //     setArticle([...data]);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
-    //   })
+  //   rssParser.parseURL(url)
+  //     .then((feed) => {
+  //       const data = feed.items;
+  //       setArticle([...data]);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setAjaxError(true); // ajax通信に失敗した場合は、メッセージを表示
+  //     })
 
-  }, [])
+  // }, [])
 
   return(
     <>
-        <TopicPathService
-          url = '/service/content'
-          linkname = 'Content Development'
+      <HeadBlock 
+        title='コンテンツ開発 | Channel Works'
+        description='コンテンツを作成するだけではなく、継続して作成し続ける仕組みも含めてご提供が可能です。社外のリソースなども柔軟に取り入れるなど、さまざまな方法をご提案させていただきます。' // descriptionのcontent部分に入ります
+      />
+
+      <TopicPathService
+        url = '/service/content'
+        linkname = 'Content Development'
+      />
+
+      <div className={styles.top}>
+        <LowerPageTop 
+          titleja = 'サービス内容'
+          titleen = 'Service'
+          text = 'コンテンツ開発'
+          img = '/Assets/img/service-content/service06.jpg'
+          alt= 'コンテンツ開発'
+          icon = '/Assets/img/service-content/service05.png'
+          content = { contents }
         />
 
-        <div className={styles.top}>
-          <LowerPageTop 
-            titleja = 'サービス内容'
-            titleen = 'Service'
-            text = 'コンテンツ開発'
-            img = '/Assets/img/service-content/service06.jpg'
-            alt= 'コンテンツ開発'
-            icon = '/Assets/img/service-content/service05.png'
-            content = { contents }
-          />
-
-          <nav className={styles.linkRelatedContent}>
-            <motion.ul
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
-              exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
-            >
-              {relatedLinks.map((link, index) => {
-                return(
-                  <LinkRelatedContent 
-                    key = {index}
-                    link = {link}
-                  />
-                )
-              })}
-            </motion.ul>
-          </nav>
-        </div>
+        <nav className={styles.linkRelatedContent}>
+          <motion.ul
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0, transition:{ delay: .28, duraition: .5 } }}
+            exit={{ opacity:0, y: 10 ,transition: { duration: .2, ease: 'easeInOut' } }}
+          >
+            {relatedLinks.map((link, index) => {
+              return(
+                <LinkRelatedContent 
+                  key = {index}
+                  link = {link}
+                />
+              )
+            })}
+          </motion.ul>
+        </nav>
+      </div>
 
       <motion.p className={styles.lowerpage}
         variants={ mainVariants }
