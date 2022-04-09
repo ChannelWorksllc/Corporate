@@ -39,8 +39,7 @@ const Contact = () => {
   
   // phpとのajax通信
   const onSubmit = (data) => {
-    // fetch("https://channelworks.biz/form/contact.php", {
-    fetch("https://develop.onecode-web.com/form/contact.php", {
+    fetch("https://channelworks.biz/form/contact.php", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -194,7 +193,7 @@ const Contact = () => {
               </dt>
               <dd className={`${styles.contactWid} ${styles.half}`}>
                 <input 
-                  type="number" 
+                  type="tel" 
                   placeholder="例：0123456789" 
                   {...register('phoneNum', 
                     {pattern: {value: /[0-9０-９]/, message: '数字を入力してください。'}, maxLength: {value: 11, message: '11文字以内で入力してください。'}, minLength: {value: 9, message: '9文字以上で入力してください。'}}

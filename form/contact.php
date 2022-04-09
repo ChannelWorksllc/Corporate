@@ -84,8 +84,7 @@
     date_default_timezone_set('Asia/Tokyo');
 
 //     $to = 's-ishida@channelworks.biz';
-    // $to = 'sakurajimaas@gmail.com';
-    $to = '8tanaka.j@gmail.com';
+    $to = 'sakurajimaas@gmail.com';
     $from = str_replace(["\r\n", "\r", "\n"], '', $data['email']);
     $yourName = $data['yourName'];
     $phoneNum = $data['phoneNum'];
@@ -96,12 +95,14 @@
     // ヘッダー情報
     $header .= "Content-Type: text/plain \r\n";
     $header = "MIME-Version: 1.0\n";
-    $header .= "From: ChannelWorks <s-ishida@channelworks.biz>";
-    $hedaer .= "Replay-To: ChannelWorks <noreply@channelworks.biz>";
+    $header .= "From: ChannelWorks <s-ishida@channelworks.biz>\n";
+    $hedaer .= "Replay-To: ChannelWorks <s-ishida@channelworks.biz>\n";
+    $header .= "Return-Path: s-ishida@channelworks.biz";
+    // $param = "-f s-ishida@channelworks.biz";
 
     // 件名
     $auto_replay_subject = 'お問い合わせありがとうございます';
-    $admin_replay_text = 'お問い合わせを受け付けました';
+    $admin_replay_subject = 'お問い合わせを受け付けました';
 
     // 本文
     $auto_replay_text = 'この度は、お問い合わせ頂き誠にありがとうございます。' . "\n" . '下記の内容でお問い合わせを受け付けました。' . "\n\n";
